@@ -1,32 +1,10 @@
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+SCSM.AzureAutomation/SCSM.AzureAutomation.Worklfow/bin/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Worklfow/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Worklfow/Properties/*
+SCSM.AzureAutomation/SCSM.AzureAutomation/bin/*
+SCSM.AzureAutomation/SCSM.AzureAutomation/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.WPF/bin/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.WPF/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.WPF/Properties/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.v12.suo
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/

@@ -1,0 +1,39 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="SCSM.Configitem.Webhook" Abstract="false" Accessibility="Public" Hosted="false" Singleton="false" Base="System!System.ConfigItem" Comment="Azure Automation Connector">
+
+          <Property ID="ID" Type="string" AutoIncrement="true" Key="true" CaseSensitive="false" Required="true" DefaultValue="AAW{0}"/>
+          <Property ID="DisplayName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID="Link" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID="Expiredate" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+
+    <LanguagePack ID="ENU" IsDefault="true" >
+      <DisplayStrings>
+        <DisplayString ElementID="SCSM.Configitem.Webhook">
+          <Name>Azure Automation Webhook</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="ID">
+          <Name>ID</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="DisplayName">
+          <Name>DisplayName</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="Link">
+          <Name>Webhook link</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="Expiredate">
+          <Name>Expiredate</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+
+  </LanguagePacks>
+</ManagementPackFragment>

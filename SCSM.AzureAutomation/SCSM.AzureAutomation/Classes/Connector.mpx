@@ -1,0 +1,35 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="SCSM.AzureAutomation.Connector" Abstract="false" Accessibility="Public" Hosted="false" Singleton="false" Base="LinkingFramework!System.LinkingFramework.DataSource" Comment="Azure Automation Connector">
+
+          <Property ID="RunAsAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID ="SubscriptionID" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
+          <Property ID="AutomationAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
+
+        </ClassType>
+      </ClassTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+
+    <LanguagePack ID="ENU" IsDefault="true" >
+      <DisplayStrings>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector">
+          <Name>Azure Automation Connector</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="RunAsAccount">
+          <Name>ID</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="SubscriptionID">
+          <Name>Displayname</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="AutomationAccount">
+          <Name>Automation Account</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+
+  </LanguagePacks>
+</ManagementPackFragment>
