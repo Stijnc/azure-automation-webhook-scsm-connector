@@ -1,7 +1,8 @@
 # Azure automation webhook Service Manager (SCSM) connector
 System Center Service Manager connector and runbook template for Azure Automation leveraging webhooks.
 
-**Note: credentials are currently stored in clear text!
+** This project is not fully functional yet**
+**Note: credentials are currently stored in clear text!**
 
 ## overview
 the solution contains the following elements:
