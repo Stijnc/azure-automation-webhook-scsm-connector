@@ -1,0 +1,40 @@
+﻿<wpfwiz:WizardRegularPageBase x:Class="SCSM.AzureAutomation.WPF.Connector.AzureAutomationSummaryPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                  
+    xmlns:wpfwiz="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfWizardFramework;assembly=Microsoft.EnterpriseManagement.UI.WpfWizardFramework">
+
+    <Grid Name="SummaryGrid" Margin="15,25,15,25">
+        <TextBlock Height="28" Margin="0,0,0,0" Name="titleLabel" FontWeight="Bold" Foreground="#FF003399" FontSize="14" VerticalAlignment="Top" Text="Configure the Connector"/>
+        <ScrollViewer Margin="0,50,0,50" Name="scrollViewer" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="stackPanel" Orientation="Vertical">
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="displayamelabel" Content="Connector name:" FontWeight="Bold"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="displaynameTextBlock" IsReadOnly="True">
+                    <TextBox.Text>
+                        <Binding Path="DisplayName" Mode="OneWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="SubscriptionIDlabel" Content="Azure Subscription ID:" FontWeight="Bold"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="SubscriptionIDTextBlock" IsReadOnly="True">
+                    <TextBox.Text>
+                        <Binding Path="SubscriptionID" Mode="OneWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="AutomationAccountLabel" Content="Automation Account:" FontWeight="Bold"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="AutomationAccountBlock" IsReadOnly="True">
+                    <TextBox.Text>
+                        <Binding Path="AutomationAccount" Mode="OneWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="UserNameLabel" Content="Username:" FontWeight="Bold"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="usernameTextBlock" IsReadOnly="True">
+                    <TextBox.Text>
+                        <Binding Path="RunAsAccountName" Mode="OneWay" FallbackValue="60"/>
+                    </TextBox.Text>
+                </TextBox>
+
+
+            </StackPanel>
+        </ScrollViewer>
+        <Label Height="25" Name="clickCreateLabel" VerticalAlignment="Bottom" Margin="0,0,30,0" Content="Click Create to create the Azure Automation connector."/>
+    </Grid>
+</wpfwiz:WizardRegularPageBase>

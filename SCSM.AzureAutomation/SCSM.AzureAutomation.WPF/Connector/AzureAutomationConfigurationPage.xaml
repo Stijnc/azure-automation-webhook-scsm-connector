@@ -1,0 +1,43 @@
+﻿<wpfwiz:WizardRegularPageBase x:Class="SCSM.AzureAutomation.WPF.Connector.AzureAutomationConfigurationPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:l="clr-namespace:SCSM.AzureAutomation.WPF.Connector"
+             xmlns:wpfwiz="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfWizardFramework;assembly=Microsoft.EnterpriseManagement.UI.WpfWizardFramework" Loaded="WizardRegularPageBase_Loaded">
+
+    <Grid Name="ConfigurationGrid" Margin="15,25,15,25">
+        <TextBlock Height="28" Margin="0,0,0,0" Name="titleLabel" FontWeight="Bold" Foreground="#FF003399" FontSize="14" VerticalAlignment="Top" Text="Configure the Connector"/>
+        <ScrollViewer Margin="0,50,0,50" Name="scrollViewer" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="stackPanel" Orientation="Vertical">
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="displayamelabel" Content="Connector name:"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="displaynameTextBlock">
+                    <TextBox.Text>
+                        <Binding Path="DisplayName" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="SubscriptionIDlabel" Content="Azure Subscription ID:"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="SubscriptionIDTextBlock">
+                    <TextBox.Text>
+                        <Binding Path="SubscriptionID" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="AutomationAccountLabel" Content="Automation Account:"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="AutomationAccountBlock">
+                    <TextBox.Text>
+                        <Binding Path="AutomationAccount" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="UserNameLabel" Content="Username:"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="usernameTextBlock" >
+                    <TextBox.Text>
+                        <Binding Path="RunAsAccountName" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="PasswordLabel" Content="Password:"/>
+                <PasswordBox l:AzureAutomationConfigurationPage.EncryptedPassword="{Binding Path=RunasAccountPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,-8,0,10" Name="PasswordTextBlock" PasswordChanged="PasswordBox_PasswordChanged" >
+                    <!--PasswordBoxAttachedProperties.EncryptedPassword="{Binding PasswordSecureString,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" -->
+                </PasswordBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</wpfwiz:WizardRegularPageBase>
+

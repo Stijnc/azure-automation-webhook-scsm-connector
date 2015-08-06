@@ -1,0 +1,8 @@
+﻿<wpfwiz:WizardWelcomePageBase x:Class="SCSM.AzureAutomation.WPF.Connector.AzureAutomationWelcomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:wpfwiz="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfWizardFramework;assembly=Microsoft.EnterpriseManagement.UI.WpfWizardFramework">
+    <Grid Margin="15">
+        <Label Height="25" Name="Instructions" Margin="0,15,0,0" VerticalAlignment="Top" Content="You can use this wizard to create an Azure Automation Connector."/>
+    </Grid>
+</wpfwiz:WizardWelcomePageBase>

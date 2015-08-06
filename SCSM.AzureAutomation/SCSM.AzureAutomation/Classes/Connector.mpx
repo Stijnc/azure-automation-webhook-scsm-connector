@@ -4,7 +4,8 @@
       <ClassTypes>
         <ClassType ID="SCSM.AzureAutomation.Connector" Abstract="false" Accessibility="Public" Hosted="false" Singleton="false" Base="LinkingFramework!System.LinkingFramework.DataSource" Comment="Azure Automation Connector">
 
-          <Property ID="RunAsAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID="RunAsAccountName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID="RunAsAccountPassword" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID ="SubscriptionID" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID="AutomationAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
 
@@ -19,14 +20,17 @@
         <DisplayString ElementID="SCSM.AzureAutomation.Connector">
           <Name>Azure Automation Connector</Name>
         </DisplayString>
-        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="RunAsAccount">
-          <Name>ID</Name>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="RunAsAccountName">
+          <Name>runas account username</Name>
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="SubscriptionID">
-          <Name>Displayname</Name>
+          <Name>Subscription ID</Name>
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="AutomationAccount">
           <Name>Automation Account</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="RunAsAccountPassword">
+          <Name>runas account password</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

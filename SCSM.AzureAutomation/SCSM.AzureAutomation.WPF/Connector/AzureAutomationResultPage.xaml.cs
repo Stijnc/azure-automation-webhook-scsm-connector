@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+using Microsoft.EnterpriseManagement.UI.WpfWizardFramework;
+
+namespace SCSM.AzureAutomation.WPF.Connector
+{
+    /// <summary>
+    /// Interaction logic for AzureAutomationResultPage.xaml
+    /// </summary>
+    public partial class AzureAutomationResultPage : WizardResultPageBase
+    {
+        private AzureAutomationWizardData azureautomationWizardData = null;
+
+        public AzureAutomationResultPage(WizardData wizardData)
+        {
+            if (wizardData == null)
+            {
+                throw new ArgumentNullException("wizardData");
+            }
+
+            InitializeComponent();
+
+            this.DataContext = wizardData;
+            this.azureautomationWizardData = this.DataContext as AzureAutomationWizardData;
+
+            this.Title = "Completed";
+            this.FinishButtonText = "Close";
+        }
+    }
+}

@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\Microsoft.EnterpriseManagement.Core.dll = References\Microsoft.EnterpriseManagement.Core.dll
 		References\Microsoft.EnterpriseManagement.ServiceManager.Application.Common.dll = References\Microsoft.EnterpriseManagement.ServiceManager.Application.Common.dll
 		References\Microsoft.EnterpriseManagement.ServiceManager.SharedResources.dll = References\Microsoft.EnterpriseManagement.ServiceManager.SharedResources.dll
+		References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp = References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp
+		References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp = References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp
 		References\Microsoft.EnterpriseManagement.UI.Controls.dll = References\Microsoft.EnterpriseManagement.UI.Controls.dll
 		References\Microsoft.EnterpriseManagement.UI.Core.dll = References\Microsoft.EnterpriseManagement.UI.Core.dll
 		References\Microsoft.EnterpriseManagement.UI.ExtendedControls.dll = References\Microsoft.EnterpriseManagement.UI.ExtendedControls.dll
@@ -19,7 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\Microsoft.EnterpriseManagement.UI.SMControls.dll = References\Microsoft.EnterpriseManagement.UI.SMControls.dll
 		References\Microsoft.EnterpriseManagement.UI.WpfWizardFramework.dll = References\Microsoft.EnterpriseManagement.UI.WpfWizardFramework.dll
 		References\Microsoft.EnterpriseManagement.WorkflowFoundation.dll = References\Microsoft.EnterpriseManagement.WorkflowFoundation.dll
+		References\Microsoft.SystemCenter.Library.mp = References\Microsoft.SystemCenter.Library.mp
 		References\Microsoft.SystemCenter.Orchestrator.mp = References\Microsoft.SystemCenter.Orchestrator.mp
+		References\Microsoft.Windows.Library.mp = References\Microsoft.Windows.Library.mp
+		References\ServiceManager.ConfigurationManagement.Library.mp = References\ServiceManager.ConfigurationManagement.Library.mp
+		References\ServiceManager.Core.Library.mp = References\ServiceManager.Core.Library.mp
 		References\ServiceManager.LinkingFramework.Library.mp = References\ServiceManager.LinkingFramework.Library.mp
 		References\WPFToolKit.dll = References\WPFToolKit.dll
 	EndProjectSection
@@ -27,6 +33,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSM.AzureAutomation.Worklfow", "SCSM.AzureAutomation.Worklfow\SCSM.AzureAutomation.Worklfow.csproj", "{C5FBE19C-2D24-41E9-BB15-E09BB699B519}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSM.AzureAutomation.WPF", "SCSM.AzureAutomation.WPF\SCSM.AzureAutomation.WPF.csproj", "{2CE767C8-461B-4A7C-A2B5-2DFE4D34B32E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{9CE52929-CD9F-4B22-8E43-14C0ED38A9CB}"
+	ProjectSection(SolutionItems) = preProject
+		Images\AzureAutomation2x1256.png = Images\AzureAutomation2x1256.png
+		Images\AzureAutomation2x128.png = Images\AzureAutomation2x128.png
+		Images\AzureAutomation2x16.png = Images\AzureAutomation2x16.png
+		Images\AzureAutomation2x24.png = Images\AzureAutomation2x24.png
+		Images\AzureAutomation2x32.png = Images\AzureAutomation2x32.png
+		Images\AzureAutomation2x64.png = Images\AzureAutomation2x64.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

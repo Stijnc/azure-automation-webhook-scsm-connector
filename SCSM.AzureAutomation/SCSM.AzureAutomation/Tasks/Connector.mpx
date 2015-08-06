@@ -1,0 +1,86 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <Categories>
+    <Category ID="Category.DoubleClickEditAzureAutomationConnector" Target="Task.EditAzureAutomationConnector" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.DoubleClickTask" />
+  </Categories>
+
+  <Presentation>
+    <ConsoleTasks>
+      <ConsoleTask ID="Task.CreateAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="MESUA!Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.Task.CreateConnector" RequireOutput="false">
+        <Assembly>MESUC!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">SCSM.AzureAutomation.WPF</Argument>
+          <Argument Name="Type">SCSM.AzureAutomation.WPF.Connector.AzureAutomation</Argument>
+          <Argument>Create</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="Task.EditAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Connector" RequireOutput="false">
+        <Assembly>MESUC!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">SCSM.AzureAutomation.WPF</Argument>
+          <Argument Name="Type">SCSM.AzureAutomation.WPF.Connector.AzureAutomation</Argument>
+          <Argument>Edit</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="Task.DeleteAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Connector" RequireOutput="false">
+        <Assembly>MESUC!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">SCSM.AzureAutomation.WPF</Argument>
+          <Argument Name="Type">SCSM.AzureAutomation.WPF.Connector.AzureAutomation</Argument>
+          <Argument>Delete</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="Task.EnableAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Connector" RequireOutput="false">
+        <Assembly>MESUC!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">SCSM.AzureAutomation.WPF</Argument>
+          <Argument Name="Type">SCSM.AzureAutomation.WPF.Connector.AzureAutomation</Argument>
+          <Argument>Enable</Argument>
+        </Parameters>
+      </ConsoleTask>
+      <ConsoleTask ID="Task.DisableAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Connector" RequireOutput="false">
+        <Assembly>MESUC!SdkDataAccessAssembly</Assembly>
+        <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+        <Parameters>
+          <Argument Name="Assembly">SCSM.AzureAutomation.WPF</Argument>
+          <Argument Name="Type">SCSM.AzureAutomation.WPF.Connector.AzureAutomation</Argument>
+          <Argument>Disable</Argument>
+        </Parameters>
+      </ConsoleTask>
+    </ConsoleTasks>
+    <ImageReferences>
+      <ImageReference ElementID="Task.EditAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Properties" />
+      <ImageReference ElementID="Task.DeleteAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Remove" />
+      <ImageReference ElementID="Task.EnableAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Enable" />
+      <ImageReference ElementID="Task.DisableAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Disable" />
+    </ImageReferences>
+  </Presentation>
+
+  <LanguagePacks>
+
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="Task.CreateAzureAutomationConnector">
+          <Name>Azure Automation Connector</Name>
+        </DisplayString>
+        <DisplayString ElementID="Task.EditAzureAutomationConnector">
+          <Name>Properties</Name>
+        </DisplayString>
+        <DisplayString ElementID="Task.DeleteAzureAutomationConnector">
+          <Name>Delete</Name>
+        </DisplayString>
+        <DisplayString ElementID="Task.EnableAzureAutomationConnector">
+          <Name>Enable</Name>
+        </DisplayString>
+        <DisplayString ElementID="Task.DisableAzureAutomationConnector">
+          <Name>Disable</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+
+  </LanguagePacks>
+</ManagementPackFragment>
