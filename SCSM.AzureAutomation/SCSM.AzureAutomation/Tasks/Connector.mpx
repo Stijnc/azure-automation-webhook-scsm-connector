@@ -53,6 +53,7 @@
       </ConsoleTask>
     </ConsoleTasks>
     <ImageReferences>
+      <ImageReference ElementID="Task.CreateAzureAutomationConnector" ImageID="MESUA!Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.Image.Connector" />
       <ImageReference ElementID="Task.EditAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Properties" />
       <ImageReference ElementID="Task.DeleteAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Remove" />
       <ImageReference ElementID="Task.EnableAzureAutomationConnector" ImageID="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Enable" />

@@ -84,7 +84,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Create a new "wizard" (also used for property dialogs as in this case), set the title bar, create the data, and add the pages
                 WizardStory wizard = new WizardStory();
-                wizard.WizardWindowTitle = "Edit CSV Connector";
+                wizard.WizardWindowTitle = "Edit Azure Automation Connector";
                 WizardData data = new AzureAutomationWizardData(emoAAConnector);
                 wizard.WizardData = data;
                 wizard.AddLast(new WizardStep("Configuration", typeof(AzureAutomationConfigurationPage), wizard.WizardData));
