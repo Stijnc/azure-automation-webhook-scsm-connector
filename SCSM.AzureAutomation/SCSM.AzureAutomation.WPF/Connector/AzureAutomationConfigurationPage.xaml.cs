@@ -22,23 +22,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
     /// Interaction logic for AzureAutomationConfigurationPage.xaml
     /// </summary>
     /// 
-    public static class PasswordBoxAttachedProperties
-    {
-        public static SecureString GetEncryptedPassword(DependencyObject obj)
-        {
-            return (SecureString)obj.GetValue(EncryptedPasswordProperty);
-        }
-
-        public static void SetEncryptedPassword(DependencyObject obj, SecureString value)
-        {
-            obj.SetValue(EncryptedPasswordProperty, value);
-        }
-
-        // Using a DependencyProperty as the backing store for EncryptedPassword.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty EncryptedPasswordProperty =
-            DependencyProperty.RegisterAttached("EncryptedPassword", typeof(SecureString), typeof(PasswordBoxAttachedProperties));
-   
-    }
+    
 
     public partial class AzureAutomationConfigurationPage : WizardRegularPageBase
     {
@@ -65,15 +49,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
         }
 
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            //Cast the 'sender' to a PasswordBox
-            PasswordBox pBox = sender as PasswordBox;
-
-            //Set this "EncryptedPassword" dependency property to the "SecurePassword"
-            //of the PasswordBox.
-            PasswordBoxAttachedProperties.SetEncryptedPassword(pBox, pBox.SecurePassword);
-        }
+      
 
     }  
 }

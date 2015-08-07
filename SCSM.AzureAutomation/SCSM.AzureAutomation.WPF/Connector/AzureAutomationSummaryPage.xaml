@@ -31,7 +31,12 @@
                         <Binding Path="RunAsAccountName" Mode="OneWay"/>
                     </TextBox.Text>
                 </TextBox>
-
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="PasswordLabel" Content="Password:" FontWeight="Bold"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="PasswordTextBlock" >
+                    <TextBox.Text>
+                        <Binding Path="RunAsAccountPassword" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
 
             </StackPanel>
         </ScrollViewer>

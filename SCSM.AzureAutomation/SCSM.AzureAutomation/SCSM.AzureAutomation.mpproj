@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes" />
+    <Folder Include="Category" />
     <Folder Include="Resources" />
     <Folder Include="Tasks" />
     <Folder Include="Views" />
@@ -90,6 +91,9 @@
     <Folder Include="Workflows" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category\MPCategory.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\Activity.mpx">
       <SubType>Code</SubType>
     </Compile>
