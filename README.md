@@ -4,6 +4,9 @@ System Center Service Manager connector and runbook template for Azure Automatio
 **This project is not fully functional yet**  
 **Note: credentials are currently stored in clear text!**
 
+
+### teaser :-)
+<img src="https://raw.githubusercontent.com/Stijnc/azure-automation-webhook-scsm-connector/master/Screenshots/AA_Connector3.PNG" alt="Drawing" style="width: 50px;"/>
 ## overview
 the solution contains the following elements:
 * an Azure Automation Connector
