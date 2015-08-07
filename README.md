@@ -10,3 +10,15 @@ the solution contains the following elements:
 * an Azure Automation Webhook class
 * an Azure Automation Webhook Activity
 * a Service manager workflow using the azure powershell module to check the runbook job status 
+
+## Installation
+todo
+
+## Usage
+todo
+
+## Remarks
+* webhooks are used instead of querying the automation account
+* entering webhooks is a manual task
+* I repeat: password is stored in clear text, first I need to get things working :-)
+* all other things I forgot to mention, but that are important
