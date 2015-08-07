@@ -54,5 +54,15 @@ namespace SCSM.AzureAutomation.WPF.ConfigItem
             };
             this.ExpanderMain.Header = headeredContentControl;
         }
+
+        private void btnNew_Click(object sender, RoutedEventArgs e)
+        {
+            createNewAzureConnector();
+        }
+
+        private void createNewAzureConnector()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

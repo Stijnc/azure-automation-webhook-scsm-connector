@@ -131,9 +131,9 @@
     <None Include="Resources\AzureAutomation2x1256.png" />
     <None Include="Resources\AzureAutomation2x128.png" />
     <Resource Include="Resources\AzureAutomation2x64.png" />
-    <EmbeddedResource Include="Resources\AzureAutomation2x32.png" />
+    <Resource Include="Resources\AzureAutomation2x32.png" />
     <None Include="Resources\AzureAutomation2x24.png" />
-    <None Include="Resources\AzureAutomation2x16.png" />
+    <Resource Include="Resources\AzureAutomation2x16.png" />
     <None Include="Resources\AzureAutomationIcon.png" />
     <None Include="sealkey.snk" />
   </ItemGroup>
