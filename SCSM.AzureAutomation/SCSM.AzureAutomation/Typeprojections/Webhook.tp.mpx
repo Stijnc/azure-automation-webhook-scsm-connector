@@ -3,11 +3,17 @@
     <EntityTypes>
       <TypeProjections>
         <TypeProjection ID="SCSM.Projection.Configitem.Webhook.Connector" Accessibility="Public" Type="SCSM.Configitem.Webhook">
-          <Component Path="$Target/Path[Relationship='SCSM.Configitem.WebHookHasConnector']" Alias="wehbookconnector"></Component>
+          <Component Path="$Target/Path[Relationship='SCSM.Configitem.WebHookHasConnector']$" Alias="webhookconnector"></Component>
         </TypeProjection>
 
         <TypeProjection ID="SCSM.Projection.Configitem.Webhook.Full" Accessibility="Public" Type="SCSM.Configitem.Webhook">
-          <Component Path="$Target/Path[Relationship='SCSM.Configitem.WebHookHasConnector']" Alias="wehbookconnector"></Component>
+          <Component Path="$Target/Path[Relationship='SCSM.Configitem.WebHookHasConnector']$" Alias="webhookconnector"></Component>
+          <Component Path="$Context/Path[Relationship='WorkItem!System.WorkItemRelatesToConfigItem' SeedRole='Target']$" Alias="ImpactedWorkItem" />
+          <Component Path="$Context/Path[Relationship='WorkItem!System.WorkItemAboutConfigItem' SeedRole='Target']$" Alias="RelatedWorkItem" />
+          <Component Path="$Context/Path[Relationship='SupportingItem!System.ConfigItemHasFileAttachment']$" Alias="FileAttachment" />
+          <Component Path="$Context/Path[Relationship='System!System.ConfigItemRelatesToConfigItem']$" Alias="RelatedConfigItem" />
+          <Component Path="$Context/Path[Relationship='System!System.ConfigItemRelatesToConfigItem' SeedRole='Target']$" Alias="RelatedConfigItemSource" />
+          <Component Path="$Context/Path[Relationship='CoreKnowledge!System.EntityLinksToKnowledgeDocument']$" Alias="RelatedKnowledgeArticles" />
         </TypeProjection>
       </TypeProjections>
     </EntityTypes>    
@@ -18,10 +24,10 @@
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="SCSM.Projection.Configitem.Webhook.Connector">
-          <Name>Webhook has connector projection</Name>
+          <Name>Azure Webhook has connector projection</Name>
         </DisplayString>
         <DisplayString ElementID="SCSM.Projection.Configitem.Webhook.Full">
-          <Name>Webhook full projection</Name>
+          <Name>Azure Webhook full projection</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>    

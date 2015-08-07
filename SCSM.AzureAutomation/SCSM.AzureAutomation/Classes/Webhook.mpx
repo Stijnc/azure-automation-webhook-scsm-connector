@@ -11,6 +11,14 @@
 
         </ClassType>
       </ClassTypes>
+      
+      <RelationshipTypes>
+        <RelationshipType ID="SCSM.Configitem.WebHookHasConnector" Accessibility="Public" Base="System!System.Reference">
+          <Source ID="WebhookHasConnector_webhook"  MinCardinality="0" MaxCardinality="2147483647" Type="SCSM.Configitem.Webhook"/>
+          <Target ID="WebhookHasConnector_Connector" MinCardinality="0" MaxCardinality="1" Type="SCSM.AzureAutomation.Connector"/>
+        </RelationshipType>      
+  
+      </RelationshipTypes>
     </EntityTypes>
   </TypeDefinitions>
   <LanguagePacks>
@@ -31,6 +39,9 @@
         </DisplayString>
         <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="Expiredate">
           <Name>Expiredate</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.Configitem.WebHookHasConnector">
+          <Name>Webhook has connector</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

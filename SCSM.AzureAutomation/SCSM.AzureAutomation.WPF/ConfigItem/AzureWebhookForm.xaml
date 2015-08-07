@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="SCSM.AzureAutomation.WPF.ConfigItem.AzureWebhookForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:smcontrols="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfControls;assembly=Microsoft.EnterpriseManagement.UI.SMControls"
+             xmlns:wpftoolbox="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfToolbox;assembly=Microsoft.EnterpriseManagement.UI.FormsInfra"
+             xmlns:wpfToolKit="clr-namespace:Microsoft.Windows.Controls;assembly=wpfToolKit"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+             Loaded="ProjectForm_OnLoaded"
+             d:DesignHeight="700" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="AAIcon32" UriSource="Resources/AzureAutomation2x32.png" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/Brushes/Brushes.xaml" />
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/BasicControls/BasicControlsCollection.xaml" />
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/AdvancedControls/AdvancedControlsCollection.xaml" />
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/FormControls/FormControlsCollection.xaml" />
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/uXeControls/uXeControlsCollection.xaml" />
+                <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/SMControls/SMControlsCollection.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="84"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Rectangle RenderTransformOrigin="0.387,0.467" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#C5D5F3" Offset="0.115"/>
+                    <GradientStop Color="White" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Name="Logo" Source="{StaticResource AAIcon32 }" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"  MaxHeight="32" Margin="15,0,0,0"/>
+        <WrapPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+            <TextBlock Name="LblDisplayname" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=Default}" FontSize="14" />
+        </WrapPanel>
+
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
+            <TabItem Header="General" x:Name="tabItemGeneral">
+                <Expander Name="ExpanderMain" Header="Azure Webhook Identity" IsExpanded="True" Loaded="expanderMain_OnLoaded">
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,5,10,5">
+                            <Label Name="LblAAWebhookId" Content="ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtAAWebhookId" Grid.Column="1" Grid.Row="0"  IsReadOnly="True" Text="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,5,10,5">
+                            <Label Name="LblAAWebhookName" Content="DisplayName:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtAAWebhookName" Grid.Column="1" Grid.Row="1" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" wpftoolbox:Validation.ValueRequired="True" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,5,10,5">
+                            <Label Name="lblExpiredate" Content="Expire date:" Grid.Column="0" Grid.Row="0"/>
+                            <wpfToolKit:DatePicker Name="dpExpiredate" Grid.Column="0" Grid.Row="1" SelectedDate="{Binding Path=Expiredate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Now}" wpftoolbox:Validation.ValueRequired="true" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="1" Margin="10,5,10,5">
+                            <Label Name="LblAssetstatus" Content="Asset Status:" Grid.Column="0" Grid.Row="0"/>
+                            <smcontrols:ListPicker Name="AssetListPicker" ParentCategoryId="{Binding Source=df83475d-d6d1-7236-fc6d-ec8fe52022b0 , Mode=OneWay}" SelectedItem="{Binding Path=AssetStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="2" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="lblUri" Content="Webhook URL:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtUri" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" wpftoolbox:Validation.ValueRequired="True" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="3" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="lblConnector" Content="Azure AUtomation Connector:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
+                            <smcontrols:SingleInstancePicker Name="sipConnector" Instance="{Binding Path=webhookconnector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Grid.Row="2" Margin="10,5,10,5"  >
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0"  Margin="10,5,10,5" >
+                            <Label Name="LblNotes" Content="Notes:"></Label>
+                            <TextBox Name="TxtNotes" MinHeight="100" Text="{Binding Path=Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
+         AcceptsReturn="True" ></TextBox>
+                        </StackPanel>
+
+
+                    </Grid>
+                </Expander>
+            </TabItem>
+            <TabItem Header="Related Items" x:Name="tabItemRelItems">
+            </TabItem>
+            <TabItem Header="History" x:Name="tabItemHistory">
+                <smcontrols:HistoryTab></smcontrols:HistoryTab>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

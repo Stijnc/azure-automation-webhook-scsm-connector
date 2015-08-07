@@ -36,6 +36,12 @@
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring">
+      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.mp</HintPath>
+      <Alias>Authoring</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Console">
       <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
       <Alias>MESUC</Alias>
@@ -76,14 +82,34 @@
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="System.Knowledge.Library">
+      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.Knowledge.Library.mp</HintPath>
+      <Alias>CoreKnowledge</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="System.Library">
       <Alias>System</Alias>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.SupportingItem.Library">
+      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.SupportingItem.Library.mp</HintPath>
+      <Alias>SupportingItem</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.WorkItem.Library">
+      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.WorkItem.Library.mp</HintPath>
+      <Alias>WorkItem</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes" />
     <Folder Include="Category" />
+    <Folder Include="Image" />
+    <Folder Include="Forms" />
     <Folder Include="Resources" />
     <Folder Include="Tasks" />
     <Folder Include="Views" />
@@ -103,10 +129,19 @@
     <Compile Include="Classes\Webhook.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forms\Webhook.frm.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Resources\Resources.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\Connector.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Typeprojections\Webhook.tp.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Webhook.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Workflows\Start-Webhook.mpx">
@@ -120,6 +155,14 @@
       <Private>True</Private>
       <PackageToBundle>True</PackageToBundle>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Image\AzureAutomation2x16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\AzureAutomation2x24.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>
