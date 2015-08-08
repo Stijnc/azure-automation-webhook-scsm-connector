@@ -46,6 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{9CE529
 		Images\AzureAutomation2x24.png = Images\AzureAutomation2x24.png
 		Images\AzureAutomation2x32.png = Images\AzureAutomation2x32.png
 		Images\AzureAutomation2x64.png = Images\AzureAutomation2x64.png
+		Images\Generic_New_16.png = Images\Generic_New_16.png
 	EndProjectSection
 EndProject
 Global

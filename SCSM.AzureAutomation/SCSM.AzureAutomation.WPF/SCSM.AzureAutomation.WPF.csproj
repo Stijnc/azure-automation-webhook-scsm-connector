@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Connector\AzureAutomation2x24.png" />
+    <Resource Include="Resources\Generic_New_16.png" />
     <None Include="Resources\AzureAutomation2x1256.png" />
     <None Include="Resources\AzureAutomation2x128.png" />
     <Resource Include="Resources\AzureAutomation2x64.png" />

@@ -12,9 +12,9 @@
              d:DesignHeight="700" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
-            <BitmapImage x:Key="AAIcon32" UriSource="Resources/AzureAutomation2x32.png" />
-            <BitmapImage x:Key="AAIcon16" UriSource="Resources/AzureAutomation2x16.png" />
-            <ImageBrush x:Key="AABrush16" ImageSource="Resources/AzureAutomation2x16.png" />
+            <BitmapImage x:Key="AAIcon32" UriSource="../Resources/AzureAutomation2x32.png" />
+            <BitmapImage x:Key="AAIcon16" UriSource="../Resources/AzureAutomation2x16.png" />
+            <BitmapImage x:Key="NewIcon" UriSource="../Resources/Generic_New_16.png" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/Brushes/Brushes.xaml" />
                 <ResourceDictionary Source="/Microsoft.EnterpriseManagement.ServiceManager.SharedResources;component/BasicControls/BasicControlsCollection.xaml" />
@@ -93,15 +93,11 @@
                                 </Grid.RowDefinitions>
                                 <smcontrols:SingleInstancePicker Grid.Column="0" Grid.Row="0" Name="sipConnector" BaseClassId="b4e302f9-763a-7df3-7013-a796378a2c49" Instance="{Binding Path=webhookconnector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     <Button x:Name="btnNew" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Width="20" Height="20" Click="btnNew_Click">
-                                        <Button.Template>
-                                            <ControlTemplate>
-                                                <Border HorizontalAlignment="Center" VerticalAlignment="Center" >
-                                                    <Image Source="{StaticResource AAIcon16}" 
+                                      
+                                                <Image Source="{StaticResource NewIcon}" 
                                                    Width="16" 
                                                    Height="16"/>
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Button.Template>
+                                        
                                     </Button>
                             </Grid>
 
