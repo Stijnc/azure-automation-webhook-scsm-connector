@@ -6,7 +6,7 @@
     <RootNamespace>SCSM.AzureAutomation</RootNamespace>
     <Name>SCSM.AzureAutomation</Name>
     <ManagementPackName>SCSM.AzureAutomation</ManagementPackName>
-    <Version>1.0.0.0</Version>
+    <Version>1.0.0.41</Version>
     <MpFrameworkVersion>v7.0.2</MpFrameworkVersion>
     <MpFrameworkProfile>SM</MpFrameworkProfile>
     <ProductVersion>1.1.0.0</ProductVersion>
@@ -18,7 +18,7 @@
     <Company>Stijn Callebaut</Company>
     <Copyright>Copyright (c) Stijn Callebaut. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\Key\sealkey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\Key\sealkey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -31,19 +31,19 @@
   </PropertyGroup>
   <ItemGroup>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Administration">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp</HintPath>
       <Alias>MESUA</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.mp</HintPath>
       <Alias>Authoring</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Console">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
       <Alias>MESUC</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -53,37 +53,37 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.SystemCenter.Orchestrator">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.SystemCenter.Orchestrator.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.SystemCenter.Orchestrator.mp</HintPath>
       <Alias>Orchestrator</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.Windows.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.Windows.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.Windows.Library.mp</HintPath>
       <Alias>Windows</Alias>
       <MinVersion>7.5.8501.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.ConfigurationManagement.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
       <Alias>SCL</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.Core.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.Core.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.Core.Library.mp</HintPath>
       <Alias>core</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.LinkingFramework.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.LinkingFramework.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.LinkingFramework.Library.mp</HintPath>
       <Alias>LinkingFramework</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.Knowledge.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.Knowledge.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.Knowledge.Library.mp</HintPath>
       <Alias>CoreKnowledge</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -93,13 +93,13 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.SupportingItem.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.SupportingItem.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.SupportingItem.Library.mp</HintPath>
       <Alias>SupportingItem</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.WorkItem.Library">
-      <HintPath>C:\Users\Stijn\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.WorkItem.Library.mp</HintPath>
+      <HintPath>C:\Users\StijnCallebaut\Documents\GitHub\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.WorkItem.Library.mp</HintPath>
       <Alias>WorkItem</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -130,6 +130,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\Webhook.frm.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Resources\Resources.mpx">

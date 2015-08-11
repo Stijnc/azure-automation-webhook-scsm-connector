@@ -66,7 +66,7 @@
       <HintPath>..\References\Microsoft.EnterpriseManagement.UI.SMControls.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.EnterpriseManagement.UI.WpfWizardFramework">
-      <HintPath>..\..\..\..\Workspaces\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.UI.WpfWizardFramework.dll</HintPath>
+      <HintPath>..\References\Microsoft.EnterpriseManagement.UI.WpfWizardFramework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -128,13 +128,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Connector\AzureAutomation2x24.png" />
-    <Resource Include="Resources\Generic_New_16.png" />
-    <None Include="Resources\AzureAutomation2x1256.png" />
-    <None Include="Resources\AzureAutomation2x128.png" />
-    <Resource Include="Resources\AzureAutomation2x64.png" />
-    <Resource Include="Resources\AzureAutomation2x32.png" />
+    <Resource Include="ConfigItem\Images\Generic_New_16.png" />
+    <Resource Include="ConfigItem\Images\AzureAutomation2x256.png" />
+    <Resource Include="ConfigItem\Images\AzureAutomation2x128.png" />
+    <Resource Include="ConfigItem\Images\AzureAutomation2x64.png" />
+    <Resource Include="ConfigItem\Images\AzureAutomation2x32.png" />
     <None Include="Resources\AzureAutomation2x24.png" />
-    <Resource Include="Resources\AzureAutomation2x16.png" />
+    <Resource Include="ConfigItem\Images\AzureAutomation2x16.png" />
     <None Include="Resources\AzureAutomationIcon.png" />
     <None Include="sealkey.snk" />
   </ItemGroup>
@@ -142,6 +142,7 @@
     <EmbeddedResource Include="Connector\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

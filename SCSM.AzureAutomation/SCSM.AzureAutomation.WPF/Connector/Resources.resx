@@ -118,22 +118,5 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AzureAutomation2x1256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x1256.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AzureAutomation2x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x128.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AzureAutomation2x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x16.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AzureAutomation2x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x24.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AzureAutomation2x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x32.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AzureAutomation2x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AzureAutomation2x64.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
+  
 </root>

@@ -39,9 +39,9 @@ namespace SCSM.AzureAutomation.WPF.ConfigItem
 
         private void OnPreviewSubmit(object sender, PreviewFormCommandEventArgs e)
         {
-            IDataItem itemProject = this.DataContext as IDataItem;
-            string displayName = itemProject["ID"].ToString();
-            itemProject["DisplayName"] = displayName;
+            IDataItem itemWebhook = this.DataContext as IDataItem;
+            string displayName = itemWebhook["DisplayName"].ToString();
+            itemWebhook["DisplayName"] = displayName;
 
         }
         private void expanderMain_OnLoaded(object sender, RoutedEventArgs e)
