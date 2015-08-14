@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{D4B43EB3-688B-4EEE-86BD-088F0B28ABB3}") = "SCSM.AzureAutomation", "SCSM.AzureAutomation\SCSM.AzureAutomation.mpproj", "{8F589F22-0D80-4E57-A78D-468CB7499AB1}"
 EndProject
