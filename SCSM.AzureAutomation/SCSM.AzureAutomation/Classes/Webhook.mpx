@@ -10,8 +10,7 @@
           <Property ID="Expiredate" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
 
         </ClassType>
-      </ClassTypes>
-      
+      </ClassTypes> 
       <RelationshipTypes>
         <RelationshipType ID="SCSM.Configitem.WebHookHasConnector" Accessibility="Public" Base="System!System.Reference">
           <Source ID="WebhookHasConnector_webhook"  MinCardinality="0" MaxCardinality="2147483647" Type="SCSM.Configitem.Webhook"/>

@@ -3,18 +3,16 @@
     <EntityTypes>
       <ClassTypes>
         <ClassType ID="SCSM.AzureAutomation.Connector" Abstract="false" Accessibility="Public" Hosted="false" Singleton="false" Base="LinkingFramework!System.LinkingFramework.DataSource" Comment="Azure Automation Connector">
-
           <Property ID="RunAsAccountName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
           <Property ID="RunAsAccountPassword" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID ="SubscriptionID" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID="AutomationAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
-
+          <Property ID ="ResourceGroup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
   </TypeDefinitions>
   <LanguagePacks>
-
     <LanguagePack ID="ENU" IsDefault="true" >
       <DisplayStrings>
         <DisplayString ElementID="SCSM.AzureAutomation.Connector">
@@ -32,8 +30,10 @@
         <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="RunAsAccountPassword">
           <Name>runas account password</Name>
         </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Connector" SubElementID="ResourceGroup">
+          <Name>Resource Group</Name>
+        </DisplayString>
       </DisplayStrings>
     </LanguagePack>
-
   </LanguagePacks>
 </ManagementPackFragment>
