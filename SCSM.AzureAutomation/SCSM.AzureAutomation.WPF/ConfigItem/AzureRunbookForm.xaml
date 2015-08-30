@@ -50,6 +50,8 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />
@@ -61,8 +63,35 @@
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookDisplayName" Content="Display" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookDisplayName" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="0" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookId" Content="ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookId" IsReadOnly="True" Text="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookConnectorID" Content="Connector ID" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookConnectorID" Text="{Binding Path=ConnectorID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" Grid.Row="1" Margin="10,5,10,5">
+                            <Label Name="LblRunbookLastModified" Content="Last Modified" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookLastModified" IsReadOnly="True" Text="{Binding Path=LastModifiedTime, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" Grid.Row="1" Margin="10,5,10,5">
+                            <Label Name="LblRunbookStatus" Content="Status" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookStatus" IsReadOnly="True" Text="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="4" Margin="10,5,10,5">
+                            <Label Name="LblRunbookDescription" Content="Description" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookDescription" MinHeight="100" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        </StackPanel>
                     </Grid>
                 </Expander>
+            </TabItem>
+            <TabItem Header="Parameters" x:Name="tabItemParam">
+                <!--To be Completed later-->
             </TabItem>
             <TabItem Header="Related Items" x:Name="tabItemRelItems">
             </TabItem>
