@@ -143,6 +143,9 @@
     <Compile Include="Enumeration\RunbookStatus.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Forms\Runbook.frm.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Forms\Webhook.frm.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -156,6 +159,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\Connector.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Typeprojections\Runbook.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Typeprojections\Webhook.tp.mpx">
