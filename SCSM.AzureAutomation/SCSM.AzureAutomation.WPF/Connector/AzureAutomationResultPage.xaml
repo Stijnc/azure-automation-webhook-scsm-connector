@@ -24,6 +24,12 @@
                         <Binding Path="SubscriptionID" Mode="OneWay"/>
                     </TextBox.Text>
                 </TextBox>
+                <Label Height="23" Padding="0" Margin="0,0,0,0" FontWeight="Bold" Name="ResourceGrouplabel" Content="Resource Group:"/>
+                <TextBox Height="23" Margin="0,-5,0,5" BorderThickness="0" IsReadOnly="True" Name="ResourceGroupTextBlock" TextWrapping="Wrap"  ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <TextBox.Text>
+                        <Binding Path="ResourceGroup" Mode="OneWay"/>
+                    </TextBox.Text>
+                </TextBox>
                 <Label Height="23" Padding="0" Margin="0,0,0,0" FontWeight="Bold" Name="AutomationaccountLabel" Content="Automation Account:"/>
                 <TextBox Height="23" Margin="0,-5,0,5" BorderThickness="0" IsReadOnly="True" Name="AutomationaccountTextBlock" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <TextBox.Text>

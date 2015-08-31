@@ -1,9 +1,7 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
   <Categories>
     <Category ID="Category.DoubleClickEditAzureAutomationConnector" Target="Task.EditAzureAutomationConnector" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.DoubleClickTask" />
   </Categories>
-
   <Presentation>
     <ConsoleTasks>
       <ConsoleTask ID="Task.CreateAzureAutomationConnector" Accessibility="Public" Enabled="true" Target="MESUA!Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.Task.CreateConnector" RequireOutput="false">

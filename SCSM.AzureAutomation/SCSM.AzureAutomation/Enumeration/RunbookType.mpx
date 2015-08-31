@@ -1,0 +1,26 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <EnumerationTypes>
+        <EnumerationValue ID="AzureAutomationRunbook.Type" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Type.Script" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Type.Graph" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
+      </EnumerationTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="AzureAutomationRunbook.Type">
+          <Name>Azure Automation Runbook Type</Name>
+        </DisplayString>
+        <DisplayString ElementID="AzureAutomationRunbook.Type.Script" >
+          <Name>Script</Name>
+        </DisplayString>
+        <DisplayString ElementID="AzureAutomationRunbook.Type.Graph">
+          <Name>Graph</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
