@@ -40,7 +40,7 @@ namespace SCSM.AzureAutomation.WPF.ConfigItem
         private void OnPreviewSubmit(object sender, PreviewFormCommandEventArgs e)
         {
             IDataItem itemWebhook = this.DataContext as IDataItem;
-            string displayName = itemWebhook["DisplayName"].ToString();
+            string displayName = itemWebhook["ID"].ToString();
             itemWebhook["DisplayName"] = displayName;
 
         }
@@ -64,5 +64,14 @@ namespace SCSM.AzureAutomation.WPF.ConfigItem
         {
             throw new NotImplementedException();
         }
+        private void FormControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (this.DataContext != null && this.DataContext is IDataItem)
+            {
+              
+            }
+        }
+ 
+
     }
 }

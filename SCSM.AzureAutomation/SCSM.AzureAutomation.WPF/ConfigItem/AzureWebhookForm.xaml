@@ -41,7 +41,7 @@
         </Rectangle>
         <Image Name="Logo" Source="{StaticResource AAIcon32 }" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Left"  MaxHeight="32" Margin="15,0,0,0"/>
         <WrapPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
-            <TextBlock Name="LblDisplayname" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=Default}" FontSize="14" />
+            <TextBlock Name="LblDisplayname" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=Default}" FontSize="14" Width="1" />
         </WrapPanel>
 
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
@@ -93,6 +93,7 @@
                                     <RowDefinition Height="1*" />
                                 </Grid.RowDefinitions>
                                 <smcontrols:SingleInstancePicker Grid.Column="0" Grid.Row="0" Name="sipConnector" BaseClassId="b4e302f9-763a-7df3-7013-a796378a2c49" Instance="{Binding Path=webhookconnector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                
                                 <Button x:Name="btnNew" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Width="20" Height="20" Click="btnNew_Click">
 
                                     <Image Source="{StaticResource NewIcon}" 

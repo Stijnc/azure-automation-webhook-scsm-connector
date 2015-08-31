@@ -8,7 +8,7 @@
           <Property ID="RunAsAccountPassword" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID ="SubscriptionID" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID="AutomationAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
-
+          
         </ClassType>
       </ClassTypes>
     </EntityTypes>
