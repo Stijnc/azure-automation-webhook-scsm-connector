@@ -9,6 +9,10 @@
           <Property ID ="Description" Type="string" Key="false" CaseSensitive="false" MaxLength="1024" />
           <Property ID="LastModifiedTime" Type="datetime"/>
           <Property ID ="Status" Type="enum" EnumType="AzureAutomationRunbook.Status"/>
+          <Property ID ="LogVerbose" Type="bool"/>
+          <Property ID ="LogProgrss" Type="bool"/>
+          <Property ID ="CreatedDate" Type="datetime"/>
+          <Property ID="RunbookType" Type="enum" EnumType="AzureAutomationRunbook.Type"/>
         </ClassType>
       </ClassTypes>
     </EntityTypes>

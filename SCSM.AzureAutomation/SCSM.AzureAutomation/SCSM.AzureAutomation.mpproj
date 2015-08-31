@@ -143,6 +143,9 @@
     <Compile Include="Enumeration\RunbookStatus.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enumeration\RunbookType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Forms\Runbook.frm.mpx">
       <SubType>Code</SubType>
     </Compile>
