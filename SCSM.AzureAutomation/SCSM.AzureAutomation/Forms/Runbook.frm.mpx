@@ -1,0 +1,19 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Presentation>
+    <Forms>
+      <Form ID="CustomAARunbookForm" Accessibility="Public" Target="SCSM.Projection.Configitem.Runbook.Full" Assembly="SCSM.AzureAutomation.WPF" TypeName="SCSM.AzureAutomation.WPF.ConfigItem.AzureRunbookForm">
+        <Category>Form</Category>
+      </Form>
+    </Forms>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="CustomWebhookForm">
+          <Name>Azure Webhook Form</Name>
+          <Description>Azure Automation Webhook Form</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

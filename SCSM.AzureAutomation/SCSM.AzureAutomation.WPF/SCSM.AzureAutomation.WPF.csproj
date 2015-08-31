@@ -11,6 +11,7 @@
     <AssemblyName>SCSM.AzureAutomation.WPF</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+	<ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -85,6 +86,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConfigItem\AzureRunbookForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Connector\AzureAutomationConfigurationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -105,6 +110,9 @@
   <ItemGroup>
     <Compile Include="ConfigItem\AzureWebhookForm.xaml.cs">
       <DependentUpon>AzureWebhookForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigItem\AzureRunbookForm.xaml.cs">
+      <DependentUpon>AzureRunbookForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Connector\AzureAutomation.cs" />
     <Compile Include="Connector\AzureAutomationConfigurationPage.xaml.cs">

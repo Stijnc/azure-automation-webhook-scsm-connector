@@ -1,0 +1,13 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <EnumerationTypes>
+        <EnumerationValue ID="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.Invalid" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.Active" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.Missing" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.PendingDelete" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+      </EnumerationTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+</ManagementPackFragment>
