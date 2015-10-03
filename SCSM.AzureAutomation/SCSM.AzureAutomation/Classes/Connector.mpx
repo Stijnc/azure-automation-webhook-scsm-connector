@@ -8,6 +8,7 @@
           <Property ID ="SubscriptionID" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID="AutomationAccount" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0"/>
           <Property ID ="ResourceGroup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
+          <Property ID ="NumberMinutes" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
