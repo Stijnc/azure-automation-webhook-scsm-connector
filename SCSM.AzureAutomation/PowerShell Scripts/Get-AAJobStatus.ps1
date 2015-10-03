@@ -4,7 +4,7 @@
 # Get Job Status for Running Jobs
 
 # This logic could be improved so the refresh of the Job status resumes after a restart of the workflow Service
-Import-Module Azure
+
 Import-Module SMLets
 
 $JobPollingTimeoutInSeconds = 3600
@@ -12,21 +12,27 @@ $JobPollingTimeoutInSeconds = 3600
 Import-Module Azure
 Switch-AzureMode AzureResourceManager
 
-# "Add Code here to get password"
-# "add Code to get Subscription ID"
-#$Params =  "Add Code to Build hash table to pass parameters
+$SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$SMObject = Get-SCSMObject -Class $SMClass 
+$SubscriptionID = $SMObject.SubscriptionID
+$AutomationAccountName = $SMObject.AutomationAccount
+$password = $SMObject.RunAsAccountPassword
+$username = $SMObject.RunAsAccountName
+$ResourceGroup = $SMObject.ResourceGroup
 
 $secpassword = ConvertTo-SecureString $password -AsPlainText -force
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
 $Account = Add-AzureAccount -Credential $Creds
 $Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID
-$job = Get-AzureAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $JobID
+$ActiveJobs = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook.Activity -Filter 'Status -eq Running'
 
 
-
+foreach($Activity in $ActiveJobs)
+{
+	$job = Get-AzureAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $Activity.JobID
 if ($job -eq $null) { 
-        # No job was created, so throw an exception 
-        # throw ("No job was created for runbook: $ChildRunbookName.") 
+        # No Job was created
+		# throw an exception
 		# Need to Add Code here
 } 
 else 
@@ -99,9 +105,9 @@ while($doLoop) {
 }
 
 # Add Code to Update the SCSM Runbook Activity        
+# this needs to be updated to reflect the real results from Azure Automation
+Set-SCSMObject -SMObject $Activity -Property Status -Value "Completed"
 
-
-
-
+}
 
 

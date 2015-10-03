@@ -6,9 +6,13 @@ Import-Module Azure
 Import-Module SMLets
 Switch-AzureMode AzureResourceManager
 
-# "Add Code here to get password"
-# "add Code to get Subscription ID"
-#$Params =  "Add Code to Build hash table to pass parameters
+$SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$SMObject = Get-SCSMObject -Class $SMClass 
+$SubscriptionID = $SMObject.SubscriptionID
+$AutomationAccountName = $SMObject.AutomationAccount
+$password = $SMObject.RunAsAccountPassword
+$username = $SMObject.RunAsAccountName
+$ResourceGroup = $SMObject.ResourceGroup
 
 $secpassword = ConvertTo-SecureString $password -AsPlainText -force
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)

@@ -6,10 +6,16 @@ Import-Module SMLets
 Import-Module Azure
 Switch-AzureMode AzureResourceManager
 
-# "Add Code here to get password"
-# "add Code to get Subscription ID"
-# Get Connector ID
-#$Params =  "Add Code to Build hash table to pass parameters
+#need to get encrypted password once that is complete
+# neeed to update code to allow multipule connectors, this code will only work with one connector currently
+
+$SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$SMObject = Get-SCSMObject -Class $SMClass 
+$SubscriptionID = $SMObject.SubscriptionID
+$AutomationAccountName = $SMObject.AutomationAccount
+$password = $SMObject.RunAsAccountPassword
+$username = $SMObject.RunAsAccountName
+$ResourceGroup = $SMObject.ResourceGroup
 
 $secpassword = ConvertTo-SecureString $password -AsPlainText -force
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
@@ -32,8 +38,13 @@ Foreach($runbook in $Runbooks)
 		RunbookType = $Runbookobj.RunbookType
 		JobCount = $Runbookobj.JobCount
 	}
-	$SMRBClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$ 
-	New-SCSMObject -Class $SMRBClass -PropertyHashtable $RunbookHT
+	$SMRBClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
+	$Runbook = Get-SCSMObject -Class $SMRBClass -Filter 'Runbook -eq $Runbookobj.Name'
+	if($Runbook -eq $null)
+	{
+		New-SCSMObject -Class $SMRBClass -PropertyHashtable $RunbookHT
+	}
+	
 
 }
 
