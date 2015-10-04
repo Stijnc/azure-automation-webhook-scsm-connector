@@ -162,6 +162,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
         private String strSubscriptionID = String.Empty;
         private String strAutomationAccount = String.Empty;
         private String strRunAsAccountName = String.Empty;
+        private String strResourceGroup = String.Empty;
         private String strRunasAccountPassword = String.Empty;
         private String strConnectorID = String.Empty;
         private Guid guidEnterpriseManagementObjectID = Guid.Empty;
@@ -196,6 +197,21 @@ namespace SCSM.AzureAutomation.WPF.Connector
                     this.NotifyPropertyChanged("SubscriptionID");
                 }
             } 
+        }
+        public String ResourceGroup
+        {
+            get
+            {
+                return this.strResourceGroup;
+            }
+            set
+            {
+                if (this.strResourceGroup != value)
+                {
+                    this.strResourceGroup = value;
+                    this.NotifyPropertyChanged("ResourceGroup");
+                }
+            }
         }
         public String AutomationAccount
         {
@@ -308,6 +324,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             this.ConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
             this.AutomationAccount = emoAAConnector[classAAConnector, "AutomationAccount"].ToString();
             this.SubscriptionID = emoAAConnector[classAAConnector, "SubscriptionID"].ToString();
+            this.ResourceGroup = emoAAConnector[classAAConnector, "ResourceGroup"].ToString();
             this.RunAsAccountName = emoAAConnector[classAAConnector, "RunAsAccountName"].ToString();
             this.RunAsAccountPassword = emoAAConnector[classAAConnector, "RunAsAccountPassword"].ToString();
             
@@ -375,6 +392,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 //SCSM.AzureAutomation.Connecto properties
                 cemoAAConnector[classAAConnector, "AutomationAccount"].Value = this.AutomationAccount;
                 cemoAAConnector[classAAConnector, "SubscriptionID"].Value = this.SubscriptionID;
+                cemoAAConnector[classAAConnector, "ResourceGroup"].Value = this.ResourceGroup;
                 cemoAAConnector[classAAConnector, "RunAsAccountName"].Value = this.RunAsAccountName;
                 cemoAAConnector[classAAConnector, "RunAsAccountPassword"].Value = this.RunAsAccountPassword;
 
@@ -410,6 +428,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             emoAAConnector[classAAConnector, "DisplayName"].Value = this.DisplayName;
             emoAAConnector[classAAConnector, "AutomationAccount"].Value = this.AutomationAccount;
             emoAAConnector[classAAConnector, "SubscriptionID"].Value = this.SubscriptionID;
+            emoAAConnector[classAAConnector, "ResourceGroup"].Value = this.ResourceGroup;
             emoAAConnector[classAAConnector, "RunAsAccountName"].Value = this.RunAsAccountName;
             emoAAConnector[classAAConnector, "RunAsAccountPassword"].Value = this.RunAsAccountPassword;
           

@@ -12,7 +12,7 @@
              d:DesignHeight="700" d:DesignWidth="800">
     <UserControl.Resources>
         <ResourceDictionary>
-           
+
             <BitmapImage x:Key="AAIcon32" UriSource="Images/AzureAutomation2x32.png" />
             <BitmapImage x:Key="AAIcon16" UriSource="Images/AzureAutomation2x16.png" />
             <BitmapImage x:Key="NewIcon" UriSource="Images/Generic_New_16.png" />
@@ -43,12 +43,13 @@
         <WrapPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
             <TextBlock Name="LblDisplayname" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=Default}" FontSize="14" />
         </WrapPanel>
-
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0" Grid.Row="1">
             <TabItem Header="General" x:Name="tabItemGeneral">
-                <Expander Name="ExpanderMain" Header="Azure Webhook Identity" IsExpanded="True" Loaded="expanderMain_OnLoaded">
+                <Expander Name="ExpanderMain" Header="Azure Automation Runbook" IsExpanded="True" Loaded="expanderMain_OnLoaded">
                     <Grid >
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
@@ -62,65 +63,42 @@
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
-                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,5,10,5">
-                            <Label Name="LblAAWebhookId" Content="ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></Label>
-                            <TextBox Name="TxtAAWebhookId" Grid.Column="1" Grid.Row="0"  IsReadOnly="True" Text="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookDisplayName" Content="Display" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookDisplayName" Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,5,10,5">
-                            <Label Name="LblAAWebhookName" Content="DisplayName:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
-                            <TextBox Name="TxtAAWebhookName" Grid.Column="1" Grid.Row="1" Text="{Binding Path=DisplayName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" wpftoolbox:Validation.ValueRequired="True" />
+                        <StackPanel Grid.Column="2" Grid.Row="0" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookId" Content="ID:" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookId" IsReadOnly="True" Text="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,5,10,5">
-                            <Label Name="lblExpiredate" Content="Expire date:" Grid.Column="0" Grid.Row="0"/>
-                            <wpfToolKit:DatePicker Name="dpExpiredate" Grid.Column="0" Grid.Row="1" SelectedDate="{Binding Path=Expiredate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayDateStart="{x:Static sys:DateTime.Now}" wpftoolbox:Validation.ValueRequired="true" />
+                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="10,5,10,5" Grid.ColumnSpan="2">
+                            <Label Name="LblRunbookConnectorID" Content="Connector ID" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookConnectorID" Text="{Binding Path=ConnectorID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Grid.Row="1" Margin="10,5,10,5">
-                            <Label Name="LblAssetstatus" Content="Asset Status:" Grid.Column="0" Grid.Row="0"/>
-                            <smcontrols:ListPicker Name="AssetListPicker" ParentCategoryId="{Binding Source=df83475d-d6d1-7236-fc6d-ec8fe52022b0 , Mode=OneWay}" SelectedItem="{Binding Path=AssetStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Name="LblRunbookLastModified" Content="Last Modified" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookLastModified" IsReadOnly="True" Text="{Binding Path=LastModifiedTime, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
-                        <StackPanel Grid.Column="0" Grid.Row="2" Margin="10,5,10,5" Grid.ColumnSpan="2">
-                            <Label Name="lblUri" Content="Webhook URL:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
-                            <TextBox Name="TxtUri" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Link, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" wpftoolbox:Validation.ValueRequired="True" />
+                        <StackPanel Grid.Column="3" Grid.Row="1" Margin="10,5,10,5">
+                            <Label Name="LblRunbookStatus" Content="Status" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookStatus" IsReadOnly="True" Text="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
-                        <!--<StackPanel Grid.Column="0" Grid.Row="3" Margin="10,5,10,5" Grid.ColumnSpan="2">
-                            <Label Name="lblConnector" Content="Azure Automation Connector:" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center"></Label>
-                            --><!--<Grid Margin="0,0,20,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="40" />
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="1*" />
-                                </Grid.RowDefinitions>
-                                <smcontrols:SingleInstancePicker Grid.Column="0" Grid.Row="0" Name="sipConnector" BaseClassId="b4e302f9-763a-7df3-7013-a796378a2c49" Instance="{Binding Path=webhookconnector, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                <Button x:Name="btnNew" Grid.Column="1" Grid.Row="0" Margin="5,5,5,5" Width="20" Height="20" Click="btnNew_Click">
-
-                                    <Image Source="{StaticResource NewIcon}" 
-                                                   Width="16" 
-                                                   Height="16"/>
-                                        
-                                    </Button>
-                            </Grid>--><!--
-
-                        </StackPanel>-->
-                        <StackPanel Grid.Column="1" Grid.Row="2" Margin="10,5,10,5"  >
+                        <StackPanel Grid.Column="0" Grid.Row="2"  Grid.ColumnSpan="4" Margin="10,5,10,5">
+                            <Label Name="LblRunbookDescription" Content="Description" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center"></Label>
+                            <TextBox Name="TxtRunbookDescription" MinHeight="100" Text="{Binding Path=Description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </StackPanel>
-                        <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0"  Margin="10,5,10,5" >
-                            <Label Name="LblNotes" Content="Notes:"></Label>
-                            <TextBox Name="TxtNotes" MinHeight="100" Text="{Binding Path=Notes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
-         AcceptsReturn="True" ></TextBox>
-                        </StackPanel>
-
-
                     </Grid>
                 </Expander>
+            </TabItem>
+            <TabItem Header="Parameters" x:Name="tabItemParam">
+                <!--To be Completed later-->
             </TabItem>
             <TabItem Header="Related Items" x:Name="tabItemRelItems">
             </TabItem>
             <TabItem Header="History" x:Name="tabItemHistory">
                 <smcontrols:HistoryTab></smcontrols:HistoryTab>
             </TabItem>
+        
         </TabControl>
-
     </Grid>
 </UserControl>

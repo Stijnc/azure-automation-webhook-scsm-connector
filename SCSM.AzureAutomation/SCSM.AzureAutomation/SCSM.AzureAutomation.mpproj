@@ -18,7 +18,7 @@
     <Company>Stijn Callebaut</Company>
     <Copyright>Copyright (c) Stijn Callebaut. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>.\Key\sealkey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -110,6 +110,8 @@
     <Folder Include="Category" />
     <Folder Include="Image" />
     <Folder Include="Forms" />
+    <Folder Include="Enumeration" />
+    <Folder Include="Relationships" />
     <Folder Include="Resources" />
     <Folder Include="Tasks" />
     <Folder Include="Views" />
@@ -120,13 +122,31 @@
     <Compile Include="Category\MPCategory.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Activity.mpx">
+    <Compile Include="Classes\DSCConfig.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Runbook.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\RunbookActivity.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Connector.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\RunbookParameter.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\Webhook.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enumeration\RunbookStatus.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Enumeration\RunbookType.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\Runbook.frm.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\Webhook.frm.mpx">
@@ -135,16 +155,31 @@
     <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Relationships\RunbookHasParameter.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Resources\Resources.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\Connector.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Typeprojections\Runbook.tp.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Typeprojections\Webhook.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Runbook.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Webhook.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Workflows\Check-AAJobStatus.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Workflows\Start-AARunbook.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Workflows\Start-Webhook.mpx">

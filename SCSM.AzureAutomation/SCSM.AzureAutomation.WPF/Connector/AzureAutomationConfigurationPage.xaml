@@ -20,6 +20,12 @@
                         <Binding Path="SubscriptionID" Mode="TwoWay"/>
                     </TextBox.Text>
                 </TextBox>
+                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="ResourceGrouplable" Content="Resource Group Name:"/>
+                <TextBox Height="25" Margin="0,-8,0,10" Name="ResourceGroupTextBlock">
+                    <TextBox.Text>
+                        <Binding Path="ResourceGroup" Mode="TwoWay"/>
+                    </TextBox.Text>
+                </TextBox>
                 <Label Height="25" Padding="0" Margin="0,0,0,0" Name="AutomationAccountLabel" Content="Automation Account:"/>
                 <TextBox Height="25" Margin="0,-8,0,10" Name="AutomationAccountBlock">
                     <TextBox.Text>
