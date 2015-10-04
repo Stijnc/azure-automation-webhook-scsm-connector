@@ -21,7 +21,7 @@
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook">
-          <Name>Azure Automation Runbook Parameter</Name>
+          <Name>Azure Automation Runbook</Name>
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="Id">
           <Name>ID</Name>
