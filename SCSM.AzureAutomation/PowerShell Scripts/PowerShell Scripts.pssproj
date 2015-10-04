@@ -26,12 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <ItemGroup>
-    <Content Include="Get-AAJobIDStatus.ps1" />
-    <Content Include="Get-AARunbooks.ps1" />
-    <Content Include="Complete-SMAARunbookActivity.ps1" />
-    <Content Include="Start-AARunbook.ps1" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
 </Project>
