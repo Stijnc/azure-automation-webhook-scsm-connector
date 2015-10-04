@@ -3,8 +3,8 @@
     <EntityTypes>
       <RelationshipTypes>
         <RelationshipType ID="AzureAutomation.RunbookHasParameter" Accessibility="Public" Abstract="false" Base="System!System.Hosting">
-          <Source ID="Runbook" Type="AzureAutomation.Runbook"></Source>
-          <Target ID="Parameter" Type="AzureAutomation.Runbook.Parameter"></Target>
+          <Source ID="Runbook" Type="SCSM.AzureAutomation.Runbook"></Source>
+          <Target ID="Parameter" Type="SCSM.AzureAutomation.Runbook.Parameter"></Target>
         </RelationshipType>
       </RelationshipTypes>
     </EntityTypes>

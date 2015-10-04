@@ -39,9 +39,9 @@
         <DisplayString ElementID="SCSM.Configitem.Webhook" SubElementID="Expiredate">
           <Name>Expiredate</Name>
         </DisplayString>
-        <DisplayString ElementID="SCSM.Configitem.WebHookHasConnector">
+        <!--<DisplayString ElementID="SCSM.Configitem.WebHookHasConnector">
           <Name>Webhook has connector</Name>
-        </DisplayString>
+        </DisplayString>-->
       </DisplayStrings>
     </LanguagePack>
 

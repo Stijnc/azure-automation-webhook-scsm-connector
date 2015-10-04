@@ -18,7 +18,7 @@
     <Company>Stijn Callebaut</Company>
     <Copyright>Copyright (c) Stijn Callebaut. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Users\rplank\OneDrive\system Center\SCSM\robplank.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -31,19 +31,19 @@
   </PropertyGroup>
   <ItemGroup>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Administration">
-      <HintPath>.\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp</HintPath>
+      <HintPath>..\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp</HintPath>
       <Alias>MESUA</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring">
-      <HintPath>.\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.mp</HintPath>
+      <HintPath>..\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.mp</HintPath>
       <Alias>Authoring</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Console">
-      <HintPath>.\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
+      <HintPath>..\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
       <Alias>MESUC</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -53,37 +53,37 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.SystemCenter.Orchestrator">
-      <HintPath>.\References\Microsoft.SystemCenter.Orchestrator.mp</HintPath>
+      <HintPath>..\References\Microsoft.SystemCenter.Orchestrator.mp</HintPath>
       <Alias>Orchestrator</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="Microsoft.Windows.Library">
-      <HintPath>.\References\Microsoft.Windows.Library.mp</HintPath>
+      <HintPath>..\References\Microsoft.Windows.Library.mp</HintPath>
       <Alias>Windows</Alias>
       <MinVersion>7.5.8501.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.ConfigurationManagement.Library">
-      <HintPath>.\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
+      <HintPath>..\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
       <Alias>SCL</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.Core.Library">
-      <HintPath>.\References\ServiceManager.Core.Library.mp</HintPath>
+      <HintPath>..\References\ServiceManager.Core.Library.mp</HintPath>
       <Alias>core</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.LinkingFramework.Library">
-      <HintPath>.\References\ServiceManager.LinkingFramework.Library.mp</HintPath>
+      <HintPath>..\References\ServiceManager.LinkingFramework.Library.mp</HintPath>
       <Alias>LinkingFramework</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.Knowledge.Library">
-      <HintPath>.\References\System.Knowledge.Library.mp</HintPath>
+      <HintPath>..\References\System.Knowledge.Library.mp</HintPath>
       <Alias>CoreKnowledge</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -93,13 +93,13 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.SupportingItem.Library">
-      <HintPath>.\References\System.SupportingItem.Library.mp</HintPath>
+      <HintPath>..\References\System.SupportingItem.Library.mp</HintPath>
       <Alias>SupportingItem</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.WorkItem.Library">
-      <HintPath>.\References\System.WorkItem.Library.mp</HintPath>
+      <HintPath>..\References\System.WorkItem.Library.mp</HintPath>
       <Alias>WorkItem</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>

@@ -2,7 +2,7 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="MSO!Microsoft.SystemCenter.Orchestrator.RunbookAutomationActivity.Base" Extension="false" Singleton="false" Hosted="false" >
+        <ClassType ID ="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="Orchestrator!Microsoft.SystemCenter.Orchestrator.RunbookAutomationActivity.Base" Extension="false" Singleton="false" Hosted="false" >
           <!--<Property ID="ResourceGroup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
           <Property ID ="AutomationAccountName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />-->
           <Property ID ="RunbookName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />

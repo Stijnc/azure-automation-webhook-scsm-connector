@@ -9,9 +9,9 @@
   <LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
-        <DisplayString ElementID="CustomWebhookForm">
-          <Name>Azure Webhook Form</Name>
-          <Description>Azure Automation Webhook Form</Description>
+        <DisplayString ElementID="CustomAARunbookForm">
+          <Name>Azure Automation Runbook Form</Name>
+          <Description>Azure Automation Runbook Form</Description>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

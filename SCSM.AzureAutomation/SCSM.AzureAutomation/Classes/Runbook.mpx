@@ -2,7 +2,7 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="SSL!System.SupportingItem" Hosted="false" Singleton="false">
+        <ClassType ID ="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="System!System.ConfigItem" Hosted="false" Singleton="false">
           <Property ID="Id" AutoIncrement="true" Type="string" Key="true" CaseSensitive="false" MaxLength="256" />
           <Property ID="ConnectorID" Type="guid" Key="false" CaseSensitive="false" MaxLength="256" />
           <Property ID="Name" Type="string" Key="false" CaseSensitive="false" MaxLength="256" />

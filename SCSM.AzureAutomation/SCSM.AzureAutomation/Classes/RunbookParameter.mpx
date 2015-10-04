@@ -2,7 +2,7 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook.Parameter" Accessibility="Public" Abstract="false" Base="SSL!System.SupportingItem" Hosted="true">
+        <ClassType ID ="SCSM.AzureAutomation.Runbook.Parameter" Accessibility="Public" Abstract="false" Base="SupportingItem!System.SupportingItem" Hosted="true">
           <Property ID="Id" Type="string" Key="true" CaseSensitive="false" MaxLength="256" />
           <Property ID="Name" Type="string" CaseSensitive="false" MaxLength="256" />
           <Property ID="Type" Type="string" CaseSensitive="false" MaxLength="256" />

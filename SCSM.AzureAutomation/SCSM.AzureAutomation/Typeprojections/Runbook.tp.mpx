@@ -2,6 +2,10 @@
   <TypeDefinitions>
     <EntityTypes>
       <TypeProjections>
+        <TypeProjection ID="SCSM.Projection.Configitem.AARunbook.Connector" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
+          <!--<Component Path="$Target/Path[Relationship='SCSM.AzureAutomation.RunbookHasConnector']$" Alias="Runbookconnector"></Component>-->
+        </TypeProjection>
+        
         <TypeProjection ID="SCSM.Projection.Configitem.Runbook.Full" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
           <Component Path="$Target/Path[Relationship='AzureAutomation.RunbookHasParameter']$" Alias="RunbookParameters"></Component>
           <Component Path="$Context/Path[Relationship='WorkItem!System.WorkItemRelatesToConfigItem' SeedRole='Target']$" Alias="ImpactedWorkItem" />
