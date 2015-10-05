@@ -31,7 +31,9 @@ namespace SCSM.AzureAutomation.WPF.Connector
 {
     public class AzureAutomation : ConsoleCommand
     {
-        public AzureAutomation() { }
+        public AzureAutomation() { 
+        
+        }
 
         public override void ExecuteCommand(IList<NavigationModelNodeBase> nodes, NavigationModelNodeTask task, ICollection<string> parameters)
         {
