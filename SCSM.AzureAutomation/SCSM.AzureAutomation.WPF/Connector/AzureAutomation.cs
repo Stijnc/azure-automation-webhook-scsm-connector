@@ -42,8 +42,8 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 WizardStory wizard = new WizardStory();
 
                 //set the icon and title bar
-                ResourceManager rm = new ResourceManager("SCSM.Azureautomation.WPF.Connector.Resources", typeof(Resources).Assembly);
-                Bitmap bitmap = (Bitmap)rm.GetObject("AzureAutomation2x32");
+                ResourceManager rm = new ResourceManager("SCSM.AzureAutomation.WPF.Connector.Resources", typeof(Resources).Assembly);
+                Bitmap bitmap = (Bitmap)rm.GetObject("AzureAutomation2x24");
                 IntPtr ptr = bitmap.GetHbitmap();
                 BitmapSource bitmapsource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(ptr, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                 wizard.StoryImage = bitmapsource;
@@ -124,32 +124,32 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 }
 
                 //Get the rule using the connector ID
-                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
-                String strConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
-                ManagementPackRule ruleConnector = mpConnectors.GetRule(strConnectorID);
+                //String strConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
+                //ManagementPackRule ruleConnector = mpConnectors.GetRule(strConnectorID);
 
                 //Update the Enabled property or delete as appropriate
                 if (parameters.Contains("Delete"))
                 {
-                    ruleConnector.Status = ManagementPackElementStatus.PendingDelete;
+                    //ruleConnector.Status = ManagementPackElementStatus.PendingDelete;
                 }
                 else if (parameters.Contains("Disable"))
                 {
                     emoAAConnector[classAAConnector, "Enabled"].Value = false;
-                    ruleConnector.Enabled = ManagementPackMonitoringLevel.@false;
-                    ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
+                    //ruleConnector.Enabled = ManagementPackMonitoringLevel.@false;
+                    //ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
                 }
                 else if (parameters.Contains("Enable"))
                 {
                     emoAAConnector[classAAConnector, "Enabled"].Value = true;
-                    ruleConnector.Enabled = ManagementPackMonitoringLevel.@true;
-                    ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
+                    //ruleConnector.Enabled = ManagementPackMonitoringLevel.@true;
+                    //ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
                 }
 
                 //Commit the changes to the connector object and rule
                 emoAAConnector.Commit();
-                mpConnectors.AcceptChanges();
+                //mpConnectors.AcceptChanges();
 
                 //Update the view when done so the item is either removed or the updated Enabled value shows
                 RequestViewRefresh();
@@ -318,7 +318,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             //Connect to the server
             EnterpriseManagementGroup emg = new EnterpriseManagementGroup(strServerName);
 
-            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
             ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
 
             this.EnterpriseManagementObjectID = emoAAConnector.Id;
@@ -370,7 +370,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Also get the System Center and Connector MPs - we'll need things from those MPs later
                 ManagementPack mpSystemCenter = emg.ManagementPacks.GetManagementPack(SystemManagementPack.SystemCenter);
-                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
 
                 //Get the AzureAutomationConnector class in the Connectors MP
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
@@ -403,7 +403,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 cemoAAConnector.Commit();
 
                 //Accept the rule changes which updates the database
-                mpConnectors.AcceptChanges();
+             //   mpConnectors.AcceptChanges();
 
             }
             catch (Exception e)
@@ -420,7 +420,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             EnterpriseManagementGroup emg = new EnterpriseManagementGroup(strServerName);
 
             //Get the Connectors MP and AA Connector Class
-            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
             ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
 
             //Get the Connector object using the object ID

@@ -18,7 +18,7 @@
     <Company>Stijn Callebaut</Company>
     <Copyright>Copyright (c) Stijn Callebaut. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\rplank\OneDrive\system Center\SCSM\robplank.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -187,20 +187,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SCSM.AzureAutomation.WPF\SCSM.AzureAutomation.WPF.csproj">
-      <Name>SCSM.AzureAutomation.WPF</Name>
-      <Project>{2ce767c8-461b-4a7c-a2b5-2dfe4d34b32e}</Project>
-      <Private>True</Private>
-      <PackageToBundle>True</PackageToBundle>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Image\AzureAutomation2x16.png">
       <SubType>Content</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Image\AzureAutomation2x24.png">
       <SubType>Content</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SCSM.AzureAutomation.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac1fe0583b6c84af">
+      <Name>SCSM.AzureAutomation.WPF</Name>
+      <AssemblyName>SCSM.AzureAutomation.WPF.dll</AssemblyName>
+      <HintPath>..\SCSM.AzureAutomation.WPF\bin\Debug\SCSM.AzureAutomation.WPF.dll</HintPath>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>

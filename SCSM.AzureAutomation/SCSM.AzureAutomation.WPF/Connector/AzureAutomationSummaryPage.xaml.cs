@@ -40,6 +40,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             this.FinishButtonText = "Create";
             this.IsNextButtonEnabled = false;
             this.IsFinishButtonEnabled = true;
+
         }
     }
 }

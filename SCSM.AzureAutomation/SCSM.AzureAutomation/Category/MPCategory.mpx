@@ -1,9 +1,9 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <!--<Categories>
+  <Categories>
     <Category ID="Category.SCSM.AzureAutomation" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.ManagementPack">
     <ManagementPackName>SCSM.AzureAutomation</ManagementPackName>
     <ManagementPackVersion>1.0.0.0</ManagementPackVersion>
     <ManagementPackPublicKeyToken>ac1fe0583b6c84af</ManagementPackPublicKeyToken>
-  </Category>-->
-  <!--</Categories>-->
+  </Category>
+  </Categories>
 </ManagementPackFragment>
