@@ -2,9 +2,7 @@
 # Refresh-Connector.ps1
 #
 # Collect Runbooks and DSC Configs from Azure Automation
-Import-Module SMLets
-Import-Module Azure
-Switch-AzureMode AzureResourceManager
+Add-Type -Path "C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\bin\Debug\scsm.azureautomation.wpf.dll"
 
 #need to get encrypted password once that is complete
 # neeed to update code to allow multipule connectors, this code will only work with one connector currently
@@ -13,17 +11,16 @@ $SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
 $SMObject = Get-SCSMObject -Class $SMClass 
 $SubscriptionID = $SMObject.SubscriptionID
 $AutomationAccountName = $SMObject.AutomationAccount
-$password = $SMObject.RunAsAccountPassword
 $username = $SMObject.RunAsAccountName
+$encryptedPassword = $SMObject.RunAsAccountPassword
+$secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.StringCipher]::Decrypt($encryptedPassword,$username)) -AsPlainText -Force
 $ResourceGroup = $SMObject.ResourceGroup
 
-$secpassword = ConvertTo-SecureString $password -AsPlainText -force
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
-$Account = Add-AzureAccount -Credential $Creds
-$Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID
+Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
 
 #Get Each Runbook and Save to CMDB
-$Runbooks = Get-AzureAutomationRunbook -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName 
+$Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName 
 Foreach($runbook in $Runbooks)
 {
 	$Runbookobj = Get-AzureAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name

@@ -2,16 +2,16 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="System!System.ConfigItem" Hosted="false" Singleton="false">
+        <ClassType ID="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="SupportingItem!System.SupportingItem" Hosted="false" Singleton="false">
           <Property ID="Id" AutoIncrement="true" Type="string" Key="true" CaseSensitive="false" MaxLength="256" />
-          <Property ID="ConnectorID" Type="guid" Key="false" CaseSensitive="false" MaxLength="256" />
           <Property ID="Name" Type="string" Key="false" CaseSensitive="false" MaxLength="256" />
-          <Property ID ="Description" Type="string" Key="false" CaseSensitive="false" MaxLength="1024" />
+          <Property ID="Description" Type="string" Key="false" CaseSensitive="false" MaxLength="1024" />
+          <Property ID="ConnectorID" Type="guid" Key="false" CaseSensitive="false" MaxLength="256" />       
           <Property ID="LastModifiedTime" Type="datetime"/>
-          <Property ID ="Status" Type="enum" EnumType="AzureAutomationRunbook.Status"/>
-          <Property ID ="LogVerbose" Type="bool"/>
-          <Property ID ="LogProgrss" Type="bool"/>
-          <Property ID ="CreatedDate" Type="datetime"/>
+          <Property ID="Status" Type="enum" EnumType="AzureAutomationRunbook.Status"/>
+          <Property ID="LogVerbose" Type="bool"/>
+          <Property ID="LogProgrss" Type="bool"/>
+          <Property ID="CreatedDate" Type="datetime"/>
           <Property ID="RunbookType" Type="enum" EnumType="AzureAutomationRunbook.Type"/>
         </ClassType>
       </ClassTypes>

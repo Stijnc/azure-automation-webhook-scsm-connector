@@ -98,6 +98,12 @@
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="System.WorkItem.Activity.Library">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.WorkItem.Activity.Library.mp</HintPath>
+      <Alias>CoreActivity</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="System.WorkItem.Library">
       <HintPath>..\References\System.WorkItem.Library.mp</HintPath>
       <Alias>WorkItem</Alias>

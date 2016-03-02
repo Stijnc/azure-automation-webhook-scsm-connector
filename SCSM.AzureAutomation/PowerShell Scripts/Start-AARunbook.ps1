@@ -2,19 +2,18 @@
 # Start_AARunbook.ps1
 #
 # Start Azure Automation Runbook
-Import-Module Azure
-Import-Module SMLets
-Switch-AzureMode AzureResourceManager
+
+Add-Type -Path "C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\bin\Debug\scsm.azureautomation.wpf.dll"
 
 $SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
 $SMObject = Get-SCSMObject -Class $SMClass 
 $SubscriptionID = $SMObject.SubscriptionID
 $AutomationAccountName = $SMObject.AutomationAccount
-$password = $SMObject.RunAsAccountPassword
 $username = $SMObject.RunAsAccountName
+$encryptedPassword = $SMObject.RunAsAccountPassword
+$secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.StringCipher]::Decrypt($encryptedPassword,$username)) -AsPlainText -Force
 $ResourceGroup = $SMObject.ResourceGroup
 
-$secpassword = ConvertTo-SecureString $password -AsPlainText -force
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
 $Account = Add-AzureAccount -Credential $Creds
 $Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID

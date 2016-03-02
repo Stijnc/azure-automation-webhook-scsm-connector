@@ -2,13 +2,11 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="Orchestrator!Microsoft.SystemCenter.Orchestrator.RunbookAutomationActivity.Base" Extension="false" Singleton="false" Hosted="false" >
-          <!--<Property ID="ResourceGroup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="AutomationAccountName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />-->
-          <Property ID ="RunbookName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="ConnectorID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="JobID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="Output" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="16000" MinLength="0" Required="false" Scale="0" />
+        <ClassType ID="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="CoreActivity!System.WorkItem.Activity" Extension="false" Singleton="false" Hosted="false" >
+          <Property ID="RunbookName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ConnectorID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="JobID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Output" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="16000" MinLength="0" Required="false" Scale="0" />
           <Property ID="RunOnHybridWorker" Type="bool" Required="false" Scale="0" />
         </ClassType>
       </ClassTypes>
