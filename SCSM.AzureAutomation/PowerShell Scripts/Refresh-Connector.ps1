@@ -2,7 +2,8 @@
 # Refresh-Connector.ps1
 #
 # Collect Runbooks and DSC Configs from Azure Automation
-Add-Type -Path "C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\bin\Debug\scsm.azureautomation.wpf.dll"
+$TypePath = (Get-ItemProperty "hklm:\software\microsoft\system center\2010\service manager\setup").InstallDirectory + "scsm.azureautomation.wpf.dll"
+Add-Type -Path $TypePath
 
 #need to get encrypted password once that is complete
 # neeed to update code to allow multipule connectors, this code will only work with one connector currently

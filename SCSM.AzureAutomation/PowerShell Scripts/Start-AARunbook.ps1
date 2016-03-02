@@ -3,7 +3,8 @@
 #
 # Start Azure Automation Runbook
 
-Add-Type -Path "C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\bin\Debug\scsm.azureautomation.wpf.dll"
+$TypePath = (Get-ItemProperty "hklm:\software\microsoft\system center\2010\service manager\setup").InstallDirectory + "scsm.azureautomation.wpf.dll"
+Add-Type -Path $TypePath
 
 $SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
 $SMObject = Get-SCSMObject -Class $SMClass 
