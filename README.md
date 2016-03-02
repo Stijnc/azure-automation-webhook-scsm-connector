@@ -9,7 +9,9 @@ System Center Service Manager connector and runbook template for Azure Automatio
 the solution contains the following elements:
 * an Azure Automation Connector
 * an Azure Automation Webhook class
-* an Azure Automation Webhook Activity
+* an Azure Automation Runbook Activity
+* an Azure Automaiton Runbook class
+* an Azure Automation Runbook Parameter class
 * a Service manager workflow using the azure powershell module to check the runbook job status 
 
 ## Installation
@@ -17,6 +19,11 @@ todo
 
 ## Usage
 todo
+
+
+##Requirements for Workflow Server 
+* SMLets PowerShell Module
+* Azure Powershell Module
 
 ## Remarks
 * Query Azure Automation account
