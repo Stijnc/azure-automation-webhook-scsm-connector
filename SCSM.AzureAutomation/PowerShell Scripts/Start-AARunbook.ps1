@@ -16,9 +16,9 @@ $secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.String
 $ResourceGroup = $SMObject.ResourceGroup
 
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
-$Account = Add-AzureAccount -Credential $Creds
-$Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID
-$JobID = Start-AzureAutomationRunbook -Name $RunbookName -AutomationAccountName $AccountName -ResourceGroupName $ResourceGroup -Parameters $Params
+Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
+
+$JobID = Start-AzureRmAutomationRunbook -Name $RunbookName -AutomationAccountName $AccountName -ResourceGroupName $ResourceGroup -Parameters $Params
 
 $SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook.Activity$ 
 $SMObj = Get-SCSMObject -Class $SMClass -Filter "ID -eq $ID"

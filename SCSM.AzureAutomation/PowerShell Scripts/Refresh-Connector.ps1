@@ -24,7 +24,7 @@ Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
 $Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName 
 Foreach($runbook in $Runbooks)
 {
-	$Runbookobj = Get-AzureAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
+	$Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
 	$RunbookHT = @{
 		ConnectorID = $ConnectorID
 		Name = $Runbookobj.Name
