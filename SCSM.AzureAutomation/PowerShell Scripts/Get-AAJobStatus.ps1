@@ -21,14 +21,13 @@ $secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.String
 $ResourceGroup = $SMObject.ResourceGroup
 
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
-$Account = Add-AzureAccount -Credential $Creds
-$Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID
+Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
 $ActiveJobs = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook.Activity -Filter 'Status -eq Running'
 
 
 foreach($Activity in $ActiveJobs)
 {
-	$job = Get-AzureAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $Activity.JobID
+	$job = Get-AzureRmAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $Activity.JobID
 if ($job -eq $null) { 
         # No Job was created
 		# throw an exception
@@ -45,7 +44,7 @@ $doLoop = $true
 while($doLoop) { 
     Start-Sleep -s $JobPollingIntervalInSeconds 
                  
-    $job = Get-AzureAutomationJob ` 
+    $job = Get-AzureRmAutomationJob ` 
         -Id $job.Id ` 
         -AutomationAccountName $AutomationAccountName
 		-ResourceGroupName $ResourceGroup 
@@ -61,7 +60,7 @@ while($doLoop) {
     if ($job.Status -match "Completed") { 
         if ($ReturnJobOutput) { 
             # Output 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
@@ -69,7 +68,7 @@ while($doLoop) {
             if ($jobout) {Write-Output $jobout.Text} 
                      
             # Error 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
@@ -77,7 +76,7 @@ while($doLoop) {
             if ($jobout) {Write-Error $jobout.Text} 
                      
             # Warning 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName ` 
 							-ResourceGroupName $ResourceGroup `
@@ -85,7 +84,7 @@ while($doLoop) {
             if ($jobout) {Write-Warning $jobout.Text} 
                      
             # Verbose 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
