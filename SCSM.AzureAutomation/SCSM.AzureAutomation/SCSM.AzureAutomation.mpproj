@@ -140,9 +140,6 @@
     <Compile Include="Classes\Connector.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\RunbookParameter.mpx">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Classes\Webhook.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -159,9 +156,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ManagementPack.mpx">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Relationships\RunbookHasParameter.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Resources\Resources.mpx">

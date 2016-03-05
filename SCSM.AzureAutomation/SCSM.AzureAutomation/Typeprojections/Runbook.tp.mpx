@@ -5,29 +5,7 @@
         <TypeProjection ID="SCSM.Projection.Configitem.AARunbook.Connector" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
           <!--<Component Path="$Target/Path[Relationship='SCSM.AzureAutomation.RunbookHasConnector']$" Alias="Runbookconnector"></Component>-->
         </TypeProjection>
-        
-        <TypeProjection ID="SCSM.Projection.Configitem.Runbook.Full" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
-          <Component Path="$Target/Path[Relationship='AzureAutomation.RunbookHasParameter']$" Alias="RunbookParameters"></Component>
-          <Component Path="$Context/Path[Relationship='WorkItem!System.WorkItemRelatesToConfigItem' SeedRole='Target']$" Alias="ImpactedWorkItem" />
-          <Component Path="$Context/Path[Relationship='WorkItem!System.WorkItemAboutConfigItem' SeedRole='Target']$" Alias="RelatedWorkItem" />
-          <Component Path="$Context/Path[Relationship='SupportingItem!System.ConfigItemHasFileAttachment']$" Alias="FileAttachment" />
-          <Component Path="$Context/Path[Relationship='System!System.ConfigItemRelatesToConfigItem']$" Alias="RelatedConfigItem" />
-          <Component Path="$Context/Path[Relationship='System!System.ConfigItemRelatesToConfigItem' SeedRole='Target']$" Alias="RelatedConfigItemSource" />
-          <Component Path="$Context/Path[Relationship='CoreKnowledge!System.EntityLinksToKnowledgeDocument']$" Alias="RelatedKnowledgeArticles" />
-        </TypeProjection>
       </TypeProjections>
     </EntityTypes>
   </TypeDefinitions>
-
-  <LanguagePacks>
-    <LanguagePack ID="ENU" IsDefault="true">
-      <DisplayStrings>
-      
-        <DisplayString ElementID="SCSM.Projection.Configitem.Runbook.Full">
-          <Name>Azure Automation Runbook full projection</Name>
-        </DisplayString>
-      </DisplayStrings>
-    </LanguagePack>
-
-  </LanguagePacks>
 </ManagementPackFragment>

@@ -3,11 +3,24 @@
     <EntityTypes>
       <EnumerationTypes>
         <EnumerationValue ID="AzureAutomationRunbook.Status" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Status.Invalid" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Status.Active" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Status.Missing" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Status.PendingDelete" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.Published" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Status.Deleted" Parent="AzureAutomationRunbook.Status" Accessibility="Public" />
       </EnumerationTypes>
     </EntityTypes>
   </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="AzureAutomationRunbook.Status">
+          <Name>Azure Automation Runbook Status</Name>
+        </DisplayString>
+        <DisplayString ElementID="AzureAutomationRunbook.Status.Published">
+          <Name>Published</Name>
+        </DisplayString>
+        <DisplayString ElementID="AzureAutomationRunbook.Status.Deleted">
+          <Name>Deleted</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>

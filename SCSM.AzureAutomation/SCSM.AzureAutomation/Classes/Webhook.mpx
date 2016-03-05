@@ -3,7 +3,6 @@
     <EntityTypes>
       <ClassTypes>
         <ClassType ID="SCSM.Configitem.Webhook" Abstract="false" Accessibility="Public" Hosted="false" Singleton="false" Base="System!System.ConfigItem" Comment="Azure Automation Connector">
-
           <Property ID="ID" Type="string" AutoIncrement="true" Key="true" CaseSensitive="false" Required="true" DefaultValue="AAW{0}"/>
           <Property ID="DisplayName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
           <Property ID="Link" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" Required="false" Scale="0" />
