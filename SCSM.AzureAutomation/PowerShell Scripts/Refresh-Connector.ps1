@@ -7,7 +7,7 @@ Add-Type -Path $TypePath
 
 #need to get encrypted password once that is complete
 # neeed to update code to allow multipule connectors, this code will only work with one connector currently
-
+$SMRBClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
 $SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
 $SMObject = Get-SCSMObject -Class $SMClass 
 $SubscriptionID = $SMObject.SubscriptionID
@@ -25,23 +25,40 @@ $Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -Auto
 Foreach($runbook in $Runbooks)
 {
 	$Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
-	$RunbookHT = @{
-		ConnectorID = $ConnectorID
-		Name = $Runbookobj.Name
-		Description = $Runbookobj.Description
-		LastModifiedtime = $Runbookobj.LastModifiedTime
-		LogVerbose =$Runbookobj.LogVerbose
-		LogProgress = $Runbookobj.LogProgress
-		CreatedDate = $Runbookobj.CreationTime
-		RunbookType = $Runbookobj.RunbookType
-		JobCount = $Runbookobj.JobCount
-	}
-	$SMRBClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
-	$Runbook = Get-SCSMObject -Class $SMRBClass -Filter 'Runbook -eq $Runbookobj.Name'
-	if($Runbook -eq $null)
+	if ($Runbookobj.State -eq "Published")
 	{
-		New-SCSMObject -Class $SMRBClass -PropertyHashtable $RunbookHT
+		$RBType = switch($Runbookobj.RunbookType)
+		{
+			Script{"AzureAutomationRunbook.Type.Workflow"}
+			Graph{"AzureAutomationRunbook.Type.Graphical"}
+			PowerShell{"AzureAutomationRunbook.Type.PowerShell"}
+		}
+		$RunbookHT = @{
+			#ConnectorID = $ConnectorID
+            DisplayName = $Runbookobj.Name
+			Name = $Runbookobj.Name
+			Description = $Runbookobj.Description
+			LastModifiedtime = $Runbookobj.LastModifiedTime
+			LogVerbose =$Runbookobj.LogVerbose
+			LogProgress = $Runbookobj.LogProgress
+			CreatedDate = $Runbookobj.CreationTime
+			RunbookType = $RBType
+			#JobCount = $Runbookobj.JobCount
+			Status = "AzureAutomationRunbook.Status.Published"
+		}
+
+		$rbName = $Runbookobj.Name
+		$Runbook = Get-SCSMObject -Class $SMRBClass -Filter "Name -eq $rbName"
+		if($Runbook -eq $null)
+		{
+			New-SCSMObject -Class $SMRBClass -PropertyHashtable $RunbookHT
+		}
+        else {
+            Set-SCSMObject -SMObject $Runbook -PropertyHashtable $RunbookHT
+        }
 	}
+	
+	
 	
 
 }
