@@ -1,4 +1,7 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="Category.AzureAutomation.Folder" Target="AzureAutomation.Folder" Value="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.FolderTasks" />
+  </Categories>
   <Presentation>
     <Folders>
       <!--Folder.ebf12007e2034177992384c008237f06-->

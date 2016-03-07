@@ -170,10 +170,19 @@
     <Compile Include="Typeprojections\Webhook.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Folders.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Runbook.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Webhook.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Webhook.vw.old.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Workflows\Check-AAJobStatus.mpx">
