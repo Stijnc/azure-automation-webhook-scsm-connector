@@ -170,13 +170,28 @@
     <Compile Include="Typeprojections\Webhook.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Activity.vw.mpx">
+    <Compile Include="Views\All_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Canceled_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Completed_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Failed_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Folders.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Runbook.vw.mpx">
+    <Compile Include="Views\InProgress_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Runbook.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Runbook.vw.old.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Webhook.vw.mpx">
