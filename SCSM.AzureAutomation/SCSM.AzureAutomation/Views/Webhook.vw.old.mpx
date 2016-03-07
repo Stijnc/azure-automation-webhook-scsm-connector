@@ -158,10 +158,7 @@
     
     
 <!-- Resource files, add files as embedded resources -->  
-  <Resources>
-    <Image ID="AzureAutomation2x16" Accessibility="Public" FileName="AzureAutomation2x16.png" HasNullStream="false" />
-    <Image ID="AzureAutomation2x24" Accessibility="Public" FileName="AzureAutomation2x24.png" HasNullStream="false" />
-  </Resources>
+
 </ManagementPackFragment>
 
 

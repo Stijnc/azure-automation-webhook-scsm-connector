@@ -72,7 +72,7 @@
       <FolderItem ElementID="View.c0e8b139626a41638474fc3d12c3c1a7" ID="FolderItem.56cc9242f0a5452daef1e750b248be11" Folder="AzureAutomation.Folder" />
     </FolderItems>
     <ImageReferences>
-      <ImageReference ElementID="View.c0e8b139626a41638474fc3d12c3c1a7" ImageID="ConfigurationManagement!ConfigItemImage16x16" />
+      <ImageReference ElementID="View.c0e8b139626a41638474fc3d12c3c1a7" ImageID="webhook2x16" />
     </ImageReferences>
   </Presentation>
   <LanguagePacks>

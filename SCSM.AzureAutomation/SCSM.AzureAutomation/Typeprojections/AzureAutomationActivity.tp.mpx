@@ -1,0 +1,9 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <TypeProjections>
+        
+      </TypeProjections>
+    </EntityTypes>
+  </TypeDefinitions>
+</ManagementPackFragment>
