@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 		References\ServiceManager.ConfigurationManagement.Library.mp = References\ServiceManager.ConfigurationManagement.Library.mp
 		References\ServiceManager.Core.Library.mp = References\ServiceManager.Core.Library.mp
 		References\ServiceManager.LinkingFramework.Library.mp = References\ServiceManager.LinkingFramework.Library.mp
+		References\ServiceManager.RunbookActivity.Library.mp = References\ServiceManager.RunbookActivity.Library.mp
 		References\System.Knowledge.Library.mp = References\System.Knowledge.Library.mp
 		References\System.SupportingItem.Library.mp = References\System.SupportingItem.Library.mp
 		References\System.WorkItem.Activity.Library.mp = References\System.WorkItem.Activity.Library.mp

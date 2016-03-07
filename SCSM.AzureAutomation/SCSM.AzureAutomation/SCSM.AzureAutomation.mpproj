@@ -82,6 +82,12 @@
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="ServiceManager.RunbookActivity.Library">
+      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.RunbookActivity.Library.mp</HintPath>
+      <Alias>RunbookActivity</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="System.Knowledge.Library">
       <HintPath>..\References\System.Knowledge.Library.mp</HintPath>
       <Alias>CoreKnowledge</Alias>
@@ -168,6 +174,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\Connector.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Typeprojections\AzureAutomationActivity.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Typeprojections\Runbook.tp.mpx">

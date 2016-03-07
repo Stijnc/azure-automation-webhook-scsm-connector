@@ -77,7 +77,7 @@
       <FolderItem ElementID="View.c49f4d3c907e4f67978a1219867afe3e" ID="FolderItem.c9f986aa1c3442aa9a19c96eae03286f" Folder="Folder.932137f9359643e59f34cc680deaa1b9" />
     </FolderItems>
     <ImageReferences>
-      <ImageReference ElementID="View.c49f4d3c907e4f67978a1219867afe3e" ImageID="RunbookActivity!ActivityMgmt_RunbookActivity_16" />
+      <ImageReference ElementID="View.c49f4d3c907e4f67978a1219867afe3e" ImageID="RunbookActivity!ActivityMgmt_CompletedRunbookActivities_16" />
     </ImageReferences>
   </Presentation>
   
