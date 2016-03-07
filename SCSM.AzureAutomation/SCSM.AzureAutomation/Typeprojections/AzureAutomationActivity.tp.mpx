@@ -25,9 +25,28 @@
             <Component Path="$Target/Path[Relationship='SupportingItem!System.FileAttachmentAddedByUser']$" Alias="FileAttachmentAddedBy" />
           </Component>
           <Component Path="$Target/Path[Relationship='CoreKnowledge!System.EntityLinksToKnowledgeDocument']$" Alias="RelatedKnowledge" />
-          <!--<Component Path="$Target/Path[Relationship='System.RunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />-->
+          <Component Path="$Target/Path[Relationship='System.AARunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />
+        </TypeProjection>
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity">
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+          <Component Path="$Target/Path[Relationship='System.AARunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />
         </TypeProjection>
       </TypeProjections>
     </EntityTypes>
   </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityViewProjection" >
+          <Name>Azure Automation Activity View Projection</Name>
+        </DisplayString>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityFullProjection" >
+          <Name>Azure Automation Activity Projection (Full)</Name>
+        </DisplayString>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityProjection" >
+          <Name>Azure Automation Activity Projection (Advanced)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>

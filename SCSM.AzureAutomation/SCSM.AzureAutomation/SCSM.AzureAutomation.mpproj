@@ -170,6 +170,9 @@
     <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Relationships\Runbook.rs.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Relationships\RunbookActivity.rs.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -191,6 +194,9 @@
     <Compile Include="Views\All_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\AssignedToMe_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Canceled_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -210,6 +216,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Runbook.vw.old.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Unassigned_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Webhook.vw.mpx">
