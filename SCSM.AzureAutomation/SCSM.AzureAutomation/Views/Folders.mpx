@@ -1,14 +1,22 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Categories>
     <Category ID="Category.AzureAutomation.Folder" Target="AzureAutomation.Folder" Value="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.FolderTasks" />
+    <Category ID="Category.dfbde208f3f44842a992254f8dfb48d1" Target="Folder.932137f9359643e59f34cc680deaa1b9" Value="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.FolderTasks" />
   </Categories>
   <Presentation>
     <Folders>
       <!--Folder.ebf12007e2034177992384c008237f06-->
       <Folder ID="AzureAutomation.Folder" Accessibility="Public" ParentFolder="ConfigurationManagement!ServiceManager.Console.ConfigurationManagement.ConfigItem.Root" />
+      <!--Folder.932137f9359643e59f34cc680deaa1b9-->
+      <Folder ID="Folder.932137f9359643e59f34cc680deaa1b9" Accessibility="Public" ParentFolder="ActivityManagement!ServiceManager.Console.ActivityManagement" />
     </Folders>
+    <FolderItems>
+      <FolderItem ElementID="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Task.CreateGridView" ID="FolderItem.a3659c1c58e7432390ebce2c02e9f0ff" Folder="Folder.ebf12007e2034177992384c008237f06" />
+      <FolderItem ElementID="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Task.CreateGridView" ID="FolderItem.ac774f61403f45b8bac226d8237a8d9d" Folder="Folder.932137f9359643e59f34cc680deaa1b9" />
+    </FolderItems>
     <ImageReferences>
       <ImageReference ElementID="AzureAutomation.Folder" ImageID="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Folder" />
+      <ImageReference ElementID="Folder.932137f9359643e59f34cc680deaa1b9" ImageID="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.Image.Folder" />
     </ImageReferences>
   </Presentation>
   <LanguagePacks>
@@ -16,6 +24,9 @@
       <DisplayStrings>
         <DisplayString ElementID="AzureAutomation.Folder">
           <Name>Azure Automation</Name>
+        </DisplayString>
+        <DisplayString ElementID="Folder.932137f9359643e59f34cc680deaa1b9">
+          <Name>Azure Automation Runbook Activities</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

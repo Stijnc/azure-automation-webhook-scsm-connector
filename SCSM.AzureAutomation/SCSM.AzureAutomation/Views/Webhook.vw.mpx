@@ -81,6 +81,14 @@
         <DisplayString ElementID="View.c0e8b139626a41638474fc3d12c3c1a7">
           <Name>AA Webhooks</Name>
         </DisplayString>
+        <DisplayString ElementID="LastModifiedBy.270bdb403143434ca19a5dec1a18a5cf">
+          <Name>Connector Identifier</Name>
+          <Description>Connector identifier</Description>
+        </DisplayString>
+        <DisplayString ElementID="DisplayName.bc96d50880e84eb88b7616afeddefe04">
+          <Name>Display Name</Name>
+          <Description>Display name</Description>
+        </DisplayString>
       </DisplayStrings>
     </LanguagePack>
   </LanguagePacks>
