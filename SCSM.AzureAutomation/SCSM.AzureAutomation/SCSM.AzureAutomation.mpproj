@@ -64,6 +64,12 @@
       <MinVersion>7.5.8501.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="ServiceManager.ActivityManagement.Library">
+      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.ActivityManagement.Library.mp</HintPath>
+      <Alias>SAL</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.ConfigurationManagement.Library">
       <HintPath>..\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
       <Alias>SCL</Alias>
@@ -164,6 +170,9 @@
     <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Relationships\RunbookActivity.rs.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Resources\Resources.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -228,21 +237,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SCSM.AzureAutomation.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac1fe0583b6c84af">
-      <Name>SCSM.AzureAutomation.WPF</Name>
-      <AssemblyName>SCSM.AzureAutomation.WPF.dll</AssemblyName>
-      <HintPath>..\SCSM.AzureAutomation.WPF\bin\Debug\SCSM.AzureAutomation.WPF.dll</HintPath>
-      <Private>True</Private>
-      <PackageToBundle>True</PackageToBundle>
-    </Reference>
+    <EmbeddedResource Include="Image\webhook2x16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\webhook2x24.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image\webhook2x16.png">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Image\webhook2x24.png">
-      <SubType>Content</SubType>
-    </Content>
+    <ProjectReference Include="..\SCSM.AzureAutomation.WPF\SCSM.AzureAutomation.WPF.csproj">
+      <Name>SCSM.AzureAutomation.WPF</Name>
+      <Project>{2ce767c8-461b-4a7c-a2b5-2dfe4d34b32e}</Project>
+      <Private>True</Private>
+      <PackageToBundle>True</PackageToBundle>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>

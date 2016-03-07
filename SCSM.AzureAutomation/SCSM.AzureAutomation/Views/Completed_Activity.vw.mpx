@@ -1,12 +1,12 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Categories>
-    <Category ID="Category.4fddbb61dfd5482d908ae5f60b2df3ed" Target="View.c49f4d3c907e4f67978a1219867afe3e" Value="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
-    <Category ID="Category.1f9de157ede247d280a647fdf60d0e1b" Target="View.c49f4d3c907e4f67978a1219867afe3e" Value="EnterpriseManagement1!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
+    <Category ID="Category.4fddbb61dfd5482d908ae5f60b2df3ed" Target="View.c49f4d3c907e4f67978a1219867afe3e" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
+    <Category ID="Category.1f9de157ede247d280a647fdf60d0e1b" Target="View.c49f4d3c907e4f67978a1219867afe3e" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
   </Categories>
 
   <Presentation>
     <Views>
-      <View ID="View.c49f4d3c907e4f67978a1219867afe3e" Accessibility="Public" Enabled="true" Target="CustomSCSM_AzureAutomation!SCSM.AzureAutomation.Runbook.Activity" TypeID="EnterpriseManagement!GridViewType" Visible="true">
+      <View ID="View.c49f4d3c907e4f67978a1219867afe3e" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Runbook.Activity" TypeID="MESUC!GridViewType" Visible="true">
         <Category>NotUsed</Category>
         <Data>
           <Adapters>
@@ -26,7 +26,7 @@
           <ItemsSource>
             <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
               <AdvancedListSupportClass.Parameters>
-                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='CustomSCSM_AzureAutomation!SCSM.AzureAutomation.Runbook.Activity']$" />
+                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='SCSM.AzureAutomation.Runbook.Activity']$" />
               </AdvancedListSupportClass.Parameters>
             </AdvancedListSupportClass>
           </ItemsSource>
@@ -39,7 +39,7 @@
                       <Expression>
                         <SimpleExpression>
                           <ValueExpressionLeft>
-                            <Property>$Context/Property[Type='CustomSystem_WorkItem_Activity_Library!System.WorkItem.Activity']/Status$</Property>
+                            <Property>$Context/Property[Type='SCSM.AzureAutomation.Runbook.Activity']/Status$</Property>
                           </ValueExpressionLeft>
                           <Operator>Equal</Operator>
                           <ValueExpressionRight>
@@ -79,6 +79,12 @@
     <ImageReferences>
       <ImageReference ElementID="View.c49f4d3c907e4f67978a1219867afe3e" ImageID="RunbookActivity!ActivityMgmt_CompletedRunbookActivities_16" />
     </ImageReferences>
+    <StringResources>
+      <StringResource ID="DisplayName.a3114fd37d5d424a90fbf9ff8b7ac3cf" />
+      <StringResource ID="Id.78d03a9ccd5e4aafaef1bf9367f347dd" />
+      <StringResource ID="LastModified.2fbe1404771b46b4a69ce07392883436" />
+      <StringResource ID="Status.bb47a0bb22ea410aafed445464b527c1" />
+    </StringResources>
   </Presentation>
   
   <LanguagePacks>
@@ -87,23 +93,23 @@
         <DisplayString ElementID="View.c49f4d3c907e4f67978a1219867afe3e">
           <Name>Completed Activities</Name>
         </DisplayString>
-      </DisplayStrings>
-      <DisplayString ElementID="DisplayName.a3114fd37d5d424a90fbf9ff8b7ac3cf">
-        <Name>Display Name</Name>
-        <Description>Display name of the object.</Description>
-      </DisplayString>
-      <DisplayString ElementID="Id.78d03a9ccd5e4aafaef1bf9367f347dd">
-        <Name>ID</Name>
-        <Description>Work item ID</Description>
-      </DisplayString>
-      <DisplayString ElementID="LastModified.2fbe1404771b46b4a69ce07392883436">
-        <Name>Last Modified</Name>
-        <Description>Last modified</Description>
-      </DisplayString>
-      <DisplayString ElementID="Status.bb47a0bb22ea410aafed445464b527c1">
-        <Name>Status</Name>
-        <Description>Status</Description>
-      </DisplayString>
+        <DisplayString ElementID="DisplayName.a3114fd37d5d424a90fbf9ff8b7ac3cf">
+          <Name>Display Name</Name>
+          <Description>Display name of the object.</Description>
+        </DisplayString>
+        <DisplayString ElementID="Id.78d03a9ccd5e4aafaef1bf9367f347dd">
+          <Name>ID</Name>
+          <Description>Work item ID</Description>
+        </DisplayString>
+        <DisplayString ElementID="LastModified.2fbe1404771b46b4a69ce07392883436">
+          <Name>Last Modified</Name>
+          <Description>Last modified</Description>
+        </DisplayString>
+        <DisplayString ElementID="Status.bb47a0bb22ea410aafed445464b527c1">
+          <Name>Status</Name>
+          <Description>Status</Description>
+        </DisplayString>
+        </DisplayStrings>
     </LanguagePack>
   </LanguagePacks>
 </ManagementPackFragment>

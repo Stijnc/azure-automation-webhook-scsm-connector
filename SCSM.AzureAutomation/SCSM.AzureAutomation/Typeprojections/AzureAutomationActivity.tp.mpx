@@ -2,7 +2,31 @@
   <TypeDefinitions>
     <EntityTypes>
       <TypeProjections>
-        
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityViewProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity" >
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+        </TypeProjection>
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityFullProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity">
+          <Component Path="$Target/Path[Relationship='CoreActivity!System.WorkItemContainsActivity' SeedRole='Target']$" Alias="ParentWorkItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemCreatedByUser']$" Alias="ActivityCreatedBy" />
+          <Component Path="$Target/Path[Relationship='CoreActivity!System.ActivityCanBeEditedByUser']$" Alias="ActivityCanBeEditedBy" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAboutConfigItem']$" Alias="ActivityAboutConfigItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemImpactsService']$" Alias="AffectedService" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasActionLog']$" Alias="ActionLogs" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasCommentLog']$" Alias="UserComments" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToConfigItem']$" Alias="RelatedConfigItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToWorkItem']$" Alias="RelatedWorkItem">
+            <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="RelatedWorkItemAssignedTo" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToWorkItem' SeedRole='Target']$" Alias="RelatedWorkItemSource">
+            <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="RelatedWorkItemAssignedTo" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasFileAttachment']$" Alias="FileAttachment">
+            <Component Path="$Target/Path[Relationship='SupportingItem!System.FileAttachmentAddedByUser']$" Alias="FileAttachmentAddedBy" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='CoreKnowledge!System.EntityLinksToKnowledgeDocument']$" Alias="RelatedKnowledge" />
+          <!--<Component Path="$Target/Path[Relationship='System.RunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />-->
+        </TypeProjection>
       </TypeProjections>
     </EntityTypes>
   </TypeDefinitions>

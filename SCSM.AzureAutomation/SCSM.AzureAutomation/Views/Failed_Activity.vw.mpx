@@ -1,12 +1,12 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Categories>
-    <Category ID="Category.21da0287c0094a4ba2cf7550d968d14e" Target="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Value="EnterpriseManagement!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
-    <Category ID="Category.8ce71062326c44b9b19fb3a7099e6b57" Target="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Value="EnterpriseManagement1!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
+    <Category ID="Category.21da0287c0094a4ba2cf7550d968d14e" Target="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
+    <Category ID="Category.8ce71062326c44b9b19fb3a7099e6b57" Target="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
   </Categories>
 
   <Presentation>
     <Views>
-      <View ID="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Accessibility="Public" Enabled="true" Target="CustomSCSM_AzureAutomation!SCSM.AzureAutomation.Runbook.Activity" TypeID="EnterpriseManagement!GridViewType" Visible="true">
+      <View ID="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Runbook.Activity" TypeID="MESUC!GridViewType" Visible="true">
         <Category>NotUsed</Category>
         <Data>
           <Adapters>
@@ -26,7 +26,7 @@
           <ItemsSource>
             <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
               <AdvancedListSupportClass.Parameters>
-                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='CustomSCSM_AzureAutomation!SCSM.AzureAutomation.Runbook.Activity']$" />
+                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='SCSM.AzureAutomation.Runbook.Activity']$" />
               </AdvancedListSupportClass.Parameters>
             </AdvancedListSupportClass>
           </ItemsSource>
@@ -39,7 +39,7 @@
                       <Expression>
                         <SimpleExpression>
                           <ValueExpressionLeft>
-                            <Property>$Context/Property[Type='CustomSystem_WorkItem_Activity_Library!System.WorkItem.Activity']/Status$</Property>
+                            <Property>$Context/Property[Type='SCSM.AzureAutomation.Runbook.Activity']/Status$</Property>
                           </ValueExpressionLeft>
                           <Operator>Equal</Operator>
                           <ValueExpressionRight>
@@ -79,6 +79,12 @@
     <ImageReferences>
       <ImageReference ElementID="View.5e4931ea3c1a44f7b7bdad4e6af37cb2" ImageID="RunbookActivity!ActivityMgmt_FailedRunbookActivities_16" />
     </ImageReferences>
+    <StringResources>
+      <StringResource ID="DisplayName.fa57d1544a6b48e58a71e7e785b65846" />
+      <StringResource ID="Id.ba8fe8dbe8dc4927b0af181e41a479bd" />
+      <StringResource ID="LastModified.bdb00b579c254bb5b28dc67b16f0afc9" />
+      <StringResource ID="Status.3ffaea305a994e7da8001402f02ae66f" />
+    </StringResources>
   </Presentation>
   <LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">

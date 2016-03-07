@@ -1,15 +1,15 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
-  <Categories>
+  <!--<Categories>
 
-    <!-- <Category ID="Category.fb8a3716dcd3463cafa33c3dcdb8d55b" Target="SCSM.View.Configitem.Webhook" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" /> -->
+     <Category ID="Category.fb8a3716dcd3463cafa33c3dcdb8d55b" Target="SCSM.View.Configitem.Webhook" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" /> 
     <Category ID="Category.e7e4be9056594f00a508b94ccf46591f" Target="SCSM.View.Configitem.Webhook" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
   
   </Categories>
   
   <Presentation>
     <Views>
-<!-- The actual view for the Azure Automation Webhooks, uses the connector type projection -->
+ The actual view for the Azure Automation Webhooks, uses the connector type projection 
       <View ID="SCSM.View.Configitem.Webhook" Accessibility="Public" Enabled="true" Target="SCSM.Configitem.Webhook" TypeID="MESUC!GridViewType" Visible="true">
         <Category>NotUsed</Category>
         <Data>
@@ -28,11 +28,11 @@
             </Adapter>
           </Adapters>
           <ItemsSource>
-            <!--<AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectProjectionAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+            <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectProjectionAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
               <AdvancedListSupportClass.Parameters>
                 <QueryParameter Parameter="TypeProjectionId" Value="$MPElement[Name='SCSM.Projection.Configitem.AARunbook.Connector']$" />
               </AdvancedListSupportClass.Parameters>
-            </AdvancedListSupportClass>-->
+            </AdvancedListSupportClass>
           </ItemsSource>
           <Criteria>
             <QueryCriteria Adapter="omsdk://Adapters/Criteria" xmlns="http://tempuri.org/Criteria.xsd">
@@ -87,18 +87,18 @@
            
     </Views>
     
-<!-- create the folder item, in library root wunderbar -->
+ create the folder item, in library root wunderbar 
     <FolderItems>
       <FolderItem ElementID="SCSM.View.Configitem.Webhook" ID="Webhookvw.FolderItem" Folder="Authoring!ServiceManager.Console.Authoring.Root" />
     </FolderItems>
     
- <!-- The image references -->     
+  The image references      
     <ImageReferences>    
       <ImageReference ElementID="SCSM.View.Configitem.Webhook" ImageID="AzureAutomation2x16" />
       <ImageReference ElementID="SCSM.View.Configitem.Webhook" ImageID="AzureAutomation2x24" />   
     </ImageReferences>
     
-<!-- String resources -->
+ String resources 
     <StringResources>
       <StringResource ID="Webhookvw.AssetStatus" />
       <StringResource ID="Webhookvw.DisplayName" />
@@ -112,7 +112,7 @@
     
   </Presentation>
 
-<!-- Languages-->  
+ Languages  
  <LanguagePacks>
    <LanguagePack ID="ENU" IsDefault="true">
      <DisplayStrings>
@@ -157,7 +157,7 @@
  </LanguagePacks> 
     
     
-<!-- Resource files, add files as embedded resources -->  
+ Resource files, add files as embedded resources-->   
 
 </ManagementPackFragment>
 
