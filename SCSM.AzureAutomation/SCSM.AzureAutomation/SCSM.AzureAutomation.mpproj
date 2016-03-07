@@ -227,5 +227,13 @@
       <PackageToBundle>True</PackageToBundle>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\webhook2x16.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Image\webhook2x24.png">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>
