@@ -6,7 +6,23 @@
           <Source ID="Runbook" MinCardinality="0" MaxCardinality ="2147483647" Type="SCSM.AzureAutomation.Runbook"/>
           <Target ID="Connector" MinCardinality="0" MaxCardinality="1" Type="SCSM.AzureAutomation.Connector"/>
         </RelationshipType>
+        <RelationshipType ID="System.AARunbookRelatesToWebhook" Accessibility="Public" Abstract="false" Base="System!System.Reference" >
+          <Source ID="Runbook" MinCardinality="0" MaxCardinality="1" Type="SCSM.AzureAutomation.Runbook"/>
+          <Target ID="Webhook" MinCardinality="0" MaxCardinality="2147483647" Type="SCSM.Configitem.Webhook"/>
+        </RelationshipType>
       </RelationshipTypes>
     </EntityTypes>    
   </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="System.AARunbookRelatesToWebhook" >
+          <Name>Runbook</Name>
+        </DisplayString>
+        <DisplayString ElementID="System.AARunbookRelatesToAAConnector">
+          <Name>Connector</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>

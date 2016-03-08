@@ -2,10 +2,19 @@
   <TypeDefinitions>
     <EntityTypes>
       <TypeProjections>
-        <TypeProjection ID="SCSM.Projection.Configitem.AARunbook.Connector" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
-          <!--<Component Path="$Target/Path[Relationship='SCSM.AzureAutomation.RunbookHasConnector']$" Alias="Runbookconnector"></Component>-->
+        <TypeProjection ID="SCSM.AzureAutomation.RunbookViewProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook">
+          <Component Path="$Target/Path[Relationship='System.AARunbookRelatesToAAConnector']$" Alias="Connector" />
         </TypeProjection>
       </TypeProjections>
     </EntityTypes>
   </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="SCSM.AzureAutomation.RunbookViewProjection" >
+          <Name>Azure Automation Runbook View Projection</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>

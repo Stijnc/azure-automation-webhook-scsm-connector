@@ -203,6 +203,9 @@
     <Compile Include="Views\Completed_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\DSC.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Failed_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
@@ -212,7 +215,7 @@
     <Compile Include="Views\InProgress_Activity.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Runbook.mpx">
+    <Compile Include="Views\Runbook.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Views\Runbook.vw.old.mpx">
