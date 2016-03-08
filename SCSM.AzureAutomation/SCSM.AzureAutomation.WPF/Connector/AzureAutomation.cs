@@ -372,10 +372,12 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 ManagementPack mpSystem = emg.ManagementPacks.GetManagementPack(SystemManagementPack.System);
                 Version verSystemVersion = mpSystem.Version;
                 string strSystemKeyToken = mpSystem.KeyToken;
+                ManagementPack mpSubscriptions = emg.GetManagementPack("Microsoft.SystemCenter.Subscriptions", strSystemKeyToken, verSystemVersion);
 
                 //Also get the System Center and Connector MPs - we'll need things from those MPs later
                 ManagementPack mpSystemCenter = emg.ManagementPacks.GetManagementPack(SystemManagementPack.SystemCenter);
                 ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
+                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.WorkFlows", null, new Version("1.0.0.0"));
 
                 //Get the AzureAutomationConnector class in the Connectors MP
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
@@ -396,7 +398,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 cemoAAConnector[classAAConnector, "Enabled"].Value = true;                            //Optional, shown in Connectors view
                 cemoAAConnector[classAAConnector, "Name"].Value = this.DisplayName;
 
-                //SCSM.AzureAutomation.Connecto properties
+                //SCSM.AzureAutomation.Connector properties
                 cemoAAConnector[classAAConnector, "AutomationAccount"].Value = this.AutomationAccount;
                 cemoAAConnector[classAAConnector, "SubscriptionID"].Value = this.SubscriptionID;
                 cemoAAConnector[classAAConnector, "ResourceGroup"].Value = this.ResourceGroup;
@@ -407,8 +409,71 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 //Create Connector instance
                 cemoAAConnector.Commit();
 
+                //Now we need to create the CSV Connector rule...
+
+                //Get the Scheduler data source module type from the System MP and the Windows Workflow Task Write Action Module Type from the Subscription MP
+                ManagementPackDataSourceModuleType dsmtScheduler = (ManagementPackDataSourceModuleType)mpSystem.GetModuleType("System.Scheduler");
+                ManagementPackWriteActionModuleType wamtWindowsWorkflowTaskWriteAction = (ManagementPackWriteActionModuleType)mpSubscriptions.GetModuleType("Microsoft.EnterpriseManagement.SystemCenter.Subscription.WindowsWorkflowTaskWriteAction");
+
+                //Create a new rule for the CSV Connector in the Connectors MP.  Set the name of this rule to be the same as the connector instance ID so there is a pairing between them
+                ManagementPackRule ruleAAConnector = new ManagementPackRule(mpAAConnectorWorkflows, strConnectorID);
+
+                //Set the target and other properties of the rule
+                ruleAAConnector.Target = mpSystemCenter.GetClass("Microsoft.SystemCenter.SubscriptionWorkflowTarget");
+
+                //Create a new Data Source Module in the new CSV Connector rule
+                ManagementPackDataSourceModule dsmSchedule = new ManagementPackDataSourceModule(ruleAAConnector, "DS1");
+
+                //Set the configuration of the data source rule.  Pass in the frequency (number of minutes)
+                dsmSchedule.Configuration =
+                    "<Scheduler>" +
+                        "<SimpleReccuringSchedule>" +
+                            "<Interval Unit=\"Minutes\">60</Interval>" +
+                        "</SimpleReccuringSchedule>" +
+                        "<ExcludeDates />" +
+                    "</Scheduler>";
+
+                //Set the Schedule Data Source Module Type to the Simple Schedule Module Type from the System MP
+                dsmSchedule.TypeID = dsmtScheduler;
+
+                //Add the Scheduler Data Source to the Rule
+                ruleAAConnector.DataSourceCollection.Add(dsmSchedule);
+
+                //Now repeat essentially the same process for the Write Action module...
+
+                //Create a new Write Action Module in the CSV Connector rule
+                ManagementPackWriteActionModule wamAAConnector = new ManagementPackWriteActionModule(ruleAAConnector, "WA1");
+
+                //Set the Configuration XML
+                wamAAConnector.Configuration =
+                    "<Subscription>" +
+                        "<WindowsWorkflowConfiguration>" +
+                            //Specify the Windows Workflow Foundation workflow Assembly name here
+                            "<AssemblyName>AAConnectorWorkflow</AssemblyName>" +
+                            //Specify the type name of the workflow to call in the assembly here:
+                            "<WorkflowTypeName>WorkflowAuthoring.AAConnectorWorkflow</WorkflowTypeName>" +
+                            "<WorkflowParameters>" +
+                                //Pass in the parameters here.  In this case the two parameters are the data file path and the mapping file path
+                                "<WorkflowParameter Name=\"ImportData_DataFilePath\" Type=\"string\">" + this.DataFilePath + "</WorkflowParameter>" +
+                                "<WorkflowParameter Name=\"ImportData_FormatFilePath\" Type=\"string\">" + this.MappingFilePath + "</WorkflowParameter>" +
+                            "</WorkflowParameters>" +
+                            "<RetryExceptions />" +
+                            "<RetryDelaySeconds>60</RetryDelaySeconds>" +
+                            "<MaximumRunningTimeSeconds>300</MaximumRunningTimeSeconds>" +
+                        "</WindowsWorkflowConfiguration>" +
+                    "</Subscription>";
+
+                //Set the module type of the module to be the Windows Workflow Task Write Action Module Type from the Subscriptions MP.
+                wamAAConnector.TypeID = wamtWindowsWorkflowTaskWriteAction;
+
+                //Add the Write Action Module to the rule
+                ruleAAConnector.WriteActionCollection.Add(wamAAConnector);
+
+                //Mark the rule as pending update
+                ruleAAConnector.Status = ManagementPackElementStatus.PendingAdd; ;
+
                 //Accept the rule changes which updates the database
-             //   mpConnectors.AcceptChanges();
+                mpAAConnectorWorkflows.AcceptChanges();
 
             }
             catch (Exception e)
