@@ -15,10 +15,10 @@
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
     <GenerateSealed>True</GenerateSealed>
-    <Company>Stijn Callebaut</Company>
-    <Copyright>Copyright (c) Stijn Callebaut. All rights reserved.</Copyright>
+    <Company>SCSM AA Connector</Company>
+    <Copyright>Copyright (c) SCSM AA Connector. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -64,6 +64,12 @@
       <MinVersion>7.5.8501.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
+    <ManagementPackReference Include="ServiceManager.ActivityManagement.Library">
+      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.ActivityManagement.Library.mp</HintPath>
+      <Alias>SAL</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.ConfigurationManagement.Library">
       <HintPath>..\References\ServiceManager.ConfigurationManagement.Library.mp</HintPath>
       <Alias>SCL</Alias>
@@ -79,6 +85,12 @@
     <ManagementPackReference Include="ServiceManager.LinkingFramework.Library">
       <HintPath>..\References\ServiceManager.LinkingFramework.Library.mp</HintPath>
       <Alias>LinkingFramework</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+      <PackageToBundle>False</PackageToBundle>
+    </ManagementPackReference>
+    <ManagementPackReference Include="ServiceManager.RunbookActivity.Library">
+      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.RunbookActivity.Library.mp</HintPath>
+      <Alias>RunbookActivity</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
@@ -99,7 +111,7 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="System.WorkItem.Activity.Library">
-      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.WorkItem.Activity.Library.mp</HintPath>
+      <HintPath>..\References\System.WorkItem.Activity.Library.mp</HintPath>
       <Alias>CoreActivity</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -158,10 +170,19 @@
     <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Relationships\Runbook.rs.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Relationships\RunbookActivity.rs.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Resources\Resources.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Tasks\Connector.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Typeprojections\AzureAutomationActivity.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Typeprojections\Runbook.tp.mpx">
@@ -170,10 +191,43 @@
     <Compile Include="Typeprojections\Webhook.tp.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\All_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\AssignedToMe_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Canceled_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Completed_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\DSC.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Failed_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Folders.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\InProgress_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Runbook.vw.mpx">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Runbook.vw.old.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Unassigned_Activity.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\Webhook.vw.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Webhook.vw.old.mpx">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Workflows\Check-AAJobStatus.mpx">
@@ -195,13 +249,20 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="SCSM.AzureAutomation.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac1fe0583b6c84af">
+    <EmbeddedResource Include="Image\webhook2x16.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Image\webhook2x24.png">
+      <SubType>Content</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SCSM.AzureAutomation.WPF\SCSM.AzureAutomation.WPF.csproj">
       <Name>SCSM.AzureAutomation.WPF</Name>
-      <AssemblyName>SCSM.AzureAutomation.WPF.dll</AssemblyName>
-      <HintPath>..\SCSM.AzureAutomation.WPF\bin\Debug\SCSM.AzureAutomation.WPF.dll</HintPath>
+      <Project>{2ce767c8-461b-4a7c-a2b5-2dfe4d34b32e}</Project>
       <Private>True</Private>
       <PackageToBundle>True</PackageToBundle>
-    </Reference>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>

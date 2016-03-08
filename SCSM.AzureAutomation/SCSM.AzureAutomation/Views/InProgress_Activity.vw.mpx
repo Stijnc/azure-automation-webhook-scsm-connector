@@ -1,0 +1,115 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="Category.959212274595401c9ba6baa0eaa17f11" Target="View.366fed72c65d4eb18766dae9d2165b19" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
+    <Category ID="Category.73a9f72b5029463ea5ff4f4da28738e0" Target="View.366fed72c65d4eb18766dae9d2165b19" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
+  </Categories>
+
+  <Presentation>
+    <Views>
+      <View ID="View.366fed72c65d4eb18766dae9d2165b19" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Runbook.Activity" TypeID="MESUC!GridViewType" Visible="true">
+        <Category>NotUsed</Category>
+        <Data>
+          <Adapters>
+            <Adapter AdapterName="dataportal:EnterpriseManagementObjectAdapter">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.EnterpriseManagementObjectAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="viewframework://Adapters/AdvancedList">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.ViewFramework</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.ViewFramework.AdvancedListSupportAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="omsdk://Adapters/Criteria">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.SdkCriteriaAdapter</AdapterType>
+            </Adapter>
+          </Adapters>
+          <ItemsSource>
+            <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+              <AdvancedListSupportClass.Parameters>
+                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='SCSM.AzureAutomation.Runbook.Activity']$" />
+              </AdvancedListSupportClass.Parameters>
+            </AdvancedListSupportClass>
+          </ItemsSource>
+          <Criteria>
+            <QueryCriteria Adapter="omsdk://Adapters/Criteria" xmlns="http://tempuri.org/Criteria.xsd">
+              <Criteria>
+                <FreeformCriteria>
+                  <Freeform>
+                    <Criteria xmlns="http://Microsoft.EnterpriseManagement.Core.Criteria/">
+                      <Expression>
+                        <SimpleExpression>
+                          <ValueExpressionLeft>
+                            <Property>$Context/Property[Type='SCSM.AzureAutomation.Runbook.Activity']/Status$</Property>
+                          </ValueExpressionLeft>
+                          <Operator>Equal</Operator>
+                          <ValueExpressionRight>
+                            <Value>{11fc3cef-15e5-bca4-dee0-9c1155ec8d83}</Value>
+                          </ValueExpressionRight>
+                        </SimpleExpression>
+                      </Expression>
+                    </Criteria>
+                  </Freeform>
+                </FreeformCriteria>
+              </Criteria>
+            </QueryCriteria>
+          </Criteria>
+        </Data>
+        <Presentation>
+          <Columns>
+            <mux:ColumnCollection xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mux="http://schemas.microsoft.com/SystemCenter/Common/UI/Views/GridView" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:datebinding="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:data="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:appCommon="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.Application.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.Application.Common" xmlns:toolbox="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfToolbox;assembly=Microsoft.EnterpriseManagement.UI.FormsInfra" xmlns:slaBinding="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.SLA.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.SLA.Common">
+              <mux:Column Name="Id" DisplayMemberBinding="{Binding Path=Id, Mode=OneWay}" Width="100" DisplayName="Id.c677bb9d523c42ad94da5ad3f1d832a5" Property="Id" DataType="s:String" />
+              <mux:Column Name="Title" DisplayMemberBinding="{Binding Path=Title, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesInProgress.Header_Title" Property="Title" DataType="s:String" />
+              <mux:Column Name="Status.DisplayName" DisplayMemberBinding="{Binding Path=Status.DisplayName, Mode=OneWay}" Width="100" DisplayName="Status.fcac091672864c1cabc93b58a3e86c3e" Property="Status.DisplayName" DataType="s:String" />
+              <mux:Column Name="$LastModified$" DisplayMemberBinding="{Binding Path=$LastModified$, Mode=OneWay}" Width="100" DisplayName="LastModified.8b390add89e84006af20a424d8c101a1" Property="$LastModified$" DataType="s:DateTime" />
+            </mux:ColumnCollection>
+          </Columns>
+          <AdditonalProperties />
+          <ViewStrings>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesInProgress.Header_Title">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesInProgress.Header_Title"]$</ViewString>
+            <ViewString ID="Id.c677bb9d523c42ad94da5ad3f1d832a5">$MPElement[Name="Id.c677bb9d523c42ad94da5ad3f1d832a5"]$</ViewString>
+            <ViewString ID="LastModified.8b390add89e84006af20a424d8c101a1">$MPElement[Name="LastModified.8b390add89e84006af20a424d8c101a1"]$</ViewString>
+            <ViewString ID="Status.fcac091672864c1cabc93b58a3e86c3e">$MPElement[Name="Status.fcac091672864c1cabc93b58a3e86c3e"]$</ViewString>
+          </ViewStrings>
+        </Presentation>
+      </View>
+    </Views>
+    <FolderItems>
+      <FolderItem ElementID="View.366fed72c65d4eb18766dae9d2165b19" ID="FolderItem.67e8a0e3ee1547bc833bec91f408999e" Folder="Folder.932137f9359643e59f34cc680deaa1b9" />
+    </FolderItems>
+    <ImageReferences>
+      <ImageReference ElementID="View.366fed72c65d4eb18766dae9d2165b19" ImageID="RunbookActivity!ActivityMgmt_RunbookActivitiesInProgress_16" />
+    </ImageReferences>
+    <StringResources>
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesInProgress.Header_Title" />
+      <StringResource ID="Id.c677bb9d523c42ad94da5ad3f1d832a5" />
+      <StringResource ID="LastModified.8b390add89e84006af20a424d8c101a1" />
+      <StringResource ID="Status.fcac091672864c1cabc93b58a3e86c3e" />
+    </StringResources>
+  </Presentation>
+  
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="View.366fed72c65d4eb18766dae9d2165b19">
+          <Name>In-Progress Activities</Name>
+        </DisplayString>
+        <DisplayString ElementID="Status.fcac091672864c1cabc93b58a3e86c3e">
+          <Name>Status</Name>
+          <Description>Status</Description>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesInProgress.Header_Title">
+          <Name>Title</Name>
+          <Description>Title</Description>
+        </DisplayString>
+        <DisplayString ElementID="Id.c677bb9d523c42ad94da5ad3f1d832a5">
+          <Name>ID</Name>
+          <Description>Work item ID</Description>
+        </DisplayString>
+        <DisplayString ElementID="LastModified.8b390add89e84006af20a424d8c101a1">
+          <Name>Last Modified</Name>
+          <Description>Last modified</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

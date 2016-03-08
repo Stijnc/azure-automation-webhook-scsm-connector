@@ -1,0 +1,52 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <TypeProjections>
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityViewProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity" >
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+        </TypeProjection>
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityFullProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity">
+          <Component Path="$Target/Path[Relationship='CoreActivity!System.WorkItemContainsActivity' SeedRole='Target']$" Alias="ParentWorkItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemCreatedByUser']$" Alias="ActivityCreatedBy" />
+          <Component Path="$Target/Path[Relationship='CoreActivity!System.ActivityCanBeEditedByUser']$" Alias="ActivityCanBeEditedBy" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAboutConfigItem']$" Alias="ActivityAboutConfigItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemImpactsService']$" Alias="AffectedService" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasActionLog']$" Alias="ActionLogs" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasCommentLog']$" Alias="UserComments" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToConfigItem']$" Alias="RelatedConfigItem" />
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToWorkItem']$" Alias="RelatedWorkItem">
+            <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="RelatedWorkItemAssignedTo" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemRelatesToWorkItem' SeedRole='Target']$" Alias="RelatedWorkItemSource">
+            <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="RelatedWorkItemAssignedTo" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemHasFileAttachment']$" Alias="FileAttachment">
+            <Component Path="$Target/Path[Relationship='SupportingItem!System.FileAttachmentAddedByUser']$" Alias="FileAttachmentAddedBy" />
+          </Component>
+          <Component Path="$Target/Path[Relationship='CoreKnowledge!System.EntityLinksToKnowledgeDocument']$" Alias="RelatedKnowledge" />
+          <Component Path="$Target/Path[Relationship='System.AARunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />
+        </TypeProjection>
+        <TypeProjection ID="System.WorkItem.Activity.AARunbookActivityProjection" Accessibility="Public" Type="SCSM.AzureAutomation.Runbook.Activity">
+          <Component Path="$Target/Path[Relationship='WorkItem!System.WorkItemAssignedToUser']$" Alias="ActivityAssignedTo" />
+          <Component Path="$Target/Path[Relationship='System.AARunbookActivityRelatesToAAConnector']$" Alias="RelatedAAConnector" />
+        </TypeProjection>
+      </TypeProjections>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityViewProjection" >
+          <Name>Azure Automation Activity View Projection</Name>
+        </DisplayString>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityFullProjection" >
+          <Name>Azure Automation Activity Projection (Full)</Name>
+        </DisplayString>
+        <DisplayString ElementID="System.WorkItem.Activity.AARunbookActivityProjection" >
+          <Name>Azure Automation Activity Projection (Advanced)</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
