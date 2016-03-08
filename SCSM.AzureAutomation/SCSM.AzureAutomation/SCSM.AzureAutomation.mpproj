@@ -18,7 +18,7 @@
     <Company>SCSM AA Connector</Company>
     <Copyright>Copyright (c) SCSM AA Connector. All rights reserved.</Copyright>
     <DelaySigning>False</DelaySigning>
-    <AssemblyOriginatorKeyFile>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\SCSM.AzureAutomation.WPF\sealkey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
@@ -65,7 +65,7 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.ActivityManagement.Library">
-      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.ActivityManagement.Library.mp</HintPath>
+      <HintPath>..\References\ServiceManager.ActivityManagement.Library.mp</HintPath>
       <Alias>SAL</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
@@ -89,7 +89,7 @@
       <PackageToBundle>False</PackageToBundle>
     </ManagementPackReference>
     <ManagementPackReference Include="ServiceManager.RunbookActivity.Library">
-      <HintPath>C:\Users\rplank\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.RunbookActivity.Library.mp</HintPath>
+      <HintPath>..\References\ServiceManager.RunbookActivity.Library.mp</HintPath>
       <Alias>RunbookActivity</Alias>
       <MinVersion>7.5.3079.0</MinVersion>
       <PackageToBundle>False</PackageToBundle>
