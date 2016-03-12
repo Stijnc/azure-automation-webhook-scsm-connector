@@ -5,5 +5,7 @@
     <Image ID="AzureAutomation2x24" Accessibility="Public" FileName="AzureAutomation2x24.png" HasNullStream="false" />
     <Image ID="webhook2x16" Accessibility="Public" FileName="webhook2x16.png" HasNullStream="false" />
     <Image ID="webhook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
+    <Image ID="runbook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
+    <Image ID="runbook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
   </Resources>
 </ManagementPackFragment>
