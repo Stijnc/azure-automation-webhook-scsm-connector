@@ -249,9 +249,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Image\webhook2x16.png">
-      <SubType>Content</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Image\webhook2x24.png">
       <SubType>Content</SubType>
     </EmbeddedResource>
@@ -263,6 +260,17 @@
       <Private>True</Private>
       <PackageToBundle>True</PackageToBundle>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\Runbooks2x16.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Image\Runbooks2x24.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Image\webhook2x16.png">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
 </Project>

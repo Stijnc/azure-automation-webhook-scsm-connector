@@ -52,7 +52,7 @@
       <FolderItem ElementID="View.ebb9ccc1ae2f44f98364865e98590137" ID="FolderItem.af1a76420ff741de97cc5c603a971044" Folder="Authoring!ServiceManager.Console.Authoring.Root" />
     </FolderItems>
     <ImageReferences>
-      <ImageReference ElementID="View.ebb9ccc1ae2f44f98364865e98590137" ImageID="AzureAutomation2x16" />
+      <ImageReference ElementID="View.ebb9ccc1ae2f44f98364865e98590137" ImageID="Runbook2x16" />
     </ImageReferences>
     <StringResources>
       <StringResource ID="Name.773994400e944ad6b93d32febc46444e" />
