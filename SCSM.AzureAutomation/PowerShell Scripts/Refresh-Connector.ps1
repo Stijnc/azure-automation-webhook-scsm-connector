@@ -25,7 +25,7 @@ $Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -Auto
 Foreach($runbook in $Runbooks)
 {
 	$Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
-	if ($Runbookobj.State -eq "Published")
+	if ($Runbookobj.State -eq "New")
 	{
 		$RBType = switch($Runbookobj.RunbookType)
 		{
@@ -33,6 +33,20 @@ Foreach($runbook in $Runbooks)
 			Graph{"AzureAutomationRunbook.Type.Graphical"}
 			PowerShell{"AzureAutomationRunbook.Type.PowerShell"}
 		}
+
+		$param = @()
+        ($Runbookobj.Parameters).GetEnumerator() | Foreach-object { 
+            $object = [PSObject]@{
+                Parameter = $_.Name
+                DefaultValue = ($_.Value).DefaultValue
+                IsMandatory = ($_.Value).IsMandatory
+                Position = ($_.Value).Position  
+                Type = ($_.Value).Type 
+                }
+            $param += $object
+        }
+        $JsonParam = $param | ConvertTo-Json
+
 		$RunbookHT = @{
 			#ConnectorID = $ConnectorID
             DisplayName = $Runbookobj.Name
@@ -45,6 +59,7 @@ Foreach($runbook in $Runbooks)
 			RunbookType = $RBType
 			#JobCount = $Runbookobj.JobCount
 			Status = "AzureAutomationRunbook.Status.Published"
+			Parameters = $JsonParam.ToString()
 		}
 
 		$rbName = $Runbookobj.Name
