@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <TypeDefinitions>
+    <ModuleTypes>
+      <WriteActionModuleType ID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448.MT" Accessibility="Public" RunAs="Core!Microsoft.SystemCenter.ServiceManager.WorkflowAccount" Batching="false">
+        <Configuration>
+          <IncludeSchemaTypes>
+            <SchemaType>Windows!Microsoft.Windows.PowerShellSchema</SchemaType>
+          </IncludeSchemaTypes>
+          <xsd:element name="ConnectorId" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+        </Configuration>
+        <OverrideableParameters>
+          <OverrideableParameter ID="ConnectorId" Selector="$Config/ConnectorId$" ParameterType="string" />
+        </OverrideableParameters>
+        <ModuleImplementation Isolation="Any">
+          <Composite>
+            <MemberModules>
+              <WriteAction ID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448.PSWA" TypeID="Windows!Microsoft.Windows.PowerShellWriteAction">
+                <ScriptName>DoWork.ps1</ScriptName>
+                <ScriptBody>param ( [string]$ConnectorId )
+#
+# Refresh-Connector.ps1
+#
+# Create and update Runbooks from Azure Automation
+param ([string]$ConnectorID)
+$TypePath = (Get-ItemProperty "hklm:\software\microsoft\system center\2010\service manager\setup").InstallDirectory + "scsm.azureautomation.wpf.dll"
+Add-Type -Path $TypePath
+
+$mpcAARunbook = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
+$mpcAAConnector = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$emoAAConnector = Get-SCSMObject -Class $mpcAAConnector -Filter "Id -eq $ConnectorID"
+
+$SubscriptionID = $emoAAConnector.SubscriptionID
+$AutomationAccountName = $emoAAConnector.AutomationAccount
+$username = $emoAAConnector.RunAsAccountName
+$encryptedPassword = $emoAAConnector.RunAsAccountPassword
+$secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.StringCipher]::Decrypt($encryptedPassword,$username)) -AsPlainText -Force
+$ResourceGroup = $emoAAConnector.ResourceGroup
+
+$Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
+Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
+
+#Get Each Runbook and Save to CMDB
+$Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName 
+Foreach($runbook in $Runbooks) {
+ $Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
+ if ($Runbookobj.State -eq "Published") {
+  $RBType = switch($Runbookobj.RunbookType) {
+   Script{"AzureAutomationRunbook.Type.Workflow"}
+   Graph{"AzureAutomationRunbook.Type.Graphical"}
+   PowerShell{"AzureAutomationRunbook.Type.PowerShell"}
+  }
+  $RunbookHT = @{
+   ConnectorID = $ConnectorID
+            DisplayName = $Runbookobj.Name
+   Name = $Runbookobj.Name
+   Description = $Runbookobj.Description
+   LastModifiedtime = $Runbookobj.LastModifiedTime
+   LogVerbose =$Runbookobj.LogVerbose
+   LogProgress = $Runbookobj.LogProgress
+   CreatedDate = $Runbookobj.CreationTime
+   RunbookType = $RBType
+   Status = "AzureAutomationRunbook.Status.Published"
+  }
+
+  $rbName = $Runbookobj.Name
+  $Runbook = Get-SCSMObject -Class $mpcAARunbook -Filter "Name -eq $rbName"
+  if($Runbook -eq $null) {
+   New-SCSMObject -Class $mpcAARunbook -PropertyHashtable $RunbookHT
+  }
+        else {
+            Set-SCSMObject -SMObject $Runbook -PropertyHashtable $RunbookHT
+        }
+ }
+}</ScriptBody>
+                <SnapIns></SnapIns>
+                <Parameters>
+                  <Parameter>
+                    <Name>ConnectorId</Name>
+                    <Value>$Config/ConnectorId$</Value>
+                  </Parameter>
+                </Parameters>
+                <TimeoutSeconds>300</TimeoutSeconds>
+                <StrictErrorHandling>true</StrictErrorHandling>
+                <SerializationDepth>3</SerializationDepth>
+              </WriteAction>
+            </MemberModules>
+            <Composition>
+              <Node ID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448.PSWA" />
+            </Composition>
+          </Composite>
+        </ModuleImplementation>
+        <InputType>System!System.BaseData</InputType>
+      </WriteActionModuleType>
+    </ModuleTypes>
+  </TypeDefinitions>
+  <Categories>
+    <Category ID="SCSM.AzureAutomation.Workflows.Category" Value="Console!Microsoft.EnterpriseManagement.ServiceManager.ManagementPack">
+      <ManagementPackName>SCSM.AzureAutomation.Workflows</ManagementPackName>
+      <ManagementPackVersion>1.0.0.0</ManagementPackVersion>
+    </Category>
+  </Categories>
+  <Monitoring>
+    <Tasks>
+      <Task ID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448" Accessibility="Public" Enabled="true" Target="Windows!Microsoft.Windows.Computer" Timeout="300" Remotable="true">
+        <Category>Notification</Category>
+        <WriteAction ID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448.WA" TypeID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448.MT">
+          <ConnectorId></ConnectorId>
+        </WriteAction>
+      </Task>
+    </Tasks>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="SCSM.AzureAutomation.Workflows">
+          <Name>SCSM.AzureAutomation.Workflows</Name>
+        </DisplayString>
+        <DisplayString ElementID="RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448">
+          <Name>RefreshConnector.WindowsPowerShellScript.51352f64_e886_47f0_a927_6c30ab03c448</Name>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

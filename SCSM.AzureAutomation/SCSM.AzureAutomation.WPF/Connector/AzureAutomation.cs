@@ -130,31 +130,32 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Get the rule using the connector ID
                 ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
+                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.Workflows", null, new Version("1.0.0.0"));
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
-                //String strConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
-                //ManagementPackRule ruleConnector = mpConnectors.GetRule(strConnectorID);
+                String strConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
+                ManagementPackRule ruleConnector = mpAAConnectorWorkflows.GetRule(strConnectorID);
 
                 //Update the Enabled property or delete as appropriate
                 if (parameters.Contains("Delete"))
                 {
-                    //ruleConnector.Status = ManagementPackElementStatus.PendingDelete;
+                    ruleConnector.Status = ManagementPackElementStatus.PendingDelete;
                 }
                 else if (parameters.Contains("Disable"))
                 {
                     emoAAConnector[classAAConnector, "Enabled"].Value = false;
-                    //ruleConnector.Enabled = ManagementPackMonitoringLevel.@false;
-                    //ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
+                    ruleConnector.Enabled = ManagementPackMonitoringLevel.@false;
+                    ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
                 }
                 else if (parameters.Contains("Enable"))
                 {
                     emoAAConnector[classAAConnector, "Enabled"].Value = true;
-                    //ruleConnector.Enabled = ManagementPackMonitoringLevel.@true;
-                    //ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
+                    ruleConnector.Enabled = ManagementPackMonitoringLevel.@true;
+                    ruleConnector.Status = ManagementPackElementStatus.PendingUpdate;
                 }
 
                 //Commit the changes to the connector object and rule
                 emoAAConnector.Commit();
-                //mpConnectors.AcceptChanges();
+                mpAAConnectorWorkflows.AcceptChanges();
 
                 //Update the view when done so the item is either removed or the updated Enabled value shows
                 RequestViewRefresh();
@@ -370,14 +371,13 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Get the System MP so we can get the system key token and version so we can get other MPs using that info
                 ManagementPack mpSystem = emg.ManagementPacks.GetManagementPack(SystemManagementPack.System);
-                Version verSystemVersion = mpSystem.Version;
                 string strSystemKeyToken = mpSystem.KeyToken;
-                ManagementPack mpSubscriptions = emg.GetManagementPack("Microsoft.SystemCenter.Subscriptions", strSystemKeyToken, verSystemVersion);
+                ManagementPack mpSubscriptions = emg.GetManagementPack("Microsoft.SystemCenter.Subscriptions", strSystemKeyToken, new Version("1.0.0.0"));
 
                 //Also get the System Center and Connector MPs - we'll need things from those MPs later
                 ManagementPack mpSystemCenter = emg.ManagementPacks.GetManagementPack(SystemManagementPack.SystemCenter);
                 ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
-                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.WorkFlows", null, new Version("1.0.0.0"));
+                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.Workflows", null, new Version("1.0.0.0"));
 
                 //Get the AzureAutomationConnector class in the Connectors MP
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
@@ -428,7 +428,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 dsmSchedule.Configuration =
                     "<Scheduler>" +
                         "<SimpleReccuringSchedule>" +
-                            "<Interval Unit=\"Minutes\">60</Interval>" +
+                            "<Interval Unit=\"Minutes\">5</Interval>" +
                         "</SimpleReccuringSchedule>" +
                         "<ExcludeDates />" +
                     "</Scheduler>";
@@ -449,13 +449,12 @@ namespace SCSM.AzureAutomation.WPF.Connector
                     "<Subscription>" +
                         "<WindowsWorkflowConfiguration>" +
                             //Specify the Windows Workflow Foundation workflow Assembly name here
-                            "<AssemblyName>AAConnectorWorkflow</AssemblyName>" +
+                            "<AssemblyName>SCSM.AzureAutomation.Workflows.AT</AssemblyName>" +
                             //Specify the type name of the workflow to call in the assembly here:
-                            "<WorkflowTypeName>WorkflowAuthoring.AAConnectorWorkflow</WorkflowTypeName>" +
+                            "<WorkflowTypeName>WorkflowAuthoring.RefreshConnector</WorkflowTypeName>" +
                             "<WorkflowParameters>" +
                                 //Pass in the parameters here.  In this case the two parameters are the data file path and the mapping file path
-                                "<WorkflowParameter Name=\"ImportData_DataFilePath\" Type=\"string\">" + this.DataFilePath + "</WorkflowParameter>" +
-                                "<WorkflowParameter Name=\"ImportData_FormatFilePath\" Type=\"string\">" + this.MappingFilePath + "</WorkflowParameter>" +
+                                "<WorkflowParameter Name=\"ConnectorId\" Type=\"string\">" + strConnectorID + "</WorkflowParameter>" +
                             "</WorkflowParameters>" +
                             "<RetryExceptions />" +
                             "<RetryDelaySeconds>60</RetryDelaySeconds>" +

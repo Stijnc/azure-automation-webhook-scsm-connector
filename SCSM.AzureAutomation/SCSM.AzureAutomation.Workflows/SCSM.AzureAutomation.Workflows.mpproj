@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{7ae379d8-8438-4a6d-9258-21749999a98f}</ProjectGuid>
+    <RootNamespace>SCSM.AzureAutomation.Workflows</RootNamespace>
+    <Name>SCSM.AzureAutomation.Workflows</Name>
+    <ManagementPackName>SCSM.AzureAutomation.Workflows</ManagementPackName>
+    <Version>1.0.0.0</Version>
+    <MpFrameworkVersion>v7.0.2</MpFrameworkVersion>
+    <MpFrameworkProfile>OM</MpFrameworkProfile>
+    <ProductVersion>1.1.0.0</ProductVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <GenerateSealed>false</GenerateSealed>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySigning>false</DelaySigning>
+    <AssemblyOriginatorKeyFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+    <DelaySigning>false</DelaySigning>
+    <Company>MyCompany</Company>
+    <Copyright>Copyright (c) MyCompany. All rights reserved.</Copyright>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SCSM.AzureAutomation.Workflows.mpx">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Administration">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Administration.mp</HintPath>
+      <Alias>EnterpriseManagement</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.EnterpriseManagement.ServiceManager.UI.Console">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.EnterpriseManagement.ServiceManager.UI.Console.mp</HintPath>
+      <Alias>Console</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="Microsoft.Windows.Library">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\Microsoft.Windows.Library.mp</HintPath>
+      <Alias>Windows</Alias>
+      <MinVersion>7.5.8501.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="ServiceManager.Core.Library">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\ServiceManager.Core.Library.mp</HintPath>
+      <Alias>Core</Alias>
+      <MinVersion>7.5.3079.0</MinVersion>
+    </ManagementPackReference>
+    <ManagementPackReference Include="System.Library">
+      <HintPath>C:\Users\jhennen\Source\Repos\azure-automation-webhook-scsm-connector\SCSM.AzureAutomation\References\System.Library.mp</HintPath>
+      <Alias>System</Alias>
+      <MinVersion>7.5.8501.0</MinVersion>
+    </ManagementPackReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VSAC\Microsoft.SystemCenter.OperationsManager.targets" />
+</Project>
