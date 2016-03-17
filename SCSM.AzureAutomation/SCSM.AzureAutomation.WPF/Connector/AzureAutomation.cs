@@ -428,7 +428,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 dsmSchedule.Configuration =
                     "<Scheduler>" +
                         "<SimpleReccuringSchedule>" +
-                            "<Interval Unit=\"Minutes\">5</Interval>" +
+                            "<Interval Unit=\"Minutes\">60</Interval>" +
                         "</SimpleReccuringSchedule>" +
                         "<ExcludeDates />" +
                     "</Scheduler>";
