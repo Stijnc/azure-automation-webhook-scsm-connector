@@ -13,6 +13,7 @@
           <Property ID="LogProgress" Type="bool"/>
           <Property ID="CreatedDate" Type="datetime"/>
           <Property ID="RunbookType" Type="enum" EnumType="AzureAutomationRunbook.Type"/>
+          <Property ID="Parameters" Type="string" Key="false" CaseSensitive="false" MaxLength="6000" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
@@ -52,6 +53,9 @@
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="RunbookType">
           <Name>Runbook Type</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="Parameters" >
+          <Name>Parameters</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

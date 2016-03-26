@@ -1,3 +1,89 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  
+  <Categories>
+  </Categories>
+  <Presentation>
+    <Views>
+      <View ID="View.ebb9ccc1ae2f44f98364865e98590137" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Runbook" TypeID="MESUC!GridViewType" Visible="true">
+        <Category>NotUsed</Category>
+        <Data>
+          <Adapters>
+            <Adapter AdapterName="dataportal:EnterpriseManagementObjectAdapter">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.EnterpriseManagementObjectAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="viewframework://Adapters/AdvancedList">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.ViewFramework</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.ViewFramework.AdvancedListSupportAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="omsdk://Adapters/Criteria">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.SdkCriteriaAdapter</AdapterType>
+            </Adapter>
+          </Adapters>
+          <ItemsSource>
+            <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+              <AdvancedListSupportClass.Parameters>
+                <QueryParameter Parameter="ManagementPackClassId" Value="$MPElement[Name='SCSM.AzureAutomation.Runbook']$" />
+              </AdvancedListSupportClass.Parameters>
+            </AdvancedListSupportClass>
+          </ItemsSource>
+          <Criteria />
+        </Data>
+        <Presentation>
+          <Columns>
+            <mux:ColumnCollection xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mux="http://schemas.microsoft.com/SystemCenter/Common/UI/Views/GridView" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:datebinding="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:data="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:appCommon="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.Application.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.Application.Common" xmlns:toolbox="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfToolbox;assembly=Microsoft.EnterpriseManagement.UI.FormsInfra" xmlns:slaBinding="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.SLA.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.SLA.Common">
+              <mux:Column Name="$Name$" DisplayMemberBinding="{Binding Path=$Name$, Mode=OneWay}" Width="100" DisplayName="Name.773994400e944ad6b93d32febc46444e" Property="$Name$" DataType="s:String" />
+              <mux:Column Name="RunbookType.DisplayName" DisplayMemberBinding="{Binding Path=RunbookType.DisplayName, Mode=OneWay}" Width="100" DisplayName="RunbookType.a74266d88d86470d9ef2b0546891e675" Property="RunbookType.DisplayName" DataType="s:String" />
+              <mux:Column Name="Status.DisplayName" DisplayMemberBinding="{Binding Path=Status.DisplayName, Mode=OneWay}" Width="100" DisplayName="Status.5fd854d1df3449458a5e9b3b77b610f2" Property="Status.DisplayName" DataType="s:String" />
+              <mux:Column Name="Connector.AutomationAccount" DisplayMemberBinding="{Binding Path=Connector.AutomationAccount, Mode=OneWay}" Width="100" DisplayName="AutomationAccount.d9e14feae5c44e22abd049af71817d2e" Property="Connector.AutomationAccount" DataType="s:String" />
+            </mux:ColumnCollection>
+          </Columns>
+          <AdditonalProperties />
+          <ViewStrings>
+            <ViewString ID="Name.773994400e944ad6b93d32febc46444e">$MPElement[Name="Name.773994400e944ad6b93d32febc46444e"]$</ViewString>
+            <ViewString ID="RunbookType.a74266d88d86470d9ef2b0546891e675">$MPElement[Name="RunbookType.a74266d88d86470d9ef2b0546891e675"]$</ViewString>
+            <ViewString ID="Status.5fd854d1df3449458a5e9b3b77b610f2">$MPElement[Name="Status.5fd854d1df3449458a5e9b3b77b610f2"]$</ViewString>
+            <ViewString ID="AutomationAccount.d9e14feae5c44e22abd049af71817d2e">$MPElement[Name="AutomationAccount.d9e14feae5c44e22abd049af71817d2e"]$</ViewString>
+          </ViewStrings>
+        </Presentation>
+      </View>
+    </Views>
+    <FolderItems>
+      <FolderItem ElementID="View.ebb9ccc1ae2f44f98364865e98590137" ID="FolderItem.af1a76420ff741de97cc5c603a971044" Folder="Authoring!ServiceManager.Console.Authoring.Root" />
+    </FolderItems>
+    <ImageReferences>
+      <ImageReference ElementID="View.ebb9ccc1ae2f44f98364865e98590137" ImageID="Runbook2x16" />
+    </ImageReferences>
+    <StringResources>
+      <StringResource ID="Name.773994400e944ad6b93d32febc46444e" />
+      <StringResource ID="RunbookType.a74266d88d86470d9ef2b0546891e675" />
+      <StringResource ID="Status.5fd854d1df3449458a5e9b3b77b610f2" />
+      <StringResource ID="AutomationAccount.d9e14feae5c44e22abd049af71817d2e" />
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="View.ebb9ccc1ae2f44f98364865e98590137">
+          <Name>Azure Automation Runbooks</Name>
+        </DisplayString>
+        <DisplayString ElementID="Name.773994400e944ad6b93d32febc46444e">
+          <Name>Runbook Name</Name>
+          <Description>Name</Description>
+        </DisplayString>
+        <DisplayString ElementID="RunbookType.a74266d88d86470d9ef2b0546891e675">
+          <Name>Runbook Type</Name>
+          <Description />
+        </DisplayString>
+        <DisplayString ElementID="Status.5fd854d1df3449458a5e9b3b77b610f2">
+          <Name>Status</Name>
+          <Description />
+        </DisplayString>
+        <DisplayString ElementID="AutomationAccount.d9e14feae5c44e22abd049af71817d2e">
+          <Name>Automation Account</Name>
+          <Description />
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>
