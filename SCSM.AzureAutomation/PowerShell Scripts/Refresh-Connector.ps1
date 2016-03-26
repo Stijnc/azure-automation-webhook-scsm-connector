@@ -1,31 +1,26 @@
-#
-# Refresh-Connector.ps1
-#
-# Collect Runbooks and DSC Configs from Azure Automation
+param ([string]$ConnectorID)
 $TypePath = (Get-ItemProperty "hklm:\software\microsoft\system center\2010\service manager\setup").InstallDirectory + "scsm.azureautomation.wpf.dll"
 Add-Type -Path $TypePath
 
-#need to get encrypted password once that is complete
-# neeed to update code to allow multipule connectors, this code will only work with one connector currently
-$SMRBClass = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
-$SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
-$SMObject = Get-SCSMObject -Class $SMClass 
-$SubscriptionID = $SMObject.SubscriptionID
-$AutomationAccountName = $SMObject.AutomationAccount
-$username = $SMObject.RunAsAccountName
-$encryptedPassword = $SMObject.RunAsAccountPassword
+$mpcAARunbook = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook$
+$mpcAAConnector = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$emoAAConnector = Get-SCSMObject -Class $mpcAAConnector -Filter "Id -eq $ConnectorID"
+
+$SubscriptionID = $emoAAConnector.SubscriptionID
+$AutomationAccountName = $emoAAConnector.AutomationAccount
+$username = $emoAAConnector.RunAsAccountName
+$encryptedPassword = $emoAAConnector.RunAsAccountPassword
 $secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.StringCipher]::Decrypt($encryptedPassword,$username)) -AsPlainText -Force
-$ResourceGroup = $SMObject.ResourceGroup
+$ResourceGroup = $emoAAConnector.ResourceGroup
 
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
 Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
 
 #Get Each Runbook and Save to CMDB
 $Runbooks = Get-AzureRmAutomationRunbook -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName 
-Foreach($runbook in $Runbooks)
-{
-	$Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
-	if ($Runbookobj.State -eq "New")
+Foreach($runbook in $Runbooks) {
+ $Runbookobj = Get-AzureRmAutomationRunbook -AutomationAccountName $AutomationAccountName -ResourceGroup $ResourceGroup -Name $runbook.Name
+ if ($Runbookobj.State -ne "New")
 	{
 		$RBType = switch($Runbookobj.RunbookType)
 		{
@@ -48,7 +43,7 @@ Foreach($runbook in $Runbooks)
         $JsonParam = $param | ConvertTo-Json
 
 		$RunbookHT = @{
-			#ConnectorID = $ConnectorID
+			ConnectorID = $ConnectorID
             DisplayName = $Runbookobj.Name
 			Name = $Runbookobj.Name
 			Description = $Runbookobj.Description
@@ -57,26 +52,17 @@ Foreach($runbook in $Runbooks)
 			LogProgress = $Runbookobj.LogProgress
 			CreatedDate = $Runbookobj.CreationTime
 			RunbookType = $RBType
-			#JobCount = $Runbookobj.JobCount
 			Status = "AzureAutomationRunbook.Status.Published"
 			Parameters = $JsonParam.ToString()
 		}
 
-		$rbName = $Runbookobj.Name
-		$Runbook = Get-SCSMObject -Class $SMRBClass -Filter "Name -eq $rbName"
-		if($Runbook -eq $null)
-		{
-			New-SCSMObject -Class $SMRBClass -PropertyHashtable $RunbookHT
-		}
+  $rbName = $Runbookobj.Name
+  $Runbook = Get-SCSMObject -Class $mpcAARunbook -Filter "Name -eq $rbName"
+  if($Runbook -eq $null) {
+   New-SCSMObject -Class $mpcAARunbook -PropertyHashtable $RunbookHT
+  }
         else {
             Set-SCSMObject -SMObject $Runbook -PropertyHashtable $RunbookHT
         }
-	}
-	
-	
-	
-
+ }
 }
-
-#Get Each DSC Configuration and Save to CMDB
- ## Todo later
