@@ -54,6 +54,11 @@ Project("{D4B43EB3-688B-4EEE-86BD-088F0B28ABB3}") = "SCSM.AzureAutomation.Workfl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SCSM.AzureAutomation.Workflows.AT", "SCSM.AzureAutomation.Workflows.AT\SCSM.AzureAutomation.Workflows.AT.csproj", "{0774D7A5-6EA1-446C-AA99-7771A74DF50C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8A13080F-033E-47D8-9B94-330CE33B6AAA}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
