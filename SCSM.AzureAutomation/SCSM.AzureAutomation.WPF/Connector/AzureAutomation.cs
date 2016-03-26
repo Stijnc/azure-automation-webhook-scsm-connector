@@ -454,7 +454,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                             "<WorkflowTypeName>WorkflowAuthoring.RefreshConnector</WorkflowTypeName>" +
                             "<WorkflowParameters>" +
                                 //Pass in the parameters here.  In this case the two parameters are the data file path and the mapping file path
-                                "<WorkflowParameter Name=\"ConnectorId\" Type=\"string\">" + strConnectorID + "</WorkflowParameter>" +
+                                "<WorkflowParameter Name=\"RefreshConnectorScript_ConnectorId\" Type=\"string\">" + strConnectorID + "</WorkflowParameter>" +
                             "</WorkflowParameters>" +
                             "<RetryExceptions />" +
                             "<RetryDelaySeconds>60</RetryDelaySeconds>" +
