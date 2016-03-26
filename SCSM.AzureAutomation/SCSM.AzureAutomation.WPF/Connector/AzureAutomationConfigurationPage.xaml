@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:l="clr-namespace:SCSM.AzureAutomation.WPF.Connector"
              xmlns:wpfwiz="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfWizardFramework;assembly=Microsoft.EnterpriseManagement.UI.WpfWizardFramework" Loaded="WizardRegularPageBase_Loaded">
-
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Name="ConfigurationGrid" Margin="15,25,15,25">
         <TextBlock Height="28" Margin="0,0,0,0" Name="titleLabel" FontWeight="Bold" Foreground="#FF003399" FontSize="14" VerticalAlignment="Top" Text="Configure the Connector"/>
         <ScrollViewer Margin="0,50,0,50" Name="scrollViewer" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
@@ -39,15 +45,8 @@
                     </TextBox.Text>
                 </TextBox>
                 <Label Height="25" Padding="0" Margin="0,0,0,0" Name="PasswordLabel" Content="Password:"/>
-                <TextBox Height="25" Margin="0,-8,0,10" Name="PasswordTextBlock" >
-                    <TextBox.Text>
-                        <Binding Path="RunAsAccountPassword" Mode="TwoWay"/>
-                    </TextBox.Text>
-                </TextBox>
-                <!--
-                <PasswordBox l:PasswordBoxAttachedProperties.EncryptedPassword="{Binding Path=RunasAccountPassword,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="25" Margin="0,-8,0,10" Name="PasswordTextBlock" PasswordChanged="PasswordBox_PasswordChanged" >
-                    PasswordBoxAttachedProperties.EncryptedPassword="{Binding PasswordSecureString,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                </PasswordBox>-->
+                <PasswordBox x:Name="txtPassword" Height="25" Margin="0,-8,0,10" PasswordChanged="PasswordBox_PasswordChanged"/>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -1,20 +1,15 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-
   <Categories>
-
-    <!-- <Category ID="Category.fb8a3716dcd3463cafa33c3dcdb8d55b" Target="SCSM.View.Configitem.Webhook" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" /> -->
-    <Category ID="Category.e7e4be9056594f00a508b94ccf46591f" Target="SCSM.View.Configitem.Webhook" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
-  
+    <Category ID="Category.feee3399411646d490a1457cc6ef86ff" Target="View.c0e8b139626a41638474fc3d12c3c1a7" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
+    <Category ID="Category.6662a9cc96e8457daba0ed875616fab8" Target="View.c0e8b139626a41638474fc3d12c3c1a7" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
   </Categories>
-  
   <Presentation>
     <Views>
-<!-- The actual view for the Azure Automation Webhooks, uses the connector type projection -->
-      <View ID="SCSM.View.Configitem.Webhook" Accessibility="Public" Enabled="true" Target="SCSM.Configitem.Webhook" TypeID="MESUC!GridViewType" Visible="true">
+      <View ID="View.c0e8b139626a41638474fc3d12c3c1a7" Accessibility="Public" Enabled="true" Target="SCSM.Configitem.Webhook" TypeID="MESUC!GridViewType" Visible="true">
         <Category>NotUsed</Category>
         <Data>
           <Adapters>
-             <Adapter AdapterName="dataportal:EnterpriseManagementObjectProjectionAdapter">
+            <Adapter AdapterName="dataportal:EnterpriseManagementObjectProjectionAdapter">
               <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
               <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.EnterpriseManagementObjectProjectionAdapter</AdapterType>
             </Adapter>
@@ -30,7 +25,7 @@
           <ItemsSource>
             <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectProjectionAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
               <AdvancedListSupportClass.Parameters>
-                <QueryParameter Parameter="TypeProjectionId" Value="$MPElement[Name='SCSM.Projection.Configitem.Webhook.Connector']$" />
+                <QueryParameter Parameter="TypeProjectionId" Value="$MPElement[Name='System.ConfigItem.WebhookViewProjection']$" />
               </AdvancedListSupportClass.Parameters>
             </AdvancedListSupportClass>
           </ItemsSource>
@@ -43,7 +38,7 @@
                       <Expression>
                         <SimpleExpression>
                           <ValueExpressionLeft>
-                            <Property>$Context/Property[Type='System!System.ConfigItem']/ObjectStatus$</Property>
+                            <Property>$Context/Property[Type='SCSM.Configitem.Webhook']/ObjectStatus$</Property>
                           </ValueExpressionLeft>
                           <Operator>NotEqual</Operator>
                           <ValueExpressionRight>
@@ -61,108 +56,65 @@
         <Presentation>
           <Columns>
             <mux:ColumnCollection xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mux="http://schemas.microsoft.com/SystemCenter/Common/UI/Views/GridView" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:datebinding="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:data="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:appCommon="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.Application.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.Application.Common" xmlns:toolbox="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfToolbox;assembly=Microsoft.EnterpriseManagement.UI.FormsInfra" xmlns:slaBinding="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.SLA.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.SLA.Common">
-              <mux:Column Name="Id" DisplayMemberBinding="{Binding Path=Id, Mode=OneWay}" Width="50" DisplayName="Webhookvw.Id" Property="Id" DataType="s:String" />
-              <mux:Column Name="DisplayName" DisplayMemberBinding="{Binding Path=DisplayName, Mode=OneWay}" Width="200" DisplayName="Webhookvw.DisplayName" Property="DisplayName" DataType="s:String" />
-              <mux:Column Name="Expiredate" DisplayMemberBinding="{datebinding:DateBinding Path=Expiredate, Mode=OneWay}" Width="150" DisplayName="Webhookvw.Expiredate" Property="Expiredate" DataType="s:DateTime" />
-              <mux:Column Name="AssetStatus.DisplayName" DisplayMemberBinding="{Binding Path=AssetStatus.DisplayName, Mode=OneWay}" Width="100" DisplayName="Webhookvw.AssetStatus" Property="AssetStatus.DisplayName" DataType="s:String" />
-              <mux:Column Name="Webhookconnector.DisplayName" DisplayMemberBinding="{Binding Path=Webhookconnector.DisplayName, Mode=OneWay}" Width="150" DisplayName="Webhookvw.connectorDisplayName" Property="Webhookconnector.DisplayName" DataType="s:String" />              
-              <mux:Column Name="Webhookconnector.AutomationAccount" DisplayMemberBinding="{Binding Path=Webhookconnector.AutomationAccount, Mode=OneWay}" Width="150" DisplayName="Webhookvw.connectorAutomationAccount" Property="Webhookconnector.AutomationAccount" DataType="s:String" />
-              <mux:Column Name="Link" DisplayMemberBinding="{Binding Path=Link, Mode=OneWay}" Width="250" DisplayName="Webhookvw.Link" Property="Link" DataType="s:String" />
-              <mux:Column Name="$LastModified$" DisplayMemberBinding="{Binding Path=$LastModified$, Mode=OneWay}" Width="100" DisplayName="Webhookvw.LastModified" Property="$LastModified$" DataType="s:DateTime" />
+              <mux:Column Name="DisplayName" DisplayMemberBinding="{Binding Path=DisplayName, Mode=OneWay}" Width="100" DisplayName="System.ConfigItem.Webhook.DisplayName" Property="DisplayName" DataType="s:String" />
+              <mux:Column Name="Runbook.ConnectorID" DisplayMemberBinding="{Binding Path=Runbook.ConnectorID, Mode=OneWay}" Width="100" DisplayName="System.ConfigItem.Webhook.ConnectorID" Property="Runbook.ConnectorID" DataType="s:Guid" />
+              <mux:Column Name="Runbook.Name" DisplayMemberBinding="{Binding Path=Runbook.Name, Mode=OneWay}" Width="100" DisplayName="System.ConfigItem.Webhook.RunbookName" Property="Runbook.Name" DataType="s:String" />
+              <mux:Column Name="Runbook.RunbookType.DisplayName" DisplayMemberBinding="{Binding Path=Runbook.RunbookType.DisplayName, Mode=OneWay}" Width="100" DisplayName="System.ConfigItem.Webhook.RunbookType" Property="Runbook.RunbookType.DisplayName" DataType="s:String" />
+              <mux:Column Name="$LastModified$" DisplayMemberBinding="{Binding Path=$LastModified$, Mode=OneWay}" Width="100" DisplayName="System.ConfigItem.Webhook.LastModified" Property="$LastModified$" DataType="s:DateTime" />
             </mux:ColumnCollection>
           </Columns>
           <AdditonalProperties />
           <ViewStrings>
-            <ViewString ID="Webhookvw.AssetStatus">$MPElement[Name="Webhookvw.AssetStatus"]$</ViewString>
-            <ViewString ID="Webhookvw.DisplayName">$MPElement[Name="Webhookvw.DisplayName"]$</ViewString>
-            <ViewString ID="Webhookvw.Expiredate">$MPElement[Name="Webhookvw.Expiredate"]$</ViewString>
-            <ViewString ID="Webhookvw.Id">$MPElement[Name="Webhookvw.Id"]$</ViewString>
-            <ViewString ID="Webhookvw.LastModified">$MPElement[Name="Webhookvw.LastModified"]$</ViewString>
-            <ViewString ID="Webhookvw.Link">$MPElement[Name="Webhookvw.Link"]$</ViewString>
-            <ViewString ID="Webhookvw.connectorDisplayName">$MPElement[Name="Webhookvw.connectorDisplayName"]$</ViewString>
-            <ViewString ID="Webhookvw.connectorAutomationAccount">$MPElement[Name="Webhookvw.connectorAutomationAccount"]$</ViewString>
+            <ViewString ID="System.ConfigItem.Webhook.DisplayName">$MPElement[Name="System.ConfigItem.Webhook.DisplayName"]$</ViewString>
+            <ViewString ID="System.ConfigItem.Webhook.LastModified">$MPElement[Name="System.ConfigItem.Webhook.LastModified"]$</ViewString>
+            <ViewString ID="System.ConfigItem.Webhook.ConnectorID">$MPElement[Name="System.ConfigItem.Webhook.ConnectorID"]$</ViewString>
+            <ViewString ID="System.ConfigItem.Webhook.RunbookName">$MPElement[Name="System.ConfigItem.Webhook.RunbookName"]$</ViewString>
+            <ViewString ID="System.ConfigItem.Webhook.RunbookType">$MPElement[Name="System.ConfigItem.Webhook.RunbookType"]$</ViewString>
           </ViewStrings>
         </Presentation>
       </View>
-           
     </Views>
-    
-<!-- create the folder item, in library root wunderbar -->
     <FolderItems>
-      <FolderItem ElementID="SCSM.View.Configitem.Webhook" ID="Webhookvw.FolderItem" Folder="Authoring!ServiceManager.Console.Authoring.Root" />
+      <FolderItem ElementID="View.c0e8b139626a41638474fc3d12c3c1a7" ID="FolderItem.56cc9242f0a5452daef1e750b248be11" Folder="AzureAutomation.Folder" />
     </FolderItems>
-    
- <!-- The image references -->     
-    <ImageReferences>    
-      <ImageReference ElementID="SCSM.View.Configitem.Webhook" ImageID="AzureAutomation2x16" />
-      <ImageReference ElementID="SCSM.View.Configitem.Webhook" ImageID="AzureAutomation2x24" />   
+    <ImageReferences>
+      <ImageReference ElementID="View.c0e8b139626a41638474fc3d12c3c1a7" ImageID="webhook2x16" />
     </ImageReferences>
-    
-<!-- String resources -->
     <StringResources>
-      <StringResource ID="Webhookvw.AssetStatus" />
-      <StringResource ID="Webhookvw.DisplayName" />
-      <StringResource ID="Webhookvw.Expiredate" />
-      <StringResource ID="Webhookvw.Id" />
-      <StringResource ID="Webhookvw.LastModified" />
-      <StringResource ID="Webhookvw.Link" />
-      <StringResource ID="Webhookvw.connectorDisplayName" />
-      <StringResource ID="Webhookvw.connectorAutomationAccount" />
+      <StringResource ID="System.ConfigItem.Webhook.DisplayName" />
+      <StringResource ID="System.ConfigItem.Webhook.LastModified" />
+      <StringResource ID="System.ConfigItem.Webhook.ConnectorID" />
+      <StringResource ID="System.ConfigItem.Webhook.RunbookName" />
+      <StringResource ID="System.ConfigItem.Webhook.RunbookType" />
     </StringResources>
-    
   </Presentation>
-
-<!-- Languages-->  
- <LanguagePacks>
-   <LanguagePack ID="ENU" IsDefault="true">
-     <DisplayStrings>
-       <DisplayString ElementID="SCSM.View.Configitem.Webhook">
-          <Name>Azure Webhooks</Name>
-          <Description>Azure Automation Webhooks</Description>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="View.c0e8b139626a41638474fc3d12c3c1a7">
+          <Name>AA Webhooks</Name>
         </DisplayString>
-        <DisplayString ElementID="Webhookvw.AssetStatus">
-          <Name>Asset status</Name>
-          <Description>Asset status</Description>
-        </DisplayString>
-        <DisplayString ElementID="Webhookvw.DisplayName">
+        <DisplayString ElementID="System.ConfigItem.Webhook.DisplayName">
           <Name>Display Name</Name>
-          <Description>Display name</Description>
+          <Description>Display name of the object.</Description>
         </DisplayString>
-        <DisplayString ElementID="Webhookvw.Expiredate">
-          <Name>Expiredate</Name>
-          <Description>Expiredate</Description>
-        </DisplayString>
-        <DisplayString ElementID="Webhookvw.Link">
-          <Name>Uri</Name>
-          <Description>URL</Description>
-        </DisplayString>
-        <DisplayString ElementID="Webhookvw.Id">
-          <Name>ID</Name>
-          <Description>ID</Description>
-        </DisplayString>
-        <DisplayString ElementID="Webhookvw.LastModified">
+        <DisplayString ElementID="System.ConfigItem.Webhook.LastModified">
           <Name>Last Modified</Name>
           <Description>Last modified</Description>
         </DisplayString>
-        <DisplayString ElementID="Webhookvw.connectorDisplayName">
-          <Name>Connector</Name>
-          <Description>Connector</Description>
+        <DisplayString ElementID="System.ConfigItem.Webhook.ConnectorID">
+          <Name>ConnectorID</Name>
+          <Description />
         </DisplayString>
-        <DisplayString ElementID="Webhookvw.connectorAutomationAccount">
-          <Name>Automation account</Name>
-          <Description>Automation account</Description>
+        <DisplayString ElementID="System.ConfigItem.Webhook.RunbookName">
+          <Name>Runbook Name</Name>
+          <Description />
         </DisplayString>
-     </DisplayStrings>
-   </LanguagePack>
- </LanguagePacks> 
-    
-    
-<!-- Resource files, add files as embedded resources -->  
-  <Resources>
-    <Image ID="AzureAutomation2x16" Accessibility="Public" FileName="AzureAutomation2x16.png" HasNullStream="false" />
-    <Image ID="AzureAutomation2x24" Accessibility="Public" FileName="AzureAutomation2x24.png" HasNullStream="false" />
-  </Resources>
+        <DisplayString ElementID="System.ConfigItem.Webhook.RunbookType">
+          <Name>Runbook Type</Name>
+          <Description />
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
 </ManagementPackFragment>
-
-
-

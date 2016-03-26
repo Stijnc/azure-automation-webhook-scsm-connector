@@ -4,29 +4,33 @@
 # Get Job Status for Running Jobs
 
 # This logic could be improved so the refresh of the Job status resumes after a restart of the workflow Service
-Import-Module Azure
-Import-Module SMLets
 
 $JobPollingTimeoutInSeconds = 3600
 
-Import-Module Azure
-Switch-AzureMode AzureResourceManager
+$TypePath = (Get-ItemProperty "hklm:\software\microsoft\system center\2010\service manager\setup").InstallDirectory + "scsm.azureautomation.wpf.dll"
+Add-Type -Path $TypePath
 
-# "Add Code here to get password"
-# "add Code to get Subscription ID"
-#$Params =  "Add Code to Build hash table to pass parameters
 
-$secpassword = ConvertTo-SecureString $password -AsPlainText -force
+$SMClass = Get-SCSMClass -Name SCSM.AzureAutomation.Connector$
+$SMObject = Get-SCSMObject -Class $SMClass 
+$SubscriptionID = $SMObject.SubscriptionID
+$AutomationAccountName = $SMObject.AutomationAccount
+$username = $SMObject.RunAsAccountName
+$encryptedPassword = $SMObject.RunAsAccountPassword
+$secpassword = ConvertTo-SecureString([SCSM.AzureAutomation.WPF.Connector.StringCipher]::Decrypt($encryptedPassword,$username)) -AsPlainText -Force
+$ResourceGroup = $SMObject.ResourceGroup
+
 $Creds = New-Object System.Management.Automation.PSCredential ($username, $secpassword)
-$Account = Add-AzureAccount -Credential $Creds
-$Subscription = Select-AzureSubscription -SubscriptionId $SubscriptionID
-$job = Get-AzureAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $JobID
+Login-AzureRmAccount -Credential $Creds -SubscriptionId $SubscriptionID
+$ActiveJobs = Get-SCSMClass -Name SCSM.AzureAutomation.Runbook.Activity -Filter 'Status -eq Running'
 
 
-
+foreach($Activity in $ActiveJobs)
+{
+	$job = Get-AzureRmAutomationJob -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Id $Activity.JobID
 if ($job -eq $null) { 
-        # No job was created, so throw an exception 
-        # throw ("No job was created for runbook: $ChildRunbookName.") 
+        # No Job was created
+		# throw an exception
 		# Need to Add Code here
 } 
 else 
@@ -40,7 +44,7 @@ $doLoop = $true
 while($doLoop) { 
     Start-Sleep -s $JobPollingIntervalInSeconds 
                  
-    $job = Get-AzureAutomationJob ` 
+    $job = Get-AzureRmAutomationJob ` 
         -Id $job.Id ` 
         -AutomationAccountName $AutomationAccountName
 		-ResourceGroupName $ResourceGroup 
@@ -56,7 +60,7 @@ while($doLoop) {
     if ($job.Status -match "Completed") { 
         if ($ReturnJobOutput) { 
             # Output 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
@@ -64,7 +68,7 @@ while($doLoop) {
             if ($jobout) {Write-Output $jobout.Text} 
                      
             # Error 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
@@ -72,7 +76,7 @@ while($doLoop) {
             if ($jobout) {Write-Error $jobout.Text} 
                      
             # Warning 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName ` 
 							-ResourceGroupName $ResourceGroup `
@@ -80,7 +84,7 @@ while($doLoop) {
             if ($jobout) {Write-Warning $jobout.Text} 
                      
             # Verbose 
-            $jobout = Get-AzureAutomationJobOutput ` 
+            $jobout = Get-AzureRmAutomationJobOutput ` 
                             -Id $job.Id ` 
                             -AutomationAccountName $AutomationAccountName `
 							-ResourceGroupName $ResourceGroup ` 
@@ -99,9 +103,9 @@ while($doLoop) {
 }
 
 # Add Code to Update the SCSM Runbook Activity        
+# this needs to be updated to reflect the real results from Azure Automation
+Set-SCSMObject -SMObject $Activity -Property Status -Value "Completed"
 
-
-
-
+}
 
 

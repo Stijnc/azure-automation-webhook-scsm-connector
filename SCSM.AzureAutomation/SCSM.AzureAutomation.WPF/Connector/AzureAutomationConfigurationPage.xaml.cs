@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Security;
 
 using Microsoft.EnterpriseManagement.UI.WpfWizardFramework;
+using Microsoft.EnterpriseManagement.UI.DataModel;
+using Microsoft.EnterpriseManagement.GenericForm;
 using System.Runtime.InteropServices;
 
 namespace SCSM.AzureAutomation.WPF.Connector
@@ -22,8 +24,8 @@ namespace SCSM.AzureAutomation.WPF.Connector
     /// Interaction logic for AzureAutomationConfigurationPage.xaml
     /// </summary>
     /// 
-    
 
+    
     public partial class AzureAutomationConfigurationPage : WizardRegularPageBase
     {
         private AzureAutomationWizardData azureautomationWizardData = null;
@@ -42,6 +44,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
             this.Title = "Configure the Azure Automation Connector";
             this.FinishButtonText = "Create";
+            
         }
 
         private void WizardRegularPageBase_Loaded(object sender, RoutedEventArgs e)
@@ -49,9 +52,17 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
         }
 
-      
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                string encryptedString = StringCipher.Encrypt(((PasswordBox)sender).Password, this.azureautomationWizardData.RunAsAccountName);
+                this.azureautomationWizardData.RunAsAccountPassword = encryptedString;
+            }
+        }
 
-    }  
+    }
+
 }
 
     

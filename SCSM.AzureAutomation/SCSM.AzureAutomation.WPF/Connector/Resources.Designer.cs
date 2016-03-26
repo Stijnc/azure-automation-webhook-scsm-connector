@@ -59,5 +59,25 @@ namespace SCSM.AzureAutomation.WPF.Connector {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AzureAutomation2x24 {
+            get {
+                object obj = ResourceManager.GetObject("AzureAutomation2x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AzureAutomationIcon {
+            get {
+                object obj = ResourceManager.GetObject("AzureAutomationIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -1,0 +1,119 @@
+﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Categories>
+    <Category ID="Category.65c7bb42914f4202930e175ce4abf190" Target="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe" Value="MESUC!Microsoft.EnterpriseManagement.ServiceManager.UI.Console.ViewTasks" />
+    <Category ID="Category.db490ed17b21417aafa6c17d24bb0901" Target="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe" Value="Authoring!Microsoft.EnterpriseManagement.ServiceManager.UI.Authoring.CreateTypeCategory" />
+  </Categories>
+  <Presentation>
+    <Views>
+      <View ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe" Accessibility="Public" Enabled="true" Target="SCSM.AzureAutomation.Runbook.Activity" TypeID="MESUC!GridViewType" Visible="true">
+        <Category>NotUsed</Category>
+        <Data>
+          <Adapters>
+            <Adapter AdapterName="dataportal:EnterpriseManagementObjectProjectionAdapter">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.EnterpriseManagementObjectProjectionAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="viewframework://Adapters/AdvancedList">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.ViewFramework</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.ViewFramework.AdvancedListSupportAdapter</AdapterType>
+            </Adapter>
+            <Adapter AdapterName="omsdk://Adapters/Criteria">
+              <AdapterAssembly>Microsoft.EnterpriseManagement.UI.SdkDataAccess</AdapterAssembly>
+              <AdapterType>Microsoft.EnterpriseManagement.UI.SdkDataAccess.DataAdapters.SdkCriteriaAdapter</AdapterType>
+            </Adapter>
+          </Adapters>
+          <ItemsSource>
+            <AdvancedListSupportClass DataTypeName="" AdapterName="viewframework://Adapters/AdvancedList" FullUpdateAdapter="dataportal:EnterpriseManagementObjectProjectionAdapter" DataSource="mom:ManagementGroup" FullUpdateFrequency="1" Streaming="true" IsRecurring="true" RecurrenceFrequency="{x:Static s:Int32.MaxValue}" xmlns="clr-namespace:Microsoft.EnterpriseManagement.UI.ViewFramework;assembly=Microsoft.EnterpriseManagement.UI.ViewFramework" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib">
+              <AdvancedListSupportClass.Parameters>
+                <QueryParameter Parameter="TypeProjectionId" Value="$MPElement[Name='System.WorkItem.Activity.AARunbookActivityViewProjection']$" />
+              </AdvancedListSupportClass.Parameters>
+            </AdvancedListSupportClass>
+          </ItemsSource>
+          <Criteria>
+            <QueryCriteria Adapter="omsdk://Adapters/Criteria" xmlns="http://tempuri.org/Criteria.xsd">
+              <Criteria>
+                <FreeformCriteria>
+                  <Freeform>
+                    <Criteria xmlns="http://Microsoft.EnterpriseManagement.Core.Criteria/">
+                      <Expression>
+                        <In>
+                          <GenericProperty Path="$Context/Path[Relationship='WorkItem!System.WorkItemAssignedToUser' SeedRole='Source']$">Id</GenericProperty>
+                          <Values>
+                            <Token>[me]</Token>
+                            <Token>[mygroups]</Token>
+                          </Values>
+                        </In>
+                      </Expression>
+                    </Criteria>
+                  </Freeform>
+                </FreeformCriteria>
+              </Criteria>
+            </QueryCriteria>
+          </Criteria>
+        </Data>
+        <Presentation>
+          <Columns>
+            <mux:ColumnCollection xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mux="http://schemas.microsoft.com/SystemCenter/Common/UI/Views/GridView" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:datebinding="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:data="clr-namespace:Microsoft.EnterpriseManagement.UI.Extensions;assembly=Microsoft.EnterpriseManagement.UI.Extensions" xmlns:appCommon="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.Application.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.Application.Common" xmlns:toolbox="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfToolbox;assembly=Microsoft.EnterpriseManagement.UI.FormsInfra" xmlns:slaBinding="clr-namespace:Microsoft.EnterpriseManagement.ServiceManager.SLA.Common;assembly=Microsoft.EnterpriseManagement.ServiceManager.SLA.Common">
+              <mux:Column Name="Id" DisplayMemberBinding="{Binding Path=Id, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Id" Property="Id" DataType="s:String" />
+              <mux:Column Name="Title" DisplayMemberBinding="{Binding Path=Title, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Title" Property="Title" DataType="s:String" />
+              <mux:Column Name="ActivityAssignedTo.DisplayName" DisplayMemberBinding="{Binding Path=ActivityAssignedTo.DisplayName, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Assigned_To" Property="ActivityAssignedTo.DisplayName" DataType="s:String" />
+              <mux:Column Name="Status.DisplayName" DisplayMemberBinding="{Binding Path=Status.DisplayName, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Status" Property="Status.DisplayName" DataType="s:String" />
+              <mux:Column Name="$LastModified$" DisplayMemberBinding="{Binding Path=$LastModified$, Mode=OneWay}" Width="100" DisplayName="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Last_Modified" Property="$LastModified$" DataType="s:DateTime" />
+            </mux:ColumnCollection>
+          </Columns>
+          <AdditonalProperties />
+          <ViewStrings>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Id">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Id"]$</ViewString>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Last_Modified">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Last_Modified"]$</ViewString>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Status">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Status"]$</ViewString>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Title">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Title"]$</ViewString>
+            <ViewString ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Assigned_To">$MPElement[Name="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Assigned_To"]$</ViewString>
+          </ViewStrings>
+        </Presentation>
+      </View>
+    </Views>
+    <FolderItems>
+      <FolderItem ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe" ID="FolderItem.7c6c244e8fdc46b791fff0d3c72e40b8" Folder="Folder.932137f9359643e59f34cc680deaa1b9" />
+    </FolderItems>
+    <ImageReferences>
+      <ImageReference ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe" ImageID="RunbookActivity!ActivityMgmt_RunbookActivitiesAssignedToMe_16" />
+    </ImageReferences>
+    <StringResources>
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Id" />
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Last_Modified" />
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Status" />
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Title" />
+      <StringResource ID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Assigned_To" />
+
+    </StringResources>
+  </Presentation>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe">
+          <Name>Activities Assigned to Me or My Group</Name>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Id">
+          <Name>ID</Name>
+          <Description>Work item ID</Description>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Last_Modified">
+          <Name>Last Modified</Name>
+          <Description>Last modified</Description>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Status">
+          <Name>Status</Name>
+          <Description>Status</Description>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Title">
+          <Name>Title</Name>
+          <Description>Title</Description>
+        </DisplayString>
+        <DisplayString ElementID="ServiceManager.AARunbookActivity.RunbookAutomationActivitiesAssignedToMe.Header_Assigned_To">
+          <Name>Assigned To</Name>
+          <Description>Display name Assigned to User</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>

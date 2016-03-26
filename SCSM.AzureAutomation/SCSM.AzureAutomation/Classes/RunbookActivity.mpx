@@ -2,14 +2,44 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="MSO!Microsoft.SystemCenter.Orchestrator.RunbookAutomationActivity.Base" Extension="false" Singleton="false" Hosted="false" >
-          <!--<Property ID="ResourceGroup" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="AutomationAccountName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />-->
-          <Property ID ="RunbookName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="ConnectorID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="JobID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
-          <Property ID ="Output" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="16000" MinLength="0" Required="false" Scale="0" />
+        <ClassType ID="SCSM.AzureAutomation.Runbook.Activity" Accessibility="Public" Abstract="false" Base="Orchestrator!Microsoft.SystemCenter.Orchestrator.RunbookAutomationActivity.Base" Extension="false" Singleton="false" Hosted="false" >
+          <Property ID="Output" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="16000" MinLength="0" Required="false" Scale="0" />
+          <Property ID="RunbookName" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="AARunbookId" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="AAJobID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="AAPropertyMapping" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="ConnectorID" Type="guid" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />       
           <Property ID="RunOnHybridWorker" Type="bool" Required="false" Scale="0" />
+          <Property ID="Text1" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text2" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text3" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text4" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text5" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text6" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text7" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text8" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text9" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Text10" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="1024" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LongText1" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LongText2" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LongText3" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LongText4" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="LongText5" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="65536" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Integer1" Type="int" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Integer2" Type="int" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Integer3" Type="int" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Integer4" Type="int" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Integer5" Type="int" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Datetime1" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Datetime2" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Datetime3" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Datetime4" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Datetime5" Type="datetime" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Boolean1" Type="bool" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Boolean2" Type="bool" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Boolean3" Type="bool" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Boolean4" Type="bool" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Boolean5" Type="bool" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />          
         </ClassType>
       </ClassTypes>
     </EntityTypes>
@@ -29,7 +59,7 @@
           <Name>Connector ID</Name>
           <Description></Description>
         </DisplayString>
-        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="JobID">
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="AAJobID">
           <Name>Job ID</Name>
           <Description></Description>
         </DisplayString>
@@ -40,6 +70,102 @@
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="RunOnHybridWorker">
           <Name>Run On Hybrid Worker</Name>
           <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text1">
+          <Name>Text 1</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text2">
+          <Name>Text 2</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text3">
+          <Name>Text 3</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text4">
+          <Name>Text 4</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text5">
+          <Name>Text 5</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text6">
+          <Name>Text 6</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text7">
+          <Name>Text 7</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text8">
+          <Name>Text 8</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text9">
+          <Name>Text 9</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Text10">
+          <Name>Text 10</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="LongText1">
+          <Name>Long Text 1</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="LongText2">
+          <Name>Long Text 2</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="LongText3">
+          <Name>Long Text 3</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="LongText4">
+          <Name>Long Text 4</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="LongText5">
+          <Name>Long Text 5</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Integer1">
+          <Name>Integer 1</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Integer2">
+          <Name>Integer 2</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Integer3">
+          <Name>Integer 3</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Integer4">
+          <Name>Integer 4</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Integer5">
+          <Name>Integer 5</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Datetime1">
+          <Name>Datetime 1</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Datetime2">
+          <Name>Datetime 2</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Datetime3">
+          <Name>Datetime 3</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Datetime4">
+          <Name>Datetime 4</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Datetime5">
+          <Name>Datetime 5</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Boolean1">
+          <Name>Boolean 1</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Boolean2">
+          <Name>Boolean 2</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Boolean3">
+          <Name>Boolean 3</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Boolean4">
+          <Name>Boolean 4</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="Boolean5">
+          <Name>Boolean 5</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="AAPropertyMapping">
+          <Name>Azure Automation Property Mappings</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook.Activity" SubElementID="AARunbookId">
+          <Name>Azure Automation Runbook ID</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

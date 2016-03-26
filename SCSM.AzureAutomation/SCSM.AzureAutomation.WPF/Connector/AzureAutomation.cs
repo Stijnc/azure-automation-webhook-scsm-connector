@@ -11,6 +11,11 @@ using System.Globalization;         //Has the CultureInfo class in it
 using System.ComponentModel;        //Has the INotifyPropertyChanged class in it
 using Microsoft.Win32;              //Has the RegistryKey class in it
 
+using System.Text;
+using System.Security.Cryptography;
+using System.IO;
+using System.Linq;
+
 //Requires Microsoft.EnterpriseManagement.Core reference
 using Microsoft.EnterpriseManagement;
 using Microsoft.EnterpriseManagement.Common;
@@ -31,7 +36,9 @@ namespace SCSM.AzureAutomation.WPF.Connector
 {
     public class AzureAutomation : ConsoleCommand
     {
-        public AzureAutomation() { }
+        public AzureAutomation() { 
+        
+        }
 
         public override void ExecuteCommand(IList<NavigationModelNodeBase> nodes, NavigationModelNodeTask task, ICollection<string> parameters)
         {
@@ -40,8 +47,8 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 WizardStory wizard = new WizardStory();
 
                 //set the icon and title bar
-                ResourceManager rm = new ResourceManager("SCSM.Azureautomation.WPF.Connector.Resources", typeof(Resources).Assembly);
-                Bitmap bitmap = (Bitmap)rm.GetObject("AzureAutomation2x32");
+                ResourceManager rm = new ResourceManager("SCSM.AzureAutomation.WPF.Connector.Resources", typeof(Resources).Assembly);
+                Bitmap bitmap = (Bitmap)rm.GetObject("AzureAutomation2x24");
                 IntPtr ptr = bitmap.GetHbitmap();
                 BitmapSource bitmapsource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(ptr, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                 wizard.StoryImage = bitmapsource;
@@ -122,10 +129,11 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 }
 
                 //Get the rule using the connector ID
-                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
+                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.Workflows", null, new Version("1.0.0.0"));
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
                 String strConnectorID = emoAAConnector[classAAConnector, "Id"].ToString();
-                ManagementPackRule ruleConnector = mpConnectors.GetRule(strConnectorID);
+                ManagementPackRule ruleConnector = mpAAConnectorWorkflows.GetRule(strConnectorID);
 
                 //Update the Enabled property or delete as appropriate
                 if (parameters.Contains("Delete"))
@@ -147,7 +155,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Commit the changes to the connector object and rule
                 emoAAConnector.Commit();
-                mpConnectors.AcceptChanges();
+                mpAAConnectorWorkflows.AcceptChanges();
 
                 //Update the view when done so the item is either removed or the updated Enabled value shows
                 RequestViewRefresh();
@@ -316,7 +324,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             //Connect to the server
             EnterpriseManagementGroup emg = new EnterpriseManagementGroup(strServerName);
 
-            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
             ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
 
             this.EnterpriseManagementObjectID = emoAAConnector.Id;
@@ -363,12 +371,13 @@ namespace SCSM.AzureAutomation.WPF.Connector
 
                 //Get the System MP so we can get the system key token and version so we can get other MPs using that info
                 ManagementPack mpSystem = emg.ManagementPacks.GetManagementPack(SystemManagementPack.System);
-                Version verSystemVersion = mpSystem.Version;
                 string strSystemKeyToken = mpSystem.KeyToken;
+                ManagementPack mpSubscriptions = emg.GetManagementPack("Microsoft.SystemCenter.Subscriptions", strSystemKeyToken, new Version("1.0.0.0"));
 
                 //Also get the System Center and Connector MPs - we'll need things from those MPs later
                 ManagementPack mpSystemCenter = emg.ManagementPacks.GetManagementPack(SystemManagementPack.SystemCenter);
-                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+                ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
+                ManagementPack mpAAConnectorWorkflows = emg.GetManagementPack("SCSM.AzureAutomation.Workflows", null, new Version("1.0.0.0"));
 
                 //Get the AzureAutomationConnector class in the Connectors MP
                 ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
@@ -389,7 +398,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 cemoAAConnector[classAAConnector, "Enabled"].Value = true;                            //Optional, shown in Connectors view
                 cemoAAConnector[classAAConnector, "Name"].Value = this.DisplayName;
 
-                //SCSM.AzureAutomation.Connecto properties
+                //SCSM.AzureAutomation.Connector properties
                 cemoAAConnector[classAAConnector, "AutomationAccount"].Value = this.AutomationAccount;
                 cemoAAConnector[classAAConnector, "SubscriptionID"].Value = this.SubscriptionID;
                 cemoAAConnector[classAAConnector, "ResourceGroup"].Value = this.ResourceGroup;
@@ -400,8 +409,70 @@ namespace SCSM.AzureAutomation.WPF.Connector
                 //Create Connector instance
                 cemoAAConnector.Commit();
 
+                //Now we need to create the CSV Connector rule...
+
+                //Get the Scheduler data source module type from the System MP and the Windows Workflow Task Write Action Module Type from the Subscription MP
+                ManagementPackDataSourceModuleType dsmtScheduler = (ManagementPackDataSourceModuleType)mpSystem.GetModuleType("System.Scheduler");
+                ManagementPackWriteActionModuleType wamtWindowsWorkflowTaskWriteAction = (ManagementPackWriteActionModuleType)mpSubscriptions.GetModuleType("Microsoft.EnterpriseManagement.SystemCenter.Subscription.WindowsWorkflowTaskWriteAction");
+
+                //Create a new rule for the CSV Connector in the Connectors MP.  Set the name of this rule to be the same as the connector instance ID so there is a pairing between them
+                ManagementPackRule ruleAAConnector = new ManagementPackRule(mpAAConnectorWorkflows, strConnectorID);
+
+                //Set the target and other properties of the rule
+                ruleAAConnector.Target = mpSystemCenter.GetClass("Microsoft.SystemCenter.SubscriptionWorkflowTarget");
+
+                //Create a new Data Source Module in the new CSV Connector rule
+                ManagementPackDataSourceModule dsmSchedule = new ManagementPackDataSourceModule(ruleAAConnector, "DS1");
+
+                //Set the configuration of the data source rule.  Pass in the frequency (number of minutes)
+                dsmSchedule.Configuration =
+                    "<Scheduler>" +
+                        "<SimpleReccuringSchedule>" +
+                            "<Interval Unit=\"Minutes\">60</Interval>" +
+                        "</SimpleReccuringSchedule>" +
+                        "<ExcludeDates />" +
+                    "</Scheduler>";
+
+                //Set the Schedule Data Source Module Type to the Simple Schedule Module Type from the System MP
+                dsmSchedule.TypeID = dsmtScheduler;
+
+                //Add the Scheduler Data Source to the Rule
+                ruleAAConnector.DataSourceCollection.Add(dsmSchedule);
+
+                //Now repeat essentially the same process for the Write Action module...
+
+                //Create a new Write Action Module in the CSV Connector rule
+                ManagementPackWriteActionModule wamAAConnector = new ManagementPackWriteActionModule(ruleAAConnector, "WA1");
+
+                //Set the Configuration XML
+                wamAAConnector.Configuration =
+                    "<Subscription>" +
+                        "<WindowsWorkflowConfiguration>" +
+                            //Specify the Windows Workflow Foundation workflow Assembly name here
+                            "<AssemblyName>SCSM.AzureAutomation.Workflows.AT</AssemblyName>" +
+                            //Specify the type name of the workflow to call in the assembly here:
+                            "<WorkflowTypeName>WorkflowAuthoring.RefreshConnector</WorkflowTypeName>" +
+                            "<WorkflowParameters>" +
+                                //Pass in the parameters here.  In this case the two parameters are the data file path and the mapping file path
+                                "<WorkflowParameter Name=\"RefreshConnectorScript_ConnectorId\" Type=\"string\">" + strConnectorID + "</WorkflowParameter>" +
+                            "</WorkflowParameters>" +
+                            "<RetryExceptions />" +
+                            "<RetryDelaySeconds>60</RetryDelaySeconds>" +
+                            "<MaximumRunningTimeSeconds>300</MaximumRunningTimeSeconds>" +
+                        "</WindowsWorkflowConfiguration>" +
+                    "</Subscription>";
+
+                //Set the module type of the module to be the Windows Workflow Task Write Action Module Type from the Subscriptions MP.
+                wamAAConnector.TypeID = wamtWindowsWorkflowTaskWriteAction;
+
+                //Add the Write Action Module to the rule
+                ruleAAConnector.WriteActionCollection.Add(wamAAConnector);
+
+                //Mark the rule as pending update
+                ruleAAConnector.Status = ManagementPackElementStatus.PendingAdd; ;
+
                 //Accept the rule changes which updates the database
-                mpConnectors.AcceptChanges();
+                mpAAConnectorWorkflows.AcceptChanges();
 
             }
             catch (Exception e)
@@ -418,7 +489,7 @@ namespace SCSM.AzureAutomation.WPF.Connector
             EnterpriseManagementGroup emg = new EnterpriseManagementGroup(strServerName);
 
             //Get the Connectors MP and AA Connector Class
-            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", null, new Version("1.0.0.0"));
+            ManagementPack mpConnectors = emg.GetManagementPack("SCSM.AzureAutomation", "ac1fe0583b6c84af", new Version("1.0.0.0"));
             ManagementPackClass classAAConnector = mpConnectors.GetClass("SCSM.AzureAutomation.Connector");
 
             //Get the Connector object using the object ID
@@ -452,5 +523,100 @@ namespace SCSM.AzureAutomation.WPF.Connector
         }
     }
 
-    
+    public static class StringCipher
+    {
+        // This constant is used to determine the keysize of the encryption algorithm in bits.
+        // We divide this by 8 within the code below to get the equivalent number of bytes.
+        private const int Keysize = 256;
+
+        // This constant determines the number of iterations for the password bytes generation function.
+        private const int DerivationIterations = 1000;
+
+        public static string Encrypt(string plainText, string passPhrase)
+        {
+            // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
+            // so that the same Salt and IV values can be used when decrypting.  
+            var saltStringBytes = Generate256BitsOfRandomEntropy();
+            var ivStringBytes = Generate256BitsOfRandomEntropy();
+            var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
+            var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations);
+            
+            var keyBytes = password.GetBytes(Keysize / 8);
+            using (var symmetricKey = new RijndaelManaged())
+            {
+                symmetricKey.BlockSize = 256;
+                symmetricKey.Mode = CipherMode.CBC;
+                symmetricKey.Padding = PaddingMode.PKCS7;
+                using (var encryptor = symmetricKey.CreateEncryptor(keyBytes, ivStringBytes))
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                        {
+                            cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
+                            cryptoStream.FlushFinalBlock();
+                            // Create the final bytes as a concatenation of the random salt bytes, the random iv bytes and the cipher bytes.
+                            var cipherTextBytes = saltStringBytes;
+                            cipherTextBytes = cipherTextBytes.Concat(ivStringBytes).ToArray();
+                            cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();
+                            memoryStream.Close();
+                            cryptoStream.Close();
+                            return Convert.ToBase64String(cipherTextBytes);
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        public static string Decrypt(string cipherText, string passPhrase)
+        {
+            // Get the complete stream of bytes that represent:
+            // [32 bytes of Salt] + [32 bytes of IV] + [n bytes of CipherText]
+            var cipherTextBytesWithSaltAndIv = Convert.FromBase64String(cipherText);
+            // Get the saltbytes by extracting the first 32 bytes from the supplied cipherText bytes.
+            var saltStringBytes = cipherTextBytesWithSaltAndIv.Take(Keysize / 8).ToArray();
+            // Get the IV bytes by extracting the next 32 bytes from the supplied cipherText bytes.
+            var ivStringBytes = cipherTextBytesWithSaltAndIv.Skip(Keysize / 8).Take(Keysize / 8).ToArray();
+            // Get the actual cipher text bytes by removing the first 64 bytes from the cipherText string.
+            var cipherTextBytes = cipherTextBytesWithSaltAndIv.Skip((Keysize / 8) * 2).Take(cipherTextBytesWithSaltAndIv.Length - ((Keysize / 8) * 2)).ToArray();
+
+            var password = new Rfc2898DeriveBytes(passPhrase, saltStringBytes, DerivationIterations);
+          
+            var keyBytes = password.GetBytes(Keysize / 8);
+            using (var symmetricKey = new RijndaelManaged())
+            {
+                symmetricKey.BlockSize = 256;
+                symmetricKey.Mode = CipherMode.CBC;
+                symmetricKey.Padding = PaddingMode.PKCS7;
+                using (var decryptor = symmetricKey.CreateDecryptor(keyBytes, ivStringBytes))
+                {
+                    using (var memoryStream = new MemoryStream(cipherTextBytes))
+                    {
+                        using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                        {
+                            var plainTextBytes = new byte[cipherTextBytes.Length];
+                            var decryptedByteCount = cryptoStream.Read(plainTextBytes, 0, plainTextBytes.Length);
+                            memoryStream.Close();
+                            cryptoStream.Close();
+                            return Encoding.UTF8.GetString(plainTextBytes, 0, decryptedByteCount);
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        private static byte[] Generate256BitsOfRandomEntropy()
+        {
+            var randomBytes = new byte[32]; // 32 Bytes will give us 256 bits.
+            var rngCsp = new RNGCryptoServiceProvider();
+           
+           // Fill the array with cryptographically secure random bytes.
+            rngCsp.GetBytes(randomBytes);
+            
+            return randomBytes;
+        }
+    }
+
 }

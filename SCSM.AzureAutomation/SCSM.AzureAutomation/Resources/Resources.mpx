@@ -1,5 +1,11 @@
 ﻿<ManagementPackFragment SchemaVersion="SM2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Resources>
     <Assembly ID="SCSM.AzureAutomation.WPF" Accessibility="Public" FileName="SCSM.AzureAutomation.WPF.dll" HasNullStream="false" QualifiedName="SCSM.AzureAutomation.WPF.Connector, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ac1fe0583b6c84af" />
+    <Image ID="AzureAutomation2x16" Accessibility="Public" FileName="AzureAutomation2x16.png" HasNullStream="false" />
+    <Image ID="AzureAutomation2x24" Accessibility="Public" FileName="AzureAutomation2x24.png" HasNullStream="false" />
+    <Image ID="webhook2x16" Accessibility="Public" FileName="webhook2x16.png" HasNullStream="false" />
+    <Image ID="webhook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
+    <Image ID="runbook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
+    <Image ID="runbook2x24" Accessibility="Public" FileName="webhook2x24.png" HasNullStream="false" />
   </Resources>
 </ManagementPackFragment>

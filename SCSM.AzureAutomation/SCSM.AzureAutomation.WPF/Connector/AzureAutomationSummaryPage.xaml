@@ -2,7 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"                  
     xmlns:wpfwiz="clr-namespace:Microsoft.EnterpriseManagement.UI.WpfWizardFramework;assembly=Microsoft.EnterpriseManagement.UI.WpfWizardFramework">
-
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid Name="SummaryGrid" Margin="15,25,15,25">
         <TextBlock Height="28" Margin="0,0,0,0" Name="titleLabel" FontWeight="Bold" Foreground="#FF003399" FontSize="14" VerticalAlignment="Top" Text="Configure the Connector"/>
         <ScrollViewer Margin="0,50,0,50" Name="scrollViewer" CanContentScroll="True" VerticalScrollBarVisibility="Auto">
@@ -31,13 +37,6 @@
                         <Binding Path="RunAsAccountName" Mode="OneWay"/>
                     </TextBox.Text>
                 </TextBox>
-                <Label Height="25" Padding="0" Margin="0,0,0,0" Name="PasswordLabel" Content="Password:" FontWeight="Bold"/>
-                <TextBox Height="25" Margin="0,-8,0,10" Name="PasswordTextBlock" >
-                    <TextBox.Text>
-                        <Binding Path="RunAsAccountPassword" Mode="TwoWay"/>
-                    </TextBox.Text>
-                </TextBox>
-
             </StackPanel>
         </ScrollViewer>
         <Label Height="25" Name="clickCreateLabel" VerticalAlignment="Bottom" Margin="0,0,30,0" Content="Click Create to create the Azure Automation connector."/>

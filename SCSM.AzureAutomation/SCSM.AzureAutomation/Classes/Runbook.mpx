@@ -2,17 +2,18 @@
   <TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID ="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="SSL!System.SupportingItem" Hosted="false" Singleton="false">
-          <Property ID="Id" AutoIncrement="true" Type="string" Key="true" CaseSensitive="false" MaxLength="256" />
-          <Property ID="ConnectorID" Type="guid" Key="false" CaseSensitive="false" MaxLength="256" />
+        <ClassType ID="SCSM.AzureAutomation.Runbook" Accessibility="Public" Abstract="false" Base="SupportingItem!System.SupportingItem" Hosted="false" Singleton="false">
+          <Property ID="Id" AutoIncrement="true" Type="string" Key="true" CaseSensitive="false" MaxLength="256" DefaultValue="AARB{0}" />
           <Property ID="Name" Type="string" Key="false" CaseSensitive="false" MaxLength="256" />
-          <Property ID ="Description" Type="string" Key="false" CaseSensitive="false" MaxLength="1024" />
+          <Property ID="Description" Type="string" Key="false" CaseSensitive="false" MaxLength="1024" />
+          <Property ID="ConnectorID" Type="guid" Key="false" CaseSensitive="false" MaxLength="256" />       
           <Property ID="LastModifiedTime" Type="datetime"/>
-          <Property ID ="Status" Type="enum" EnumType="AzureAutomationRunbook.Status"/>
-          <Property ID ="LogVerbose" Type="bool"/>
-          <Property ID ="LogProgrss" Type="bool"/>
-          <Property ID ="CreatedDate" Type="datetime"/>
+          <Property ID="Status" Type="enum" EnumType="AzureAutomationRunbook.Status"/>
+          <Property ID="LogVerbose" Type="bool"/>
+          <Property ID="LogProgress" Type="bool"/>
+          <Property ID="CreatedDate" Type="datetime"/>
           <Property ID="RunbookType" Type="enum" EnumType="AzureAutomationRunbook.Type"/>
+          <Property ID="Parameters" Type="string" Key="false" CaseSensitive="false" MaxLength="6000" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
@@ -21,7 +22,7 @@
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook">
-          <Name>Azure Automation Runbook Parameter</Name>
+          <Name>Azure Automation Runbook</Name>
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="Id">
           <Name>ID</Name>
@@ -40,6 +41,21 @@
         </DisplayString>
         <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="Status">
           <Name>Status</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="LogVerbose">
+          <Name>Log Verbose</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="LogProgress">
+          <Name>Log Progress</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="CreatedDate">
+          <Name>Created Date</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="RunbookType">
+          <Name>Runbook Type</Name>
+        </DisplayString>
+        <DisplayString ElementID="SCSM.AzureAutomation.Runbook" SubElementID="Parameters" >
+          <Name>Parameters</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>

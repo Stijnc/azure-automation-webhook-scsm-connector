@@ -1,9 +1,7 @@
-# Azure automation webhook Service Manager (SCSM) connector
-System Center Service Manager connector and runbook template for Azure Automation leveraging webhooks.
+# Azure automation Service Manager (SCSM) connector
+System Center Service Manager connector and runbook template for Azure Automation. 
 
 **This project is not fully functional yet**  
-**Note: credentials are currently stored in clear text!**
-
 
 ### teaser :-)
 <img src="https://raw.githubusercontent.com/Stijnc/azure-automation-webhook-scsm-connector/master/Screenshots/AA_Connector3.PNG" alt="Drawing" style="width: 50px;"/>
@@ -11,7 +9,9 @@ System Center Service Manager connector and runbook template for Azure Automatio
 the solution contains the following elements:
 * an Azure Automation Connector
 * an Azure Automation Webhook class
-* an Azure Automation Webhook Activity
+* an Azure Automation Runbook Activity
+* an Azure Automaiton Runbook class
+* an Azure Automation Runbook Parameter class
 * a Service manager workflow using the azure powershell module to check the runbook job status 
 
 ## Installation
@@ -20,8 +20,12 @@ todo
 ## Usage
 todo
 
+
+##Requirements for Workflow Server 
+* SMLets PowerShell Module
+* Azure Powershell Module
+
 ## Remarks
-* webhooks are used instead of querying the automation account
+* Query Azure Automation account
 * entering webhooks is a manual task
-* I repeat: password is stored in clear text, first I need to get things working :-)
 * all other things I forgot to mention, but that are important

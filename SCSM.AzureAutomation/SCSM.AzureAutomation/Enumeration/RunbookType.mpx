@@ -3,8 +3,9 @@
     <EntityTypes>
       <EnumerationTypes>
         <EnumerationValue ID="AzureAutomationRunbook.Type" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Type.Script" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
-        <EnumerationValue ID="AzureAutomationRunbook.Type.Graph" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Type.Workflow" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Type.Graphical" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
+        <EnumerationValue ID="AzureAutomationRunbook.Type.PowerShell" Parent="AzureAutomationRunbook.Type" Accessibility="Public" />
       </EnumerationTypes>
     </EntityTypes>
   </TypeDefinitions>
@@ -14,11 +15,14 @@
         <DisplayString ElementID="AzureAutomationRunbook.Type">
           <Name>Azure Automation Runbook Type</Name>
         </DisplayString>
-        <DisplayString ElementID="AzureAutomationRunbook.Type.Script" >
-          <Name>Script</Name>
+        <DisplayString ElementID="AzureAutomationRunbook.Type.Workflow" >
+          <Name>Workflow</Name>
         </DisplayString>
-        <DisplayString ElementID="AzureAutomationRunbook.Type.Graph">
-          <Name>Graph</Name>
+        <DisplayString ElementID="AzureAutomationRunbook.Type.Graphical">
+          <Name>Graphical</Name>
+        </DisplayString>
+        <DisplayString ElementID="AzureAutomationRunbook.Type.PowerShell">
+          <Name>Script</Name>
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>
