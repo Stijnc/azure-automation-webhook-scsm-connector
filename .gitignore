@@ -1,5 +1,8 @@
-SCSM.AzureAutomation/SCSM.AzureAutomation.Worklfow/bin/*
-SCSM.AzureAutomation/SCSM.AzureAutomation.Worklfow/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Workflows/bin/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Workflows/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Workflows/*.user
+SCSM.AzureAutomation/SCSM.AzureAutomation.Workflows.AT/obj/*
+SCSM.AzureAutomation/SCSM.AzureAutomation.Workflows.AT/bin/*
 SCSM.AzureAutomation/SCSM.AzureAutomation/bin/*
 SCSM.AzureAutomation/SCSM.AzureAutomation/obj/*
 SCSM.AzureAutomation/SCSM.AzureAutomation.WPF/bin/*
